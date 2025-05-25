@@ -1,0 +1,35 @@
+---
+import {
+  Facebook,
+  Mail,
+  Linkedin,
+  Phone
+} from '@lucide/astro';
+---
+
+<header class="bg-secondary py-4 px-6 w-full">
+  <div class="flex flex-wrap justify-center items-center gap-4 text-sm text-center text-black">
+    <span class="w-full">
+      <h3 class="text-base font-semibold">Κλείστε την πρώτη σας συνεδρία</h3>
+    </span>
+    <span class="flex items-center gap-2">
+      <Facebook class="w-4 h-4" />
+      <p>Enalia</p>
+    </span>
+    <span class="flex items-center gap-2">
+      <Mail class="w-4 h-4" />
+      <p>enalia-therapy.com</p>
+    </span>
+    <span class="flex items-center gap-2">
+      <Linkedin class="w-4 h-4" />
+      <p>Linked In</p>
+    </span>
+    <span>
+      <a href="http://googlemaps.com" class="hover:underline">Νέα Ιονία</a>
+    </span>
+    <span class="flex items-center gap-2">
+      <Phone class="w-4 h-4" />
+      <a href="tel:+2101111111" class="hover:underline">2101111111</a>
+    </span>
+  </div>
+</header>
