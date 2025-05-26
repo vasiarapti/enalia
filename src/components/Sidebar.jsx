@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import "logo.webp" from "src/images/";
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.webp';
 
 const menuItems = [
   { name: "ΑΡΧΙΚΗ", href: "/" },
@@ -59,8 +60,7 @@ export default function Sidebar() {
       >
         {/* Logo */}
         <div className="flex justify-center mb-2">
-          <img
-            src="/src/assets/images/logo.webp"
+          <<Image src={myImage}
             alt="Logo"
             className="max-w-[200px] max-h-[200px] object-contain"
           />
