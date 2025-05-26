@@ -11,7 +11,7 @@ export default defineConfig({
     tailwind(),
     react()
   ],
-  site: 'https://vasiarapti.github.io'
+  site: LIVE_URL,
   base: 'enalia'
   // adapter: staticAdapter()
 });
