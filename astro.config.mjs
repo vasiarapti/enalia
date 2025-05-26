@@ -9,7 +9,7 @@ export default defineConfig({
     tailwind(),
     react()
   ],
-  site: 'https://astronaut.github.io',
-  base: '/enalia/'
+  site: 'https://vasiarapti.github.io'
+  // base: '/enalia/'
   // adapter: staticAdapter()
 });
