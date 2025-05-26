@@ -10,6 +10,5 @@ export default defineConfig({
     react()
   ],
   site: 'https://astronaut.github.io',
-  base: '/enalia/',
   adapter: staticAdapter()
 });
