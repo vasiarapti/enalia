@@ -8,6 +8,6 @@ export default defineConfig({
     tailwind(),
     react()
   ],
-  base: "/enalia/",
+  base: '/enalia/',
   adapter: staticAdapter()
 });
