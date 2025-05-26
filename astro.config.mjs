@@ -4,12 +4,14 @@ import react from '@astrojs/react';
 // import staticAdapter from '@astrojs/adapter-static';
 import github from '@astrojs/github';
 
+const LIVE_URL = "https://vasiarapti.github.io";
+
 export default defineConfig({
   integrations: [
     tailwind(),
     react()
   ],
   site: 'https://vasiarapti.github.io'
-  base: '/enalia/'
+  base: 'enalia'
   // adapter: staticAdapter()
 });
