@@ -3,6 +3,8 @@ import { Menu, X } from "lucide-react";
 import { Image } from 'astro:assets';
 import logo from '../assets/logo.webp';
 
+
+
 const menuItems = [
   { name: "ΑΡΧΙΚΗ", href: "/" },
   {
@@ -32,7 +34,7 @@ const menuItems = [
 export default function Sidebar() {
   const [activeSubmenu, setActiveSubmenu] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
-
+  
   const handleClick = (itemName) => {
     setActiveSubmenu((prev) => (prev === itemName ? null : itemName));
   };
@@ -60,7 +62,7 @@ export default function Sidebar() {
       >
         {/* Logo */}
         <div className="flex justify-center mb-2">
-          <Image src={logo}
+          <img src="../assets/logo.webp"
             alt="Logo"
             className="max-w-[200px] max-h-[200px] object-contain"
           />
