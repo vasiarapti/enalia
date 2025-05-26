@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import "logo.webp" from "src/images/";
 
 const menuItems = [
   { name: "ΑΡΧΙΚΗ", href: "/" },
