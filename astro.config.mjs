@@ -10,6 +10,6 @@ export default defineConfig({
     react()
   ],
   site: 'https://vasiarapti.github.io'
-  // base: '/enalia/'
+  base: '/enalia/'
   // adapter: staticAdapter()
 });
