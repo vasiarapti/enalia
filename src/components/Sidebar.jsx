@@ -60,7 +60,7 @@ export default function Sidebar() {
       >
         {/* Logo */}
         <div className="flex justify-center mb-2">
-          <<Image src={myImage}
+          <Image src={logo}
             alt="Logo"
             className="max-w-[200px] max-h-[200px] object-contain"
           />
