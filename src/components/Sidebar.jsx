@@ -62,7 +62,7 @@ export default function Sidebar() {
       >
         {/* Logo */}
         <div className="flex justify-center mb-2">
-          <img src={logo.webp}
+          <img src={logo}
             alt="Logo"
             className="max-w-[200px] max-h-[200px] object-contain"
           />
