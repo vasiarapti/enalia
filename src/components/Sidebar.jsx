@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Image } from 'astro:assets';
-import logo from '../../assets/logo.webp';
+import logo from '../assets/logo.webp';
 
 
 
