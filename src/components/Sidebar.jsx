@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { Image } from 'astro:assets';
 import logo from '../assets/logo.webp';
 
 
@@ -62,7 +61,7 @@ export default function Sidebar() {
       >
         {/* Logo */}
         <div className="flex justify-center mb-2">
-          <Image src={logo} alt="Logo" className="max-w-[200px] max-h-[200px] object-contain"/>
+          <img src={logo.src} alt="Logo" className="max-w-[200px] max-h-[200px] object-contain" />
         </div>
 
         {/* Text */}
