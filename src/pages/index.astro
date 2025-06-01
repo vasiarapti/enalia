@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import AnimatedBanner from '../components/AnimatedBanner.astro';
 import { Image } from 'astro:assets';
 import image1 from '../assets/our-place/images1.jpg';
 ---
 
 <BaseLayout>
   <main class="px-4 md:px-8 py-10">
+    <AnimatedBanner />
     <section class="text-center max-w-3xl mx-auto">
       <h1 class="text-4xl font-bold text-secondary-800 mb-4">Καλωσορίσατε στην "Ενάλια"</h1>
       <p class="text-lg text-secondary-600">Ψυχοθεραπευτικό Κέντρο στην Αθήνα. Προσφέρουμε υποστήριξη και θεραπεία σε παιδιά, εφήβους και ενήλικες.</p>
