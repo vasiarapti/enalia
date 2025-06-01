@@ -1,0 +1,73 @@
+---
+---
+
+// This component creates a responsive animated banner with waves and a swirling air pattern.
+<div class="banner-container">
+  <svg
+    class="animated-banner"
+    viewBox="0 0 600 200"
+    xmlns="http://www.w3.org/2000/svg"
+    preserveAspectRatio="xMidYMid meet"
+  >
+    <style>
+      .wave {
+        animation: waveAnim 4s ease-in-out infinite;
+      }
+
+      .swirl {
+        animation: swirlAnim 8s linear infinite;
+        transform-origin: center;
+      }
+
+      @keyframes waveAnim {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(5px); }
+      }
+
+      @keyframes swirlAnim {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+
+    <rect width="100%" height="100%" fill="#789d8c"/>
+
+    <!-- Swirl -->
+    <g class="swirl" fill="none" stroke="#f0f0e8" stroke-width="10">
+      <path d="M300,100 
+               A20,20 0 1,1 320,100 
+               A40,40 0 1,0 280,100 
+               A60,60 0 1,1 340,100"/>
+    </g>
+
+    <!-- Waves -->
+    <g stroke="#f0f0e8" stroke-width="10" fill="none">
+      <path class="wave" d="M100,150 Q150,140 200,150 T300,150 T400,150 T500,150" />
+      <path class="wave" d="M120,170 Q170,160 220,170 T320,170 T420,170 T520,170" />
+      <path class="wave" d="M140,190 Q190,180 240,190 T340,190 T440,190 T540,190" />
+    </g>
+  </svg>
+</div>
+
+<style>
+  .banner-container {
+    width: 100%;
+    height: auto;
+    background-color: #789d8c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .animated-banner {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+  }
+
+  @media (max-width: 600px) {
+    .animated-banner {
+      max-height: 200px;
+    }
+  }
+</style>
