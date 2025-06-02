@@ -9,27 +9,27 @@ const BASE = import.meta.env.BASE_URL;
 const menuItems = [
   { name: "ΑΡΧΙΚΗ", href: `${BASE}` },
   {
-    name: "ΟΙ ΘΕΡΑΠΕΥΤΕΣ", href: `${BASE}team`,
+    name: "ΟΙ ΘΕΡΑΠΕΥΤΕΣ", href: `${BASE}/team`,
     submenu: [
-      { name: "ΧΡΗΣΤΟΣ ΚΩΣΤΙΚΙΔΗΣ", href: `${BASE}team/kostikidis` },
-      { name: "ΕΥΗ ΚΑΡΑΒΑΝΑ", href: `${BASE}team/karavana` },
+      { name: "ΧΡΗΣΤΟΣ ΚΩΣΤΙΚΙΔΗΣ", href: `${BASE}/team/kostikidis` },
+      { name: "ΕΥΗ ΚΑΡΑΒΑΝΑ", href: `${BASE}/team/karavana` },
     ],
   },
-  { name: "Η ΠΡΟΣΕΓΓΙΣΗ", href: `${BASE}our-place` },
+  { name: "Η ΠΡΟΣΕΓΓΙΣΗ", href: `${BASE}/our-place` },
   {
-    name: "ΟΙ ΥΠΗΡΕΣΙΕΣ", href: `${BASE}services`,
+    name: "ΟΙ ΥΠΗΡΕΣΙΕΣ", href: `${BASE}/services`,
     submenu: [
-      { name: "ΑΤΟΜΙΚΗ ΘΕΡΑΠΕΙΑ", href: `${BASE}services/individual-therapy` },
-      { name: "ΘΕΡΑΠΕΙΑ ΖΕΥΓΟΥΣ", href: `${BASE}services/couple-therapy` },
-      { name: "ΟΙΚΟΓΕΝΕΙΑΚΗ ΘΕΡΑΠΕΙΑ", href: `${BASE}services/family-therapy` },
-      { name: "ΟΜΑΔΙΚΗ ΘΕΡΑΠΕΙΑ", href: `${BASE}services/group-therapy` },
-      { name: "ΣΥΜΒΟΥΛΕΥΤΙΚΗ ΓΟΝΕΩΝ", href: `${BASE}services/parent-counselling` },
+      { name: "ΑΤΟΜΙΚΗ ΘΕΡΑΠΕΙΑ", href: `${BASE}/services/individual-therapy` },
+      { name: "ΘΕΡΑΠΕΙΑ ΖΕΥΓΟΥΣ", href: `${BASE}/services/couple-therapy` },
+      { name: "ΟΙΚΟΓΕΝΕΙΑΚΗ ΘΕΡΑΠΕΙΑ", href: `${BASE}/services/family-therapy` },
+      { name: "ΟΜΑΔΙΚΗ ΘΕΡΑΠΕΙΑ", href: `${BASE}/services/group-therapy` },
+      { name: "ΣΥΜΒΟΥΛΕΥΤΙΚΗ ΓΟΝΕΩΝ", href: `${BASE}/services/parent-counselling` },
     ],
   },
-  { name: "ONLINE ΨΥΧΟΘΕΡΑΠΕΙΑ", href: `${BASE}online` },
-  { name: "ΒΙΩΜΑΤΙΚΕΣ ΔΡΑΣΕΙΣ", href: `${BASE}actions` },
-  { name: "Ο ΧΩΡΟΣ", href: `${BASE}our-place` },
-  { name: "ΕΠΙΚΟΙΝΩΝΙΑ", href: `${BASE}contact` },
+  { name: "ONLINE ΨΥΧΟΘΕΡΑΠΕΙΑ", href: `${BASE}/online` },
+  { name: "ΒΙΩΜΑΤΙΚΕΣ ΔΡΑΣΕΙΣ", href: `${BASE}/actions` },
+  { name: "Ο ΧΩΡΟΣ", href: `${BASE}/our-place` },
+  { name: "ΕΠΙΚΟΙΝΩΝΙΑ", href: `${BASE}/contact` },
 ];
 
 export default function Sidebar() {
