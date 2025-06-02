@@ -5,29 +5,29 @@ import logo from '../assets/logo.webp';
 
 
 const menuItems = [
-  { name: "ΑΡΧΙΚΗ", href: "/" },
+  { name: "ΑΡΧΙΚΗ", href: "./" },
   {
-    name: "ΟΙ ΘΕΡΑΠΕΥΤΕΣ", href: "/the-team",
+    name: "ΟΙ ΘΕΡΑΠΕΥΤΕΣ", href: "./team",
     submenu: [
-      { name: "ΧΡΗΣΤΟΣ ΚΩΣΤΙΚΙΔΗΣ", href: "/the-team/kostikidis" },
-      { name: "ΕΥΗ ΚΑΡΑΒΑΝΑ", href: "/the-team/karavana" },
+      { name: "ΧΡΗΣΤΟΣ ΚΩΣΤΙΚΙΔΗΣ", href: "./team/kostikidis" },
+      { name: "ΕΥΗ ΚΑΡΑΒΑΝΑ", href: "./team/karavana" },
     ],
   },
   { name: "Η ΠΡΟΣΕΓΓΙΣΗ", href: "/our-place" },
   {
     name: "ΟΙ ΥΠΗΡΕΣΙΕΣ", href: "/services",
     submenu: [
-      { name: "ΑΤΟΜΙΚΗ ΘΕΡΑΠΕΙΑ", href: "/services/individual-therapy" },
-      { name: "ΘΕΡΑΠΕΙΑ ΖΕΥΓΟΥΣ", href: "/services/couple-therapy" },
-      { name: "ΟΙΚΟΓΕΝΕΙΑΚΗ ΘΕΡΑΠΕΙΑ", href: "/services/family-therapy" },
-      { name: "ΟΜΑΔΙΚΗ ΘΕΡΑΠΕΙΑ", href: "/services/group-therapy" },
-      { name: "ΣΥΜΒΟΥΛΕΥΤΙΚΗ ΓΟΝΕΩΝ", href: "/services/parent-counselling" },
+      { name: "ΑΤΟΜΙΚΗ ΘΕΡΑΠΕΙΑ", href: "./services/individual-therapy" },
+      { name: "ΘΕΡΑΠΕΙΑ ΖΕΥΓΟΥΣ", href: "./services/couple-therapy" },
+      { name: "ΟΙΚΟΓΕΝΕΙΑΚΗ ΘΕΡΑΠΕΙΑ", href: "./services/family-therapy" },
+      { name: "ΟΜΑΔΙΚΗ ΘΕΡΑΠΕΙΑ", href: "./services/group-therapy" },
+      { name: "ΣΥΜΒΟΥΛΕΥΤΙΚΗ ΓΟΝΕΩΝ", href: "./services/parent-counselling" },
     ],
   },
-  { name: "ONLINE ΨΥΧΟΘΕΡΑΠΕΙΑ", href: "/online" },
-  { name: "ΒΙΩΜΑΤΙΚΕΣ ΔΡΑΣΕΙΣ", href: "/actions" },
-  { name: "Ο ΧΩΡΟΣ", href: "/our-place" },
-  { name: "ΕΠΙΚΟΙΝΩΝΙΑ", href: "/contact" },
+  { name: "ONLINE ΨΥΧΟΘΕΡΑΠΕΙΑ", href: "./online" },
+  { name: "ΒΙΩΜΑΤΙΚΕΣ ΔΡΑΣΕΙΣ", href: "./actions" },
+  { name: "Ο ΧΩΡΟΣ", href: "./our-place" },
+  { name: "ΕΠΙΚΟΙΝΩΝΙΑ", href: "./contact" },
 ];
 
 export default function Sidebar() {
