@@ -10,6 +10,9 @@ export default {
         inpage: '#fbfaf8'
       },
     },
+    backgroundImage: {
+      'waves': "url('../assets/layered-waves-haikei.svg')",
+    },
   },
   plugins: [],
 };
