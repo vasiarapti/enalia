@@ -11,11 +11,14 @@ import '../styles/tailwind.css';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ενάλια</title>
   </head>
-  <body class="flex">
+  <!-- <body class="flex"> -->
+   <body class="relative bg-inpage">
     <Sidebar client:load/>
-    <div class="ml-0 w-full flex flex-col min-h-screen transition-all duration-300">
+    <!-- <div class="ml-0 w-full flex flex-col min-h-screen transition-all duration-300"> -->
+     <div class="flex flex-col w-full">
       <Header />
-      <main class="flex-1 p-6 bg-inpage">
+      <!-- <main class="flex-1 p-6 bg-inpage"> -->
+      <main class="flex-1 p-6">
         <slot />
       </main>
       <div class="bg-[url('/images/layered-waves-haikei.svg')] bg-no-repeat bg-cover bg-bottom text-white py-12">

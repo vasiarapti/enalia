@@ -52,11 +52,15 @@ export default function Sidebar() {
       {/* Sidebar */}
       <aside
         className={`
-          fixed top-0 left-0 h-screen w-full md:w-72 bg-primary text-secondary z-40 p-6
-          grid grid-rows-[max-content_max-content_1fr]
-          transition-transform duration-300 transform
-          ${isOpen ? "translate-x-0" : "-translate-x-full"} 
-          md:translate-x-0 md:static md:flex-shrink-0
+          // fixed top-0 left-0 h-screen w-full md:w-72 bg-primary text-secondary z-40 p-6
+          // grid grid-rows-[max-content_max-content_1fr]
+          // transition-transform duration-300 transform
+          // ${isOpen ? "translate-x-0" : "-translate-x-full"} 
+          // md:translate-x-0 md:static md:flex-shrink-0
+          fixed top-0 left-0 w-full md:w-72 bg-primary text-secondary z-40 p-6
+    transition-transform duration-300 transform
+    ${isOpen ? "translate-x-0" : "-translate-x-full"} 
+    md:translate-x-0 md:static md:min-h-full md:h-auto
         `}
       >
         {/* Logo */}
