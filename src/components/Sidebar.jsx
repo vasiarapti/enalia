@@ -27,7 +27,7 @@ const menuItems = [
   { name: "ONLINE ΨΥΧΟΘΕΡΑΠΕΙΑ", href: "/online" },
   { name: "ΒΙΩΜΑΤΙΚΕΣ ΔΡΑΣΕΙΣ", href: "/actions" },
   { name: "Ο ΧΩΡΟΣ", href: "/our-place" },
-  { name: "ΕΠΙΚΟΙΝΩΝΙΑ", href: "/contact" },
+  { name: "ΕΠΙΚΟΙΝΩΝΙΑ", href: "../pages/contact" },
 ];
 
 export default function Sidebar() {
