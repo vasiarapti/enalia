@@ -12,10 +12,11 @@ import '../styles/tailwind.css';
     <title>Ενάλια</title>
   </head>
   <!-- <body class="flex"> -->
-   <body class="relative bg-inpage">
-    <Sidebar client:load/>
+   <body class="bg-inpage">
+    <div class="flex min-h-screen">
+      <Sidebar client:load/>
     <!-- <div class="ml-0 w-full flex flex-col min-h-screen transition-all duration-300"> -->
-     <div class="flex flex-col w-full">
+     <div class="flex flex-col flex-1 min-h-full">
       <Header />
       <!-- <main class="flex-1 p-6 bg-inpage"> -->
       <main class="flex-1 p-6">
@@ -30,7 +31,9 @@ import '../styles/tailwind.css';
           <a href="/contact" class="hover:underline">Επικοινωνία</a>
         </div>
       </div>
+      <!-- Copyright -->
       <Footer />
     </div>
+  </div>
   </body>
 </html>
