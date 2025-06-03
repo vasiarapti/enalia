@@ -12,6 +12,6 @@ export default defineConfig({
     react()
   ],
   site: LIVE_URL,
-  base: 'enalia'
+  base: '/enalia/'
   // adapter: staticAdapter()
 });
