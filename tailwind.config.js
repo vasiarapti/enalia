@@ -12,6 +12,7 @@ export default {
     },
     backgroundImage: {
       'waves': "url('../assets/layered-waves-haikei.svg')",
+      'background': "url('../assets/stacked-waves-haikei.svg')",
     },
   },
   plugins: [],
