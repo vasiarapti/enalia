@@ -54,10 +54,10 @@ export default function Sidebar() {
       {/* Sidebar */}
       <aside
         className={`
-          fixed top-0 left-0 h-screen w-72 bg-primary text-secondary z-40 p-6
-    transition-transform duration-300 transform
+          fixed md:static top-0 left-0 w-72 h-screen bg-primary text-secondary z-40 p-6
+    transform transition-transform duration-300
     ${isOpen ? "translate-x-0" : "-translate-x-full"} 
-    md:translate-x-0 md:static md:min-h-full md:h-screen
+    md:translate-x-0 md:transform-none
         `}
       >
         {/* Logo */}
