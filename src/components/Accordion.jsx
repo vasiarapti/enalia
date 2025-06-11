@@ -5,17 +5,19 @@ import { useState, useRef, useEffect } from 'react';
     const contentRefs = useRef([]);
 
     useEffect(() => {
-        const timeout = setTimeout(() => {
-            items.forEach((_, index) => {
-                const ref = contentRefs.current[index];
-                if (ref) {
-                    ref.style.maxHeight = openIndex === index ? ref.scrollHeight + 'px' : '0px';
+        contentRefs.current.forEach((ref, index) => {
+            if (ref) {
+                if (openIndex === index) {
+                    // Open the selected item
+                    ref.style.maxHeight = ref.scrollHeight + 'px';
+                } else {
+                    // Close all others
+                    ref.style.maxHeight = '0px';
                 }
-            });
-        }, 0);
+            }
+        });
+    }, [openIndex]);
 
-  return () => clearTimeout(timeout);
-}, [openIndex, items]);
 
     const accordionContent = {
         experience: (
