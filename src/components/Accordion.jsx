@@ -20,8 +20,6 @@ import { useState, useRef, useEffect } from 'react';
     return () => clearTimeout(timeout);
     }, [openIndex]);
 
-
-
     const accordionContent = {
         experience: (
             <ul>

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Accordion from '../../components/Accordion.jsx';
+import { client } from '@astro/types';
 
 
 const accordionItems = [
@@ -21,7 +22,7 @@ const accordionItems = [
       <p class="text-left">Έχει εκπαιδευτεί στην Συστημική – Διαλεκτική Προσέγγιση στο Αθηναϊκό Κέντρο Μελέτης του Ανθρώπου (Α.Κ.Μ.Α.), ενώ είναι μέλος της Ελληνικής Εταιρίας Συστημικής Θεραπείας (ΕΛΕΣΥΘ).</p>
     </section>
 
-    <Accordion items={accordionItems} />
+    <Accordion client:load items={accordionItems} />
   </main>
 </BaseLayout>
 
