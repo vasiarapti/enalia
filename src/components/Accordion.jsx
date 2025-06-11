@@ -1,21 +1,21 @@
 import { useState, useRef, useEffect } from 'react';
 
     export default function Accordion({ items }) {
-    const [openIndex, setOpenIndex] = useState(0);
+    const [openIndex, setOpenIndex] = useState(-1);
     const contentRefs = useRef([]);
 
     useEffect(() => {
-        items.forEach((_, index) => {
-        const ref = contentRefs.current[index];
-        if (ref) {
-            if (openIndex === index) {
-            ref.style.maxHeight = ref.scrollHeight + 'px';
-            } else {
-            ref.style.maxHeight = '0px';
-            }
-        }
-        });
-    }, [openIndex, items]);
+        const timeout = setTimeout(() => {
+            items.forEach((_, index) => {
+                const ref = contentRefs.current[index];
+                if (ref) {
+                    ref.style.maxHeight = openIndex === index ? ref.scrollHeight + 'px' : '0px';
+                }
+            });
+        }, 0);
+
+  return () => clearTimeout(timeout);
+}, [openIndex, items]);
 
     const accordionContent = {
         experience: (
@@ -85,7 +85,7 @@ import { useState, useRef, useEffect } from 'react';
             </button>
             <div
               ref={(el) => (contentRefs.current[index] = el)}
-              className="overflow-hidden max-h-0 transition-all duration-300 ease-in-out"
+              className="overflow-hidden transition-[max-height] duration-500 ease-in-out"
             >
               <div className="pb-5 px-5 text-sm text-slate-600 leading-relaxed">{accordionContent[item.id]}</div>
             </div>
