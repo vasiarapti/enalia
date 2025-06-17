@@ -5,31 +5,55 @@ import {
   Linkedin,
   Phone
 } from '@lucide/astro';
+
+import logo from '../assets/logo.webp';
+const BASE = import.meta.env.BASE_URL;
 ---
 
-<header class="bg-secondary py-4 px-6 w-full">
-  <div class="flex flex-wrap justify-center items-center gap-4 text-sm text-center text-black">
-    <span class="w-full">
-      <h3 class="text-base font-semibold">Κλείστε την πρώτη σας συνεδρία</h3>
-    </span>
-    <span class="flex items-center gap-2">
-      <Facebook class="w-4 h-4" />
-      <p>Enalia</p>
-    </span>
-    <span class="flex items-center gap-2">
-      <Mail class="w-4 h-4" />
-      <p>enalia-therapy.com</p>
-    </span>
-    <span class="flex items-center gap-2">
-      <Linkedin class="w-4 h-4" />
-      <p>Linked In</p>
-    </span>
-    <span>
-      <a href="http://googlemaps.com" class="hover:underline">Νέα Ιονία</a>
-    </span>
-    <span class="flex items-center gap-2">
-      <Phone class="w-4 h-4" />
-      <a href="tel:+2101111111" class="hover:underline">2101111111</a>
-    </span>
+<header class="header fixed top-0 lg:z-40 z-20 bg-secondary w-full">
+  <div class="text-grey-200 text-center bg-secondary">
+    <a class="ml-8 text-xl font-semibold hover:underline" href="../pages/contact.astro">
+    Κλείστε την πρώτη σας συνεδρία
+    </a>
+  </div>
+  <div class="flex max-w-1440 mx-auto">
+    <div class="header-logo flex-shrink-0 w-376 py-24 px-40 lg:block hidden">
+      <a class="block h-24 max-w-200 -mt-8 mb-8" href=`${BASE}`>
+        <img src={logo.src} alt="Logo"/>
+      </a>
+    </div>
+    <div class="header-nav z-30 flex flex-grow justify-between items-center bg-white px-16 whitespace-no-wrap lg:h-auto h-72 min-w-0">
+      <ul class="h-full mx-24 uppercase leading-tight text-sm font-semibold tracking-wide lg:flex hidden">
+        <li class="flex items-center h-full mx-16">
+          <span class="header-item header-item-active hover:text-xenon-600 border-b-2 flex items-center h-full cursor-pointer transition-fast-out">
+            <Facebook class="w-4 h-4" />
+            <p>Enalia</p>
+          </span>
+        </li>
+        <li class="flex items-center h-full mx-16">
+          <span class="header-item header-item-active hover:text-xenon-600 border-b-2 flex items-center h-full cursor-pointer transition-fast-out">
+            <Mail class="w-4 h-4" />
+            <p>enalia-therapy.com</p>
+          </span>
+        </li>
+        <li class="flex items-center h-full mx-16">
+          <span class="header-item header-item-active hover:text-xenon-600 border-b-2 flex items-center h-full cursor-pointer transition-fast-out">
+            <Linkedin class="w-4 h-4" />
+            <p>Linked In</p>
+          </span>
+        </li>
+        <li class="flex items-center h-full mx-16">
+          <span class="header-item header-item-active hover:text-xenon-600 border-b-2 flex items-center h-full cursor-pointer transition-fast-out">
+            <a href="http://googlemaps.com" class="hover:underline">Νέα Ιονία</a>
+          </span>
+        </li>
+        <li class="flex items-center h-full mx-16">
+          <span class="header-item header-item-active hover:text-xenon-600 border-b-2 flex items-center h-full cursor-pointer transition-fast-out">
+            <Phone class="w-4 h-4" />
+            <a href="tel:+2101111111" class="hover:underline">2101111111</a>
+          </span>
+        </li>
+      </ul>
+    </div>
   </div>
 </header>

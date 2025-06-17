@@ -13,10 +13,10 @@ export default {
         },
       },
       colors: {
-        primary: '#769d88',        // Sidebar background
-        hover: '#617d6e',          // Hover color
-        secondary: '#edeae8',      // Text color
-        inpage: '#fbfaf8'
+        primary: '#769d88',        // Sidebar background - dark green
+        hover: '#617d6e',          // Hover color -grey green
+        secondary: '#edeae8',      // Text color - beige
+        inpage: '#fbfaf8'         // Like-white
       },
     },
     backgroundImage: {
