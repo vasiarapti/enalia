@@ -12,25 +12,29 @@ import '../styles/tailwind.css';
     <title>Ενάλια</title>
   </head>
   <body class="min-h-screen bg-secondary">
-    <div class="flex md:flex-row flex-col min-h-screen">
-      
-      <!-- Sidebar (fixed width on desktop) -->
-      <Sidebar client:load />
+    
+    <!-- Full Page Layout -->
+    <div class="flex min-h-screen">
 
-      <!-- Main Content + Footer block -->
-      <div class="flex flex-col flex-1 bg-[url('/images/wave-haikei.svg')] bg-no-repeat bg-cover bg-right">
+      <!-- Sidebar (fixed width, full height) -->
+      <div class="w-64 bg-white shadow-md hidden md:block">
+        <Sidebar client:load />
+      </div>
+
+      <!-- Content area (main + footer) -->
+      <div class="flex flex-col flex-1 bg-[url('/images/wave-haikei.svg')] bg-no-repeat bg-cover bg-right min-h-screen">
         <Header />
-        
+
         <main class="flex-1 px-4 md:px-8 pt-20 md:pt-16">
           <slot />
         </main>
 
-        <!-- Footer only spans under main content -->
         <div class="px-4 md:px-8">
           <Footer />
         </div>
       </div>
-
+      
     </div>
+
   </body>
 </html>
