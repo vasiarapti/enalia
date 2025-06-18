@@ -51,7 +51,7 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* Burger for Mobile */}
+      {/* Burger menu for mobile */}
       <div className="md:hidden p-4 flex justify-between items-center bg-white dark:bg-neutral-900 shadow-md">
         <h1 className="text-lg font-bold">Ενάλια</h1>
         <button
@@ -64,7 +64,7 @@ export default function Sidebar() {
 
       {/* Full-screen overlay menu for mobile */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-50 bg-white dark:bg-neutral-900 flex flex-col px-6 py-8 overflow-auto">
+        <div className="fixed top-0 left-0 w-full h-full z-50 bg-white dark:bg-neutral-900 flex flex-col px-6 py-8 overflow-y-auto">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-lg font-bold">Μενού</h2>
             <button
@@ -102,7 +102,7 @@ export default function Sidebar() {
         </div>
       )}
 
-      {/* Sidebar for Desktop */}
+      {/* Sidebar for desktop */}
       <aside className="hidden md:block w-64 bg-white dark:bg-neutral-900 h-screen shadow-md p-6">
         <h2 className="text-xl font-bold mb-6">Μενού</h2>
         {menuItems.map((item) => (
