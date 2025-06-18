@@ -12,35 +12,28 @@ import '../styles/tailwind.css';
     <title>Ενάλια</title>
   </head>
   <body class="min-h-screen bg-secondary">
+  <div class="flex flex-col md:flex-row min-h-screen">
     
-    <!-- Layout Container -->
-    <div class="flex min-h-screen">
-
-      <!-- Sidebar (fixed width, full height) -->
-      <div class="w-64 bg-white shadow-md hidden md:block">
-        <Sidebar client:load />
-      </div>
-
-      <!-- Right Content Column -->
-      <div class="flex flex-col flex-1">
-        
-        <!-- Header (always above main) -->
-        <Header />
-
-        <!-- Main Content with background image -->
-        <main class="flex-1 bg-[url('/images/wave-haikei.svg')] bg-no-repeat bg-cover bg-right px-4 md:px-8 pt-20 md:pt-16">
-          <slot />
-        </main>
-
-        <!-- Footer below main -->
-        
-        <footer class="px-4 py-4">
-          <Footer />
-        </footer>
-        
-      </div>
-      
+    <!-- Sidebar (only visible on md+) -->
+    <div class="hidden md:block md:w-64 bg-white shadow-md">
+      <Sidebar client:load />
     </div>
 
-  </body>
+    <!-- Main content area -->
+    <div class="flex flex-col flex-1">
+      <Header />
+
+      <!-- Main content -->
+      <main class="flex-1 bg-[url('/images/wave-haikei.svg')] bg-no-repeat bg-cover bg-right px-4 md:px-8 pt-20 md:pt-16">
+        <slot />
+      </main>
+
+      <!-- Footer sticks below main -->
+      <footer class="px-4 py-4">
+        <Footer />
+      </footer>
+    </div>
+
+  </div>
+</body>
 </html>
