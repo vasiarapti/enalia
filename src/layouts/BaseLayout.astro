@@ -13,7 +13,7 @@ import '../styles/tailwind.css';
   </head>
   <body class="min-h-screen bg-secondary">
     
-    <!-- Full Page Layout -->
+    <!-- Layout Container -->
     <div class="flex min-h-screen">
 
       <!-- Sidebar (fixed width, full height) -->
@@ -21,17 +21,22 @@ import '../styles/tailwind.css';
         <Sidebar client:load />
       </div>
 
-      <!-- Content area (main + footer) -->
-      <div class="flex flex-col flex-1 bg-[url('/images/wave-haikei.svg')] bg-no-repeat bg-cover bg-right min-h-screen">
+      <!-- Right Content Column -->
+      <div class="flex flex-col flex-1">
+        
+        <!-- Header (always above main) -->
         <Header />
 
-        <main class="flex-1 px-4 md:px-8 pt-20 md:pt-16">
+        <!-- Main Content with background image -->
+        <main class="flex-1 bg-[url('/images/wave-haikei.svg')] bg-no-repeat bg-cover bg-right px-4 md:px-8 pt-20 md:pt-16">
           <slot />
         </main>
 
-        <div class="px-4 md:px-8">
+        <!-- Footer below main -->
+        <footer class="px-4 md:px-8">
           <Footer />
-        </div>
+        </footer>
+        
       </div>
       
     </div>
