@@ -42,7 +42,7 @@ export default function Sidebar() {
     <>
       {/* Burger Button */}
       <button
-        className="md:hidden fixed top-4 left-4 z-50"
+        className="md:hidden fixed top-4 left-4 z-[60]"
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Toggle menu"
       >
