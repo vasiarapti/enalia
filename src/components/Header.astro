@@ -9,15 +9,15 @@ import {
 const BASE = import.meta.env.BASE_URL;
 ---
 
-<header class="header sticky top-0 left-0 z-50 bg-secondary w-full md:ml-72 h-16">
-  <div class="flex items-center justify-between max-w-1440 mx-auto h-full px-4">
-    <a class="ml-8 text-xl font-semibold hover:underline" href={`${BASE}contact`}>
+<header class="header fixed top-0 left-0 z-50 bg-secondary w-full md:ml-72 h-16 flex flex-col">
+  <div>
+    <a class="text-md font-semibold" href={`${BASE}contact`}>
       Κλείστε την πρώτη σας συνεδρία
     </a>
   </div>
 
-  <div class="flex max-w-1440 mx-auto">
-    <div class="header-nav z-30 flex flex-grow justify-between items-center bg-white px-16 whitespace-no-wrap lg:h-auto h-72 min-w-0">
+  <div>
+    <div class="header-nav z-30 flex flex-grow justify-between items-center bg-inpage whitespace-no-wrap lg:h-auto h-72 min-w-0">
       <ul class="h-full mx-24 camelcase leading-tight text-sm font-semibold tracking-wide lg:flex hidden">
         <li class="flex items-center h-full mx-16">
           <span class="header-item header-item-active hover:text-xenon-600 border-b-2 flex items-center h-full cursor-pointer transition-fast-out">
@@ -39,13 +39,13 @@ const BASE = import.meta.env.BASE_URL;
         </li>
         <li class="flex items-center h-full mx-16">
           <span class="header-item header-item-active hover:text-xenon-600 border-b-2 flex items-center h-full cursor-pointer transition-fast-out">
-            <a href="http://googlemaps.com" class="hover:underline">Νέα Ιονία</a>
+            <a href="http://googlemaps.com">Νέα Ιονία</a>
           </span>
         </li>
         <li class="flex items-center h-full mx-16">
           <span class="header-item header-item-active hover:text-xenon-600 border-b-2 flex items-center h-full cursor-pointer transition-fast-out">
             <Phone class="w-4 h-4" />
-            <a href="tel:+2101111111" class="hover:underline">2101111111</a>
+            <a href="tel:+2101111111">2101111111</a>
           </span>
         </li>
       </ul>
