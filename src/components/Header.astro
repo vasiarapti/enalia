@@ -9,42 +9,46 @@ import {
 const BASE = import.meta.env.BASE_URL;
 ---
 
-<header class="header fixed top-0 left-0 z-50 bg-secondary w-full md:ml-72 h-16 flex flex-col">
-  <div>
-    <a class="text-md font-semibold" href={`${BASE}contact`}>
-      Κλείστε την πρώτη σας συνεδρία
-    </a>
-  </div>
+<header class="fixed top-0 left-0 z-50 bg-secondary w-full h-16 flex items-center px-4 md:pl-72">
+  <!-- Container to control spacing for mobile/desktop -->
+  <div class="w-full flex flex-col md:flex-row md:items-center justify-between gap-2">
 
-  <div>
-    <div class="header-nav z-30 flex flex-grow justify-between items-center bg-inpage whitespace-no-wrap lg:h-auto h-72 min-w-0">
-      <ul class="h-full mx-24 camelcase leading-tight text-sm font-semibold tracking-wide lg:flex hidden">
-        <li class="flex items-center h-full mx-16">
-          <span class="header-item header-item-active hover:text-xenon-600 border-b-2 flex items-center h-full cursor-pointer transition-fast-out">
-            <Facebook class="w-4 h-4" />
+    <!-- Top Left: Contact Link (centered on desktop) -->
+    <div class="flex justify-center md:justify-center w-full md:w-auto">
+      <a class="text-md font-semibold text-center" href={`${BASE}contact`}>
+        Κλείστε την πρώτη σας συνεδρία
+      </a>
+    </div>
+
+    <!-- Nav (hidden on mobile) -->
+    <div class="header-nav hidden lg:flex items-center h-16 bg-inpage">
+      <ul class="flex items-center camelcase text-sm font-semibold tracking-wide h-full gap-8 px-6">
+        <li class="flex items-center">
+          <span class="flex items-center hover:text-xenon-600 cursor-pointer">
+            <Facebook class="w-4 h-4 mr-1" />
             <p>Enalia</p>
           </span>
         </li>
-        <li class="flex items-center h-full mx-16">
-          <span class="header-item header-item-active hover:text-xenon-600 border-b-2 flex items-center h-full cursor-pointer transition-fast-out">
-            <Mail class="w-4 h-4" />
+        <li class="flex items-center">
+          <span class="flex items-center hover:text-xenon-600 cursor-pointer">
+            <Mail class="w-4 h-4 mr-1" />
             <p>enalia-therapy.com</p>
           </span>
         </li>
-        <li class="flex items-center h-full mx-16">
-          <span class="header-item header-item-active hover:text-xenon-600 border-b-2 flex items-center h-full cursor-pointer transition-fast-out">
-            <Linkedin class="w-4 h-4" />
+        <li class="flex items-center">
+          <span class="flex items-center hover:text-xenon-600 cursor-pointer">
+            <Linkedin class="w-4 h-4 mr-1" />
             <p>Linked In</p>
           </span>
         </li>
-        <li class="flex items-center h-full mx-16">
-          <span class="header-item header-item-active hover:text-xenon-600 border-b-2 flex items-center h-full cursor-pointer transition-fast-out">
+        <li class="flex items-center">
+          <span class="flex items-center hover:text-xenon-600 cursor-pointer">
             <a href="http://googlemaps.com">Νέα Ιονία</a>
           </span>
         </li>
-        <li class="flex items-center h-full mx-16">
-          <span class="header-item header-item-active hover:text-xenon-600 border-b-2 flex items-center h-full cursor-pointer transition-fast-out">
-            <Phone class="w-4 h-4" />
+        <li class="flex items-center">
+          <span class="flex items-center hover:text-xenon-600 cursor-pointer">
+            <Phone class="w-4 h-4 mr-1" />
             <a href="tel:+2101111111">2101111111</a>
           </span>
         </li>
