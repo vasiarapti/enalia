@@ -50,8 +50,8 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* Mobile Header with Burger */}
-      <div className="md:hidden p-4 flex justify-between items-center bg-white dark:bg-neutral-900 shadow-md fixed top-0 left-0 right-0 z-50">
+      {/* Burger for Mobile */}
+      <div className="md:hidden p-4 flex justify-between items-center bg-white dark:bg-neutral-900 shadow-md">
         <h1 className="text-lg font-bold">Ενάλια</h1>
         <button
           onClick={() => setMobileMenuOpen(true)}
@@ -74,7 +74,7 @@ export default function Sidebar() {
 
       {/* Full-screen overlay menu for mobile */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-50 bg-white dark:bg-neutral-900 flex flex-col px-6 pt-20 pb-8 overflow-auto">
+        <div className="fixed inset-0 z-50 bg-white dark:bg-neutral-900 flex flex-col px-6 py-8 overflow-auto">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-lg font-bold">Μενού</h2>
             <button
