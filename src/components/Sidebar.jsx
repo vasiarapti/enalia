@@ -51,10 +51,10 @@ export default function Sidebar() {
 
       {/* Sidebar */}
       <aside
-        className={`fixed md:relative top-0 left-0 h-screen bg-primary text-secondary z-40 p-6 overflow-y-auto
-        transform transition-transform duration-300
-        ${isOpen ? "translate-x-0" : "-translate-x-full"}
-        w-full md:w-72 md:translate-x-0 md:transform-none`}
+        className={`fixed top-0 left-0 h-screen bg-primary text-secondary z-40 p-6 overflow-y-auto
+          transform transition-transform duration-300
+          ${isOpen ? 'translate-x-0' : '-translate-x-full'}
+          w-full md:w-72 md:translate-x-0 md:transform-none`}
       >
         {/* Logo */}
         <div className="flex justify-center mb-2">
