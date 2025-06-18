@@ -49,17 +49,16 @@ export default function Sidebar() {
         {isOpen ? <X size={30} className="text-secondary" /> : <Menu size={30} className="text-primary" />}
       </button>
 
-      {/* Overlay for full-screen mobile menu */}
+      {/*Overlay for full-screen mobile */}
       <div
-        className={`
-            z-40 p-6 transition-transform duration-300
-            bg-primary text-secondary
-            w-72
-            fixed h-screen
-            md:static md:translate-x-0 md:h-full
-            ${isOpen ? 'translate-x-0' : '-translate-x-full'}
-        `}
-      >
+  className={`
+    z-40 p-6 transition-transform duration-300
+    bg-primary text-secondary
+    w-72 md:w-64
+    fixed h-screen top-0 left-0
+    md:static md:translate-x-0 md:h-full
+    ${isOpen ? 'translate-x-0' : '-translate-x-full'}
+  `}>
         {/* Logo */}
         <div className="flex justify-center mb-2">
           <img src={logo.src} alt="Logo" className="max-w-[200px] max-h-[200px] object-contain" />
