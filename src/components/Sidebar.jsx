@@ -49,12 +49,11 @@ export default function Sidebar() {
         {isOpen ? <X size={30} className="text-secondary" /> : <Menu size={30} className="text-primary" />}
       </button>
 
-      {/* Sidebar */}
-      <aside
-        className={`fixed top-0 left-0 h-screen bg-primary text-secondary z-40 p-6 overflow-y-auto
-          transform transition-transform duration-300
-          ${isOpen ? 'translate-x-0' : '-translate-x-full'}
-          w-full md:w-72 md:translate-x-0 md:transform-none`}
+      {/* Overlay for full-screen mobile menu */}
+      <div
+        className={`fixed inset-0 bg-primary text-secondary z-40 p-6 overflow-y-auto transition-transform duration-300
+        ${isOpen ? 'translate-x-0' : '-translate-x-full'}
+        w-full md:w-72 md:translate-x-0 md:transform-none`}
       >
         {/* Logo */}
         <div className="flex justify-center mb-2">
@@ -110,7 +109,7 @@ export default function Sidebar() {
             </div>
           ))}
         </nav>
-      </aside>
+      </div>
     </>
   );
 }
