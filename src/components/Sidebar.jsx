@@ -50,9 +50,9 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* Burger for Mobile */}
+{/* Burger for Mobile */}
 <div
-  className="md:hidden p-4 flex justify-between items-center bg-white dark:bg-neutral-900 shadow-md"
+  className="md:hidden p-4 flex justify-between items-center bg-primary dark:bg-neutral-900 shadow-md"
   style={{ position: 'relative', zIndex: 60 }}  // Add this inline style or via class
 >
   <h1 className="text-lg font-bold">Ενάλια</h1>
