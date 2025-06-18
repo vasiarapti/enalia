@@ -51,9 +51,14 @@ export default function Sidebar() {
 
       {/* Overlay for full-screen mobile menu */}
       <div
-        className={`fixed inset-0 bg-primary text-secondary z-40 p-6 overflow-y-auto transition-transform duration-300
-        ${isOpen ? 'translate-x-0' : '-translate-x-full'}
-        w-full md:w-72 md:translate-x-0 md:transform-none`}
+        className={`
+           z-40 p-6 transition-transform duration-300
+           bg-primary text-secondary
+           w-72
+           fixed h-screen
+           ${isOpen ? 'translate-x-0' : '-translate-x-full'}
+           md:static md:translate-x-0
+        `}
       >
         {/* Logo */}
         <div className="flex justify-center mb-2">

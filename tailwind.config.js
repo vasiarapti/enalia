@@ -16,7 +16,8 @@ export default {
         primary: '#769d88',        // Sidebar background - dark green
         hover: '#617d6e',          // Hover color -grey green
         secondary: '#edeae8',      // Text color - beige
-        inpage: '#fbfaf8'         // Like-white
+        inpage: '#fbfaf8',        // Like-white
+        footer: '#7a9d8a'
       },
     },
     backgroundImage: {
