@@ -1,119 +1,135 @@
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
-import logo from "../assets/logo.webp";
-
-const BASE = import.meta.env.BASE_URL;
-
-const menuItems = [
-  { name: "ΑΡΧΙΚΗ", href: `${BASE}` },
-  {
-    name: "ΟΙ ΘΕΡΑΠΕΥΤΕΣ", href: `${BASE}team`,
-    submenu: [
-      { name: "ΧΡΗΣΤΟΣ ΚΩΣΤΙΚΙΔΗΣ", href: `${BASE}team/kostikidis` },
-      { name: "ΕΥΗ ΚΑΡΑΒΑΝΑ", href: `${BASE}team/karavana` },
-    ],
-  },
-  { name: "Η ΠΡΟΣΕΓΓΙΣΗ", href: `${BASE}our-place` },
-  {
-    name: "ΟΙ ΥΠΗΡΕΣΙΕΣ", href: `${BASE}services`,
-    submenu: [
-      { name: "ΑΤΟΜΙΚΗ ΘΕΡΑΠΕΙΑ", href: `${BASE}services/individual-therapy` },
-      { name: "ΘΕΡΑΠΕΙΑ ΖΕΥΓΟΥΣ", href: `${BASE}services/couple-therapy` },
-      { name: "ΟΙΚΟΓΕΝΕΙΑΚΗ ΘΕΡΑΠΕΙΑ", href: `${BASE}services/family-therapy` },
-      { name: "ΟΜΑΔΙΚΗ ΘΕΡΑΠΕΙΑ", href: `${BASE}services/group-therapy` },
-      { name: "ΣΥΜΒΟΥΛΕΥΤΙΚΗ ΓΟΝΕΩΝ", href: `${BASE}services/parent-counselling` },
-    ],
-  },
-  { name: "ONLINE ΨΥΧΟΘΕΡΑΠΕΙΑ", href: `${BASE}online` },
-  { name: "ΒΙΩΜΑΤΙΚΕΣ ΔΡΑΣΕΙΣ", href: `${BASE}actions` },
-  { name: "Ο ΧΩΡΟΣ", href: `${BASE}our-place` },
-  { name: "ΕΠΙΚΟΙΝΩΝΙΑ", href: `${BASE}contact` },
-];
+import { useState } from 'react';
+import { MenuIcon, XIcon } from '@heroicons/react/outline';
 
 export default function Sidebar() {
-  const [activeSubmenu, setActiveSubmenu] = useState(null);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openSubmenu, setOpenSubmenu] = useState(null);
 
-  const toggleSubmenu = (itemName) => {
-    setActiveSubmenu((prev) => (prev === itemName ? null : itemName));
+  const toggleSubmenu = (id) => {
+    setOpenSubmenu((prev) => (prev === id ? null : id));
   };
+
+  const menuItems = [
+    {
+      id: 'services',
+      title: 'Υπηρεσίες',
+      children: [
+        { title: 'Ατομική Θεραπεία', href: '#' },
+        { title: 'Θεραπεία Ζεύγους', href: '#' },
+        { title: 'Οικογενειακή Θεραπεία', href: '#' },
+        { title: 'Ομαδική Θεραπεία', href: '#' },
+        { title: 'Συμβουλευτική Γονέων', href: '#' },
+      ],
+    },
+    {
+      id: 'therapists',
+      title: 'Οι Θεραπευτές',
+      children: [
+        { title: 'Χρήστος Κωστικίδης', href: '#' },
+        { title: 'Εύη Καραβάνα', href: '#' },
+      ],
+    },
+    {
+      id: 'other',
+      title: 'Άλλες Υπηρεσίες',
+      children: [
+        { title: 'Online Ψυχοθεραπεία', href: '#' },
+        { title: 'Βιωματικές Δράσεις', href: '#' },
+      ],
+    },
+    {
+      id: 'space',
+      title: 'Ο Χώρος',
+      children: [],
+    },
+    {
+      id: 'contact',
+      title: 'Επικοινωνία',
+      children: [],
+    },
+  ];
 
   return (
     <>
-      {/* Burger Button */}
-      <button
-        className="md:hidden fixed top-4 left-4 z-[60]"
-        onClick={() => setIsOpen(!isOpen)}
-        aria-label="Toggle menu"
-      >
-        {isOpen ? <X size={30} className="text-secondary" /> : <Menu size={30} className="text-primary" />}
-      </button>
+      {/* Burger for Mobile */}
+      <div className="md:hidden p-4 flex justify-between items-center bg-white dark:bg-neutral-900 shadow-md">
+        <h1 className="text-lg font-bold">Ενάλια</h1>
+        <button
+          onClick={() => setMobileMenuOpen(true)}
+          className="text-gray-700 dark:text-gray-200"
+        >
+          <MenuIcon className="h-6 w-6" />
+        </button>
+      </div>
 
-      {/*Overlay for full-screen mobile */}
-      <div
-  className={`
-    z-40 p-6 transition-transform duration-300
-    bg-primary text-secondary
-    w-72 md:w-64
-    fixed h-screen top-0 left-0
-    md:static md:translate-x-0 md:h-full
-    ${isOpen ? 'translate-x-0' : '-translate-x-full'}
-  `}>
-        {/* Logo */}
-        <div className="flex justify-center mb-2">
-          <img src={logo.src} alt="Logo" className="max-w-[200px] max-h-[200px] object-contain" />
-        </div>
+      {/* Full-screen overlay menu for mobile */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 z-50 bg-white dark:bg-neutral-900 flex flex-col px-6 py-8 overflow-auto">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-lg font-bold">Μενού</h2>
+            <button
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-gray-700 dark:text-gray-200"
+            >
+              <XIcon className="h-6 w-6" />
+            </button>
+          </div>
 
-        {/* Title */}
-        <div className="text-center mb-6">
-          <h2 className="text-xl font-semibold">Ενάλια</h2>
-          <h3 className="text-sm">Κέντρο Ψυχοθεραπείας</h3>
-        </div>
-
-        {/* Navigation */}
-        <nav className="space-y-2 text-base font-medium">
-          {menuItems.map((item, index) => (
-            <div key={index}>
-              {item.submenu ? (
-                <>
-                  <button
-                    onClick={() => toggleSubmenu(item.name)}
-                    className="w-full text-left px-4 py-2 hover:bg-hover rounded"
-                  >
-                    {item.name}
-                  </button>
-                  <div
-                    className={`ml-4 mt-1 overflow-hidden transition-all duration-300 ${
-                      activeSubmenu === item.name ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
-                    }`}
-                  >
-                    <div className="space-y-1">
-                      {item.submenu.map((subitem, subIndex) => (
-                        <a
-                          key={subIndex}
-                          href={subitem.href}
-                          className="block px-4 py-1 text-sm hover:bg-hover rounded"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          {subitem.name}
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                </>
-              ) : (
-                <a
-                  href={item.href}
-                  className="block px-4 py-2 hover:bg-hover rounded"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.name}
-                </a>
+          {menuItems.map((item) => (
+            <div key={item.id} className="mb-4">
+              <button
+                onClick={() => toggleSubmenu(item.id)}
+                className="w-full text-left font-semibold text-gray-800 dark:text-white"
+              >
+                {item.title}
+              </button>
+              {openSubmenu === item.id && item.children.length > 0 && (
+                <ul className="mt-2 ml-4 space-y-1">
+                  {item.children.map((child, index) => (
+                    <li key={index}>
+                      <a
+                        href={child.href}
+                        className="text-gray-600 dark:text-neutral-300 hover:underline"
+                      >
+                        {child.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               )}
             </div>
           ))}
-        </nav>
-      </div>
+        </div>
+      )}
+
+      {/* Sidebar for Desktop */}
+      <aside className="hidden md:block w-64 bg-white dark:bg-neutral-900 h-screen shadow-md p-6">
+        <h2 className="text-xl font-bold mb-6">Μενού</h2>
+        {menuItems.map((item) => (
+          <div key={item.id} className="mb-4">
+            <button
+              onClick={() => toggleSubmenu(item.id)}
+              className="w-full text-left font-semibold text-gray-800 dark:text-white"
+            >
+              {item.title}
+            </button>
+            {openSubmenu === item.id && item.children.length > 0 && (
+              <ul className="mt-2 ml-4 space-y-1">
+                {item.children.map((child, index) => (
+                  <li key={index}>
+                    <a
+                      href={child.href}
+                      className="text-gray-600 dark:text-neutral-300 hover:underline"
+                    >
+                      {child.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))}
+      </aside>
     </>
   );
 }
