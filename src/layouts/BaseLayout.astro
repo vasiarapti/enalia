@@ -12,16 +12,17 @@ import '../styles/tailwind.css';
     <title>Ενάλια</title>
   </head>
   <!-- <body class="bg-[url('/images/wave-haikei.svg')] bg-no-repeat"> -->
-   <body class="flex flex-col min-h-screen bg-secondary">
+   <body class="min-h-screen flex flex-col md:flex-row bg-secondary">
     <!-- Sidebar always mounted, overlays on mobile, fixed on desktop -->
     <Sidebar client:load />
 
     <!-- Main layout content -->
     <!-- <div class="flex flex-col md:ml-72 min-h-screen"> -->
 
-    <div class="flex-1 flex flex-col bg-right bg-no-repeat bg-cover bg-contain bg-[url('/images/wave-haikei.svg')]">
+    <!-- <div class="flex-1 flex flex-col bg-right bg-no-repeat bg-cover bg-contain bg-[url('/images/wave-haikei.svg')]"> -->
+     <div class="flex-1 flex flex-col min-h-screen bg-right bg-no-repeat bg-cover bg-contain bg-[url('/images/wave-haikei.svg')]">
       <Header />
-       <main class="flex-1 overflow-x-hidden px-6 py-12">
+       <main class="flex-1 overflow-x-hidden px-4 md:px-8 py-10">
         <slot />
       </main>
 
