@@ -77,7 +77,7 @@ export default function Sidebar() {
       <div
         className={`
           bg-primary text-secondary
-          w-72
+          w-full md:w-72
           fixed top-0 left-0
           h-screen
           z-50
