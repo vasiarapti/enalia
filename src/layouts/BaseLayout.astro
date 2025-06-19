@@ -12,13 +12,9 @@ import '../styles/tailwind.css';
     <title>Ενάλια</title>
   </head>
   <body class="min-h-screen bg-secondary">
-  <div class="flex flex-col md:flex-row min-h-screen">
-    
-    <!-- Sidebar (only visible on md+) -->
+    <div class="flex md:flex-row min-h-screen">
     <Sidebar client:load />
-
-    <!-- Main content area -->
-    <div class="flex flex-col flex-1">
+    <div class="flex flex-col flex-1 min-h-screen">
       <Header />
 
       <!-- Main content -->
