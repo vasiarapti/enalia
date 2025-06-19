@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 
-    export default function Accordion({ items }) {
+    export default function AccordionC({ items }) {
     const [openIndex, setOpenIndex] = useState(-1);
     const contentRefs = useRef([]);
 
