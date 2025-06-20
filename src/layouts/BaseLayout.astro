@@ -14,20 +14,19 @@ import '../styles/tailwind.css';
 
   <body class="min-h-screen bg-secondary">
     <div class="flex flex-col md:flex-row min-h-screen">
-      <!-- Sidebar always visible on md+ -->
       <Sidebar client:load />
 
-      <div class="flex flex-col flex-1 min-h-screen w-full">
-        <!-- Header always at top -->
+      <div class="flex flex-col flex-1 w-full relative">
+        <!-- Header -->
         <Header />
 
-        <!-- Banner goes under header and spans full width -->
-        <div class="w-full">
+        <!-- Fixed Banner for desktop, normal for mobile -->
+        <div class="relative md:fixed md:top-0 md:left-[16rem] md:w-[calc(100%-16rem)] z-[-1]">
           <slot name="banner" />
         </div>
 
         <!-- Main content -->
-        <main class="flex-1 bg-[url('/images/wave-haikei.svg')] bg-no-repeat bg-cover bg-right px-4 md:px-8 pt-10 md:pt-16">
+        <main class="flex-1 mt-[320px] md:mt-[360px] px-4 md:px-8">
           <slot />
         </main>
 
