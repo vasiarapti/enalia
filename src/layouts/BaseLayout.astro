@@ -17,15 +17,17 @@ import '../styles/tailwind.css';
       <!-- Sidebar always visible on md+ -->
       <Sidebar client:load />
 
-      <div class="flex flex-col flex-1 min-h-screen">
-        <!-- Banner comes before header, inside content -->
-        <slot name="banner" />
-
-        <!-- Header -->
+      <div class="flex flex-col flex-1 min-h-screen w-full">
+        <!-- Header always at top -->
         <Header />
 
+        <!-- Banner goes under header and spans full width -->
+        <div class="w-full">
+          <slot name="banner" />
+        </div>
+
         <!-- Main content -->
-        <main class="flex-1 bg-[url('/images/wave-haikei.svg')] bg-no-repeat bg-cover bg-right px-4 md:px-8 pt-20 md:pt-16">
+        <main class="flex-1 bg-[url('/images/wave-haikei.svg')] bg-no-repeat bg-cover bg-right px-4 md:px-8 pt-10 md:pt-16">
           <slot />
         </main>
 
