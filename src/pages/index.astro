@@ -8,7 +8,7 @@ import banner from '../assets/waves-banner.svg';
 ---
 
 <BaseLayout>
-  <div class="w-full md:pl-72 h-[320px] overflow-hidden">
+  <div class="relative w-full h-[320px] overflow-hidden">
   <svg width="100%" height="100%" id="svg" viewBox="0 0 1440 690" xmlns="http://www.w3.org/2000/svg" class="transition duration-300 ease-in-out delay-150"><style>
           .path-0{
             animation:pathAnim-0 4s;
@@ -32,6 +32,11 @@ import banner from '../assets/waves-banner.svg';
               d: path("M 0,700 L 0,262 C 138.92857142857144,328.4642857142857 277.8571428571429,394.92857142857144 405,381 C 532.1428571428571,367.07142857142856 647.5000000000001,272.75 760,260 C 872.4999999999999,247.24999999999997 982.1428571428571,316.07142857142856 1095,330 C 1207.857142857143,343.92857142857144 1323.9285714285716,302.9642857142857 1440,262 L 1440,700 L 0,700 Z");
             }
           }</style><defs><linearGradient id="gradient" x1="72%" y1="95%" x2="28%" y2="5%"><stop offset="5%" stop-color="#769d88"></stop><stop offset="95%" stop-color="#fbfaf8"></stop></linearGradient></defs><path d="M 0,700 L 0,262 C 138.92857142857144,328.4642857142857 277.8571428571429,394.92857142857144 405,381 C 532.1428571428571,367.07142857142856 647.5000000000001,272.75 760,260 C 872.4999999999999,247.24999999999997 982.1428571428571,316.07142857142856 1095,330 C 1207.857142857143,343.92857142857144 1323.9285714285716,302.9642857142857 1440,262 L 1440,700 L 0,700 Z" stroke="none" stroke-width="0" fill="url(#gradient)" fill-opacity="1" class="transition-all duration-300 ease-in-out delay-150 path-0"></path></svg>
+          
+          <!-- Text inside Banner -->
+          <div class="absolute inset-0 flex items-center justify-center">
+            <h2 class="text-white text-3xl md:text-4xl font-semibold">Καλωσορίσατε στην Ενάλια</h2>
+          </div>
 </div>
   <!-- Team Section -->
   <section class="mt-16 grid gap-10 md:grid-cols-1">
