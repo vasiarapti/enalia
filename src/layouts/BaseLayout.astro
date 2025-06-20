@@ -11,18 +11,18 @@ import '../styles/tailwind.css';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ενάλια</title>
   </head>
-  
+
   <body class="min-h-screen bg-secondary">
     <div class="flex flex-col md:flex-row min-h-screen">
       <!-- Sidebar always visible on md+ -->
       <Sidebar client:load />
 
       <div class="flex flex-col flex-1 min-h-screen">
+        <!-- Banner comes before header, inside content -->
+        <slot name="banner" />
+
         <!-- Header -->
         <Header />
-
-        <!-- Banner lives *within* the content area -->
-        <slot name="banner" />
 
         <!-- Main content -->
         <main class="flex-1 bg-[url('/images/wave-haikei.svg')] bg-no-repeat bg-cover bg-right px-4 md:px-8 pt-20 md:pt-16">
@@ -35,5 +35,4 @@ import '../styles/tailwind.css';
       </div>
     </div>
   </body>
-
 </html>

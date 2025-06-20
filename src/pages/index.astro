@@ -9,36 +9,45 @@ import evi from '../assets/team/evi.jpg';
 <BaseLayout>
   <Fragment slot="banner">
     <div class="relative w-full h-[320px] overflow-hidden">
-      <svg width="100%" height="100%" id="svg" viewBox="0 0 1440 690" xmlns="http://www.w3.org/2000/svg" class="transition duration-300 ease-in-out delay-150"><style>
-              .path-0{
-                animation:pathAnim-0 4s;
-                animation-timing-function: linear;
-                animation-iteration-count: infinite;
-              }
-              @keyframes pathAnim-0{
-                0%{
-                  d: path("M 0,700 L 0,262 C 138.92857142857144,328.4642857142857 277.8571428571429,394.92857142857144 405,381 C 532.1428571428571,367.07142857142856 647.5000000000001,272.75 760,260 C 872.4999999999999,247.24999999999997 982.1428571428571,316.07142857142856 1095,330 C 1207.857142857143,343.92857142857144 1323.9285714285716,302.9642857142857 1440,262 L 1440,700 L 0,700 Z");
-                }
-                25%{
-                  d: path("M 0,700 L 0,262 C 93,315.42857142857144 186,368.85714285714283 314,354 C 442,339.14285714285717 605.0000000000001,256 739,234 C 872.9999999999999,211.99999999999997 978,251.1428571428571 1090,266 C 1202,280.8571428571429 1321,271.42857142857144 1440,262 L 1440,700 L 0,700 Z");
-                }
-                50%{
-                  d: path("M 0,700 L 0,262 C 155.53571428571428,219.28571428571428 311.07142857142856,176.57142857142858 426,169 C 540.9285714285714,161.42857142857142 615.2500000000001,189 731,218 C 846.7499999999999,247 1003.9285714285713,277.42857142857144 1129,285 C 1254.0714285714287,292.57142857142856 1347.0357142857142,277.2857142857143 1440,262 L 1440,700 L 0,700 Z");
-                }
-                75%{
-                  d: path("M 0,700 L 0,262 C 128.25,316.1071428571429 256.5,370.2142857142857 385,370 C 513.5,369.7857142857143 642.25,315.25 758,313 C 873.75,310.75 976.5,360.7857142857143 1088,361 C 1199.5,361.2142857142857 1319.75,311.6071428571429 1440,262 L 1440,700 L 0,700 Z");
-                }
-                100%{
-                  d: path("M 0,700 L 0,262 C 138.92857142857144,328.4642857142857 277.8571428571429,394.92857142857144 405,381 C 532.1428571428571,367.07142857142856 647.5000000000001,272.75 760,260 C 872.4999999999999,247.24999999999997 982.1428571428571,316.07142857142856 1095,330 C 1207.857142857143,343.92857142857144 1323.9285714285716,302.9642857142857 1440,262 L 1440,700 L 0,700 Z");
-                }
-              }</style><defs><linearGradient id="gradient" x1="72%" y1="95%" x2="28%" y2="5%"><stop offset="5%" stop-color="#769d88"></stop><stop offset="95%" stop-color="#fbfaf8"></stop></linearGradient></defs><path d="M 0,700 L 0,262 C 138.92857142857144,328.4642857142857 277.8571428571429,394.92857142857144 405,381 C 532.1428571428571,367.07142857142856 647.5000000000001,272.75 760,260 C 872.4999999999999,247.24999999999997 982.1428571428571,316.07142857142856 1095,330 C 1207.857142857143,343.92857142857144 1323.9285714285716,302.9642857142857 1440,262 L 1440,700 L 0,700 Z" stroke="none" stroke-width="0" fill="url(#gradient)" fill-opacity="1" class="transition-all duration-300 ease-in-out delay-150 path-0"></path>
-      </svg>     
+      <svg width="100%" height="100%" viewBox="0 0 1440 690" xmlns="http://www.w3.org/2000/svg" class="transition duration-300 ease-in-out delay-150">
+        <style>
+          .path-0 {
+            animation: pathAnim-0 4s linear infinite;
+          }
+          @keyframes pathAnim-0 {
+            0% {
+              d: path("M 0,700 L 0,262 C 138.92,328.46 277.85,394.92 405,381 C 532.14,367.07 647.5,272.75 760,260 C 872.5,247.24 982.14,316.07 1095,330 C 1207.85,343.92 1323.92,302.96 1440,262 L 1440,700 L 0,700 Z");
+            }
+            25% {
+              d: path("M 0,700 L 0,262 C 93,315.42 186,368.85 314,354 C 442,339.14 605,256 739,234 C 872.99,211.99 978,251.14 1090,266 C 1202,280.85 1321,271.42 1440,262 L 1440,700 L 0,700 Z");
+            }
+            50% {
+              d: path("M 0,700 L 0,262 C 155.53,219.28 311.07,176.57 426,169 C 540.92,161.42 615.25,189 731,218 C 846.74,247 1003.92,277.42 1129,285 C 1254.07,292.57 1347.03,277.28 1440,262 L 1440,700 L 0,700 Z");
+            }
+            75% {
+              d: path("M 0,700 L 0,262 C 128.25,316.10 256.5,370.21 385,370 C 513.5,369.78 642.25,315.25 758,313 C 873.75,310.75 976.5,360.78 1088,361 C 1199.5,361.21 1319.75,311.6 1440,262 L 1440,700 L 0,700 Z");
+            }
+            100% {
+              d: path("M 0,700 L 0,262 C 138.92,328.46 277.85,394.92 405,381 C 532.14,367.07 647.5,272.75 760,260 C 872.5,247.24 982.14,316.07 1095,330 C 1207.85,343.92 1323.92,302.96 1440,262 L 1440,700 L 0,700 Z");
+            }
+          }
+        </style>
+        <defs>
+          <linearGradient id="gradient" x1="72%" y1="95%" x2="28%" y2="5%">
+            <stop offset="5%" stop-color="#769d88" />
+            <stop offset="95%" stop-color="#fbfaf8" />
+          </linearGradient>
+        </defs>
+        <path d="M 0,700 L 0,262 C 138.92,328.46 277.85,394.92 405,381 C 532.14,367.07 647.5,272.75 760,260 C 872.5,247.24 982.14,316.07 1095,330 C 1207.85,343.92 1323.92,302.96 1440,262 L 1440,700 L 0,700 Z" fill="url(#gradient)" class="path-0" />
+      </svg>
+
       <!-- Text inside Banner -->
       <div class="absolute inset-0 flex items-center justify-center">
         <h2 class="text-white text-3xl md:text-4xl font-semibold">Καλωσορίσατε στην Ενάλια</h2>
       </div>
-  </div>
-</Fragment>
+    </div>
+  </Fragment>
+
   <!-- Team Section -->
   <section class="mt-16 grid gap-10 md:grid-cols-1">
     <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-2 lg:py-2 mx-auto">
@@ -47,26 +56,18 @@ import evi from '../assets/team/evi.jpg';
       </div>
 
       <div class="grid grid-cols-2 gap-6 sm:gap-10 lg:gap-12">
-        <!-- First Image Block -->
+        <!-- Team Member 1 -->
         <div class="text-center">
-          <Image
-            src={chris}
-            alt="Χρήστος Κωστικίδης"
-            class="rounded-full w-32 h-32 sm:w-44 sm:h-44 lg:w-60 lg:h-60 object-cover mx-auto"
-          />
+          <Image src={chris} alt="Χρήστος Κωστικίδης" class="rounded-full w-32 h-32 sm:w-44 sm:h-44 lg:w-60 lg:h-60 object-cover mx-auto" />
           <div class="mt-2 sm:mt-4">
             <h3 class="text-sm font-medium sm:text-base lg:text-lg">Χρήστος Κωστικίδης</h3>
             <p class="text-xs sm:text-sm lg:text-base">Ψυχοθεραπευτής</p>
           </div>
         </div>
 
-        <!-- Second Image Block -->
+        <!-- Team Member 2 -->
         <div class="text-center">
-          <Image
-            src={evi}
-            alt="Εύη Καραβάνα"
-            class="rounded-full w-32 h-32 sm:w-44 sm:h-44 lg:w-60 lg:h-60 object-cover mx-auto"
-          />
+          <Image src={evi} alt="Εύη Καραβάνα" class="rounded-full w-32 h-32 sm:w-44 sm:h-44 lg:w-60 lg:h-60 object-cover mx-auto" />
           <div class="mt-2 sm:mt-4">
             <h3 class="text-sm font-medium sm:text-base lg:text-lg">Εύη Καραβάνα</h3>
             <p class="text-xs sm:text-sm lg:text-base">Ψυχοθεραπεύτρια</p>
@@ -84,13 +85,3 @@ import evi from '../assets/team/evi.jpg';
     </div>
     <div>
       <Image src={image1} alt="Χώρος θεραπείας" class="rounded-lg shadow-md" />
-    </div>
-  </section>
-
-  <!-- Call to Action -->
-  <section class="mt-16 text-center">
-    <a href="/contact" class="bg-primary-600 text-inpage px-6 py-3 rounded-lg shadow hover:bg-hover-700 transition">
-      Κλείστε Ραντεβού
-    </a>
-  </section>
-</BaseLayout>
