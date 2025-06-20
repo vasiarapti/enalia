@@ -13,7 +13,7 @@ const menuItems = [
       { name: "ΕΥΗ ΚΑΡΑΒΑΝΑ", href: `${BASE}team/karavana` },
     ],
   },
-  { name: "Η ΠΡΟΣΕΓΓΙΣΗ", href: `${BASE}our-place` },
+  { name: "Η ΠΡΟΣΕΓΓΙΣΗ", href: `${BASE}psychotherapy` },
   {
     name: "ΟΙ ΥΠΗΡΕΣΙΕΣ", href: `${BASE}services`,
     submenu: [
