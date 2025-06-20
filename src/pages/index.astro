@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import AnimatedBanner from '../components/AnimatedBanner.astro';
 import { Image } from 'astro:assets';
 import image1 from '../assets/our-place/images1.jpg';
 import chris from '../assets/team/chris.jpg';
 import evi from '../assets/team/evi.jpg';
+import banner from '../assets/waves-banner.svg';
 ---
 
 <BaseLayout>
@@ -18,7 +18,13 @@ import evi from '../assets/team/evi.jpg';
       </div>
     </div>
   </section>
-
+  <div class="w-full md:pl-72 h-[320px] overflow-hidden">
+  <Image 
+    src={banner} 
+    alt="Wave banner with welcome text" 
+    class="w-full h-full object-cover" 
+  />
+</div>
   <!-- Team Section -->
   <section class="mt-16 grid gap-10 md:grid-cols-1">
     <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-2 lg:py-2 mx-auto">
