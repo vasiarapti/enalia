@@ -83,7 +83,7 @@ export default function Sidebar() {
           z-50
           transform transition-transform duration-300
           ${isOpen ? "translate-x-0" : "-translate-x-full"}
-          md:translate-x-0 md:static md:h-auto md:sticky md:top-0
+          md:translate-x-0
           overflow-y-auto
         `}
       >
