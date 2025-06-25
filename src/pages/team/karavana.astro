@@ -2,6 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Accordion from '../../components/Accordion.jsx';
 import { client } from '@astro/types';
+import { Image } from 'astro:assets';
+import evi from '../../assets/team/evi.jpg';
 
 
 const accordionItems = [
@@ -15,7 +17,7 @@ const accordionItems = [
 <BaseLayout>
   <main class="text-white min-h-screen py-12 px-6">
     <section class="max-w-3xl mx-auto bg-tertiary text-gray-800 p-8 rounded-lg shadow-md text-center">
-      <img src="https://via.placeholder.com/200x200?text=Karavana" alt="Καραβάνα" class="w-10 h-10 p-1 rounded-full ring-2 ring-primary-300 dark:ring-gray-500" />
+      <Image src={evi} alt="Εύη Καραβάνα" class="w-32 h-32 p-2 rounded-full ring-2 ring-primary-300 dark:ring-gray-500"/>
       <h2 class="text-2xl font-bold mb-4">Καραβάνα Εύη</h2>
       <p class="mb-2">Ψυχολόγος, MSc Ειδικής Αγωγής</p>
       <p class="text-left mb-4">Η Εύη Καραβάνα είναι ψυχολόγος και συστημική ψυχοθεραπεύτρια, απόφοιτος του Προγράμματος Ψυχολογίας του Εθνικού και Καποδιστριακού Πανεπιστημίου Αθηνών. Διαθέτει μεταπτυχιακές σπουδές στον τομέα της Ειδικής Αγωγής από το Ε.Κ.Π.Α. και είναι πιστοποιημένη επαγγελματίας με άδεια ασκήσεως επαγγέλματος. Είναι μέλος του Συλλόγου Ελλήνων Ψυχολόγων (Σ.Ε.Ψ.) και εγγεγραμμένη στο μητρώο επαγγελματιών ψυχοθεραπευτών της Εθνικής Εταιρείας Ψυχοθεραπείας Ελλάδος (ΕΕΨΕ). Παρέχει εξατομικευμένη υποστήριξη σε άτομα, ζευγάρια και οικογένειες, με στόχο την ενδυνάμωση και ψυχική ευημερία, μέσω της προσωπικής ανάπτυξης και της ενίσχυσης των σχέσεων τους.</p>
