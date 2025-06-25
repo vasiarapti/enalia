@@ -9,8 +9,8 @@ const menuItems = [
   {
     name: "ΟΙ ΘΕΡΑΠΕΥΤΕΣ", href: `${BASE}team`,
     submenu: [
-      { name: "ΧΡΗΣΤΟΣ ΚΩΣΤΙΚΙΔΗΣ", href: `${BASE}team/kostikidis` },
       { name: "ΕΥΗ ΚΑΡΑΒΑΝΑ", href: `${BASE}team/karavana` },
+      { name: "ΧΡΗΣΤΟΣ ΚΩΣΤΙΚΙΔΗΣ", href: `${BASE}team/kostikidis` },
     ],
   },
   { name: "Η ΠΡΟΣΕΓΓΙΣΗ", href: `${BASE}psychotherapy` },
