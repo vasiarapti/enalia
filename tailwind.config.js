@@ -17,8 +17,8 @@ export default {
         hover: '#617d6e',          // Hover color -grey green
         secondary: '#edeae8',      // Text color - beige
         inpage: '#fbfaf8',        // Like-white
-        // footer: '#7a9d8a'
-        footer: '#efdfd2'
+        footer: '#7a9d8a'
+        // footer: '#efdfd2'
       },
     },
     backgroundImage: {
