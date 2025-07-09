@@ -26,7 +26,7 @@ const menuItems = [
   },
   { name: "ONLINE ΨΥΧΟΘΕΡΑΠΕΙΑ", href: `${BASE}online` },
   { name: "ΒΙΩΜΑΤΙΚΕΣ ΔΡΑΣΕΙΣ", href: `${BASE}actions` },
-  { name: "Ο ΧΩΡΟΣ", href: `${BASE}our-place` },
+  { name: "Ο ΧΩΡΟΣ", href: `${BASE}gallery` },
   { name: "ΕΠΙΚΟΙΝΩΝΙΑ", href: `${BASE}contact` },
 ];
 
