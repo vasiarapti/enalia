@@ -1,21 +1,27 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import place1 from '../assets/our-place/image1.JPG';
+import place2 from '../assets/our-place/image2.JPG';
+import place3 from '../assets/our-place/image3.jpg';
+
+const BASE = import.meta.env.BASE_URL;
 ---
 
 
 <BaseLayout>
     <div class="grid gap-4">
         <div>
-            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/featured/image.jpg" alt="">
+            <Image src={place1} alt="Χώρος" class="h-auto max-w-full rounded-lg"/>
         </div>
         <div class="grid grid-cols-5 gap-4">
             <div>
-                <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
+                <Image src={place2} alt="Χώρος" class="h-auto max-w-full rounded-lg"/>
             </div>
             <div>
-                <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg" alt="">
+                <Image src={place3} alt="Χώρος" class="h-auto max-w-full rounded-lg"/>
             </div>
-            <div>
+            <!-- <div>
                 <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg" alt="">
             </div>
             <div>
@@ -23,7 +29,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
             <div>
                 <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg" alt="">
-            </div>
+            </div> -->
         </div>
     </div>
 <BaseLayout>
