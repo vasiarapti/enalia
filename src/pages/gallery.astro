@@ -1,16 +1,41 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { Image } from 'astro:assets';
 import place1 from '../assets/our-place/image1.JPG';
 import place2 from '../assets/our-place/image2.JPG';
 import place3 from '../assets/our-place/image3.jpg';
 
-const BASE = import.meta.env.BASE_URL;
+
+import type { ImageMetadata } from "astro";
+import { Image, getImage } from "astro:assets";
+
+const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/our-place/*");
+const imagePaths = Object.keys(images).filter((imagePath) => {
+  return imagePath.startsWith(`/src/assets/our-place`);
+});
 ---
 
 
 <BaseLayout>
-    <div class="grid gap-4">
+    <div id="main">
+    {
+        imagePaths.map(async (imagePath) => {
+        const image = images[imagePath]()
+        const optimizedImage = await getImage({
+            src: image,
+            width: 1200,
+        })
+
+        return (
+            <article class="thumb">
+            <a class="image" href={optimizedImage.src}>
+                <Image src={image} height="750" alt="Astro Multiverse" />
+            </a>
+            </article>
+        )
+        })
+    }
+    </div>
+    <!-- <div class="grid gap-4">
         <div>
             <Image src={place1} alt="Χώρος" class="h-auto max-w-full rounded-lg"/>
         </div>
@@ -30,6 +55,6 @@ const BASE = import.meta.env.BASE_URL;
             <div>
                 <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg" alt="">
             </div> -->
-        </div>
-    </div>
+        <!-- </div>
+    </div> -->
 <BaseLayout>
