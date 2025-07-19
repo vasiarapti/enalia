@@ -3,8 +3,6 @@ import image1 from '../public/images/our-place/image1.JPG';
 import image2 from '../public/images/our-place/image2.JPG';
 import image3 from '../public/images/our-place/image3.jpg';
 
-import { useState, useEffect } from 'react';
-
 const images = [
   '/images/our-place/image1.jpg',
   '/images/our-place/image2.jpg',
