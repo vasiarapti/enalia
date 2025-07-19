@@ -1,7 +1,29 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import zeugous from '../../assets/zeugous_imresizer.jpg';
+import { Image } from 'astro:assets';
 ---
 
 <BaseLayout>
-    
+  <div class="min-h-screen flex flex-col">
+    <div class="max-w-screen-xl mx-auto px-4 lg:px-6 flex-1 py-10">
+      <h2 class="text-4xl font-bold tracking-tight text-primary-800 text-center mb-10">
+        Θεραπεία Ζεύγους
+      </h2>
+
+      <div class="flex flex-col md:flex-row gap-8">
+        <!-- Image -->
+        <div class="flex-shrink-0">
+          <Image src={zeugous} alt="therapeia-zeugous" class="w-1/2 md:w-full mx-auto" />
+        </div>
+
+        <!-- Text Content -->
+        <div class="flex-1 space-y-6">
+          <p>
+            Δημιουργώντας έναν ασφαλή και υποστηρικτικό χώρο, το ζευγάρι έχει την ευκαιρία να καλλιεργήσει ανοιχτό και ειλικρινή διάλογο, όπου κάθε σύντροφος προσπαθεί να μπει στη θέση του άλλου και να κατανοήσει βαθύτερα τις σκέψεις και τα συναισθήματά του. Μέσα από αυτή τη διαδικασία, το ζευγάρι αναγνωρίζει τις δικές του συναισθηματικές και γνωστικές διεργασίες, και κάθε σύντροφος αποκτά μεγαλύτερη αυτογνωσία, η οποία ενδυναμώνει την ικανότητά του να ανταποκριθεί στις ανάγκες της σχέσης. Στην Ενάλια, υποστηρίζουμε το ζευγάρι ώστε να αναπτύξει νέους τρόπους επικοινωνίας και να μάθει να αντιμετωπίζει τις προκλήσεις με σεβασμό και κατανόηση. Το πιο σημαντικό είναι ότι κάθε σύντροφος μαθαίνει να ενεργεί αυτόνομα, αναπτύσσοντας συμπεριφορές που προάγουν τις διαπροσωπικές σχέσεις και εντός του ζευγαριού, αλλά και έξω από αυτό.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </BaseLayout>

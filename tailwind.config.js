@@ -13,7 +13,8 @@ export default {
         },
       },
       colors: {
-        primary: '#769d88',        // Sidebar background - dark green
+        //primary: '#769d88',        // Sidebar background - dark green
+        primary: '#7a9d8a',
         hover: '#617d6e',          // Hover color -grey green
         // secondary: '#edeae8',      // Text color - beige
         secondary: '#F7EADF',      // Text color - beige
