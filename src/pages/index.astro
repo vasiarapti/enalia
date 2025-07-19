@@ -228,15 +228,16 @@ const BASE = import.meta.env.BASE_URL;
   </section>
 
   <!-- Space Section -->
-  <section class="mt-16 grid gap-10 md:grid-cols-2">
-    <div>
-      <h2 class="text-2xl font-semibold text-secondary-800 mb-2">Ο Χώρος</h2>
-      <p class="text-tertiary-600">Ένας φιλόξενος χώρος σχεδιασμένος να προσφέρει ασφάλεια και ηρεμία για τις θεραπευτικές σας συνεδρίες.</p>
-    </div>
-    <div class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-y-10">
-      <Image src={image1} alt="Χώρος θεραπείας" class="w-32 h-32 sm:w-44 sm:h-44 lg:w-60 lg:h-60 object-cover mx-auto" />
-      <Image src={image2} alt="Χώρος θεραπείας" class="w-32 h-32 sm:w-44 sm:h-44 lg:w-60 lg:h-60 object-cover mx-auto" />
-      <Image src={image3} alt="Χώρος θεραπείας" class="w-32 h-32 sm:w-44 sm:h-44 lg:w-60 lg:h-60 object-cover mx-auto" />
+  <section class="mt-16 grid gap-10 md:grid-cols-1">
+    <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-2 lg:py-2 mx-auto">
+      <div class="max-w-3xl mx-auto text-center mb-10 lg:mb-14">
+        <p class="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl lg:text-balance">Ο Χώρος</p>
+      </div>
+      <div class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-y-10">
+        <Image src={image1} alt="Χώρος θεραπείας" class="w-32 h-32 sm:w-44 sm:h-44 lg:w-60 lg:h-60 object-cover mx-auto" />
+        <Image src={image2} alt="Χώρος θεραπείας" class="w-32 h-32 sm:w-44 sm:h-44 lg:w-60 lg:h-60 object-cover mx-auto" />
+        <Image src={image3} alt="Χώρος θεραπείας" class="w-32 h-32 sm:w-44 sm:h-44 lg:w-60 lg:h-60 object-cover mx-auto" />
+      </div>
     </div>
   </section>
 </BaseLayout>
