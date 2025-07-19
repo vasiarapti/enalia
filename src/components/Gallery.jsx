@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import image1 from '../assets/our-place/image1.jpg';
-import image2 from '../assets/our-place/image2.jpg';
+import image1 from '../assets/our-place/image1.JPG';
+import image2 from '../assets/our-place/image2.JPG';
 import image3 from '../assets/our-place/image3.jpg';
 
 export default function Gallery() {
