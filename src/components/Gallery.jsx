@@ -1,13 +1,19 @@
 import { useState, useEffect } from 'react';
-import image1 from '../assets/our-place/image1.JPG';
-import image2 from '../assets/our-place/image2.JPG';
-import image3 from '../assets/our-place/image3.jpg';
+import image1 from '../public/images/our-place/image1.JPG';
+import image2 from '../public/images/our-place/image2.JPG';
+import image3 from '../public/images/our-place/image3.jpg';
+
+import { useState, useEffect } from 'react';
+
+const images = [
+  '/images/our-place/image1.jpg',
+  '/images/our-place/image2.jpg',
+  '/images/our-place/image3.jpg',
+];
 
 export default function Gallery() {
   const [isOpen, setIsOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState(null);
-
-  const images = [image1, image2, image3];
 
   const openModal = (img) => {
     setCurrentImage(img);
@@ -20,7 +26,6 @@ export default function Gallery() {
     document.body.style.overflow = '';
   };
 
-  // Add ESC key support to close modal
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') closeModal();
@@ -31,7 +36,6 @@ export default function Gallery() {
 
   return (
     <div className="space-y-8">
-      {/* Gallery Grid */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {images.map((img, index) => (
           <button
@@ -40,7 +44,7 @@ export default function Gallery() {
             className="group relative overflow-hidden rounded-xl shadow-md transition-transform hover:scale-[1.02] focus:outline-none"
           >
             <img
-              src={img.src}
+              src={img}
               alt={`Χώρος θεραπείας ${index + 1}`}
               className="w-full h-64 object-cover"
               loading="lazy"
@@ -49,16 +53,15 @@ export default function Gallery() {
         ))}
       </div>
 
-      {/* Full-Screen Modal */}
       {isOpen && (
         <div
           onClick={closeModal}
           className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 p-4"
         >
           <img
-            src={currentImage.src}
+            src={currentImage}
             alt="Full view"
-            className="w-auto h-auto max-h-[95vh] max-w-[95vw] object-contain rounded-lg shadow-2xl transition"
+            className="w-auto h-auto max-w-[100vw] max-h-[100vh] object-contain rounded-lg shadow-2xl"
           />
         </div>
       )}
