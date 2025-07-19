@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import image1 from '../assets/our-place/placee1.jpg';
+import { useState } from 'react';
+import image1 from '../assets/our-place/place1.jpg';
 import image2 from '../assets/our-place/place2.jpg';
 import image3 from '../assets/our-place/place3.jpg';
 
@@ -20,18 +20,8 @@ export default function Gallery() {
     document.body.style.overflow = '';
   };
 
-  // Add ESC key support to close modal
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape') closeModal();
-    };
-    if (isOpen) window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen]);
-
   return (
     <div className="space-y-8">
-      {/* Gallery Grid */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {images.map((img, index) => (
           <button
@@ -43,22 +33,20 @@ export default function Gallery() {
               src={img.src}
               alt={`Χώρος θεραπείας ${index + 1}`}
               className="w-full h-64 object-cover"
-              loading="lazy"
             />
           </button>
         ))}
       </div>
 
-      {/* Full-Screen Modal */}
       {isOpen && (
         <div
           onClick={closeModal}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80 p-4"
         >
           <img
             src={currentImage.src}
-            alt="Full view"
-            className="w-auto h-auto max-h-[95vh] max-w-[95vw] object-contain rounded-lg shadow-2xl transition"
+            alt="Μεγέθυνση εικόνας"
+            className="max-w-full max-h-full rounded-xl shadow-xl"
           />
         </div>
       )}
