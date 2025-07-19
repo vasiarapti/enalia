@@ -1,40 +1,29 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import place1 from '../assets/our-place/image1.JPG';
-import place2 from '../assets/our-place/image2.JPG';
-import place3 from '../assets/our-place/image3.jpg';
-
-
-import type { ImageMetadata } from "astro";
-import { Image, getImage } from "astro:assets";
-
-const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/our-place/*");
-const imagePaths = Object.keys(images).filter((imagePath) => {
-  return imagePath.startsWith(`/src/assets/our-place`);
-});
+import image1 from '../assets/our-place/image1.JPG';
+import image2 from '../assets/our-place/image2.JPG';
+import image3 from '../assets/our-place/image3.jpg';
+import { Image } from 'astro:assets';
 ---
 
 
 <BaseLayout>
-    <div class="flex flex-wrap transition-[filter] duration-500 ease-in-out touch-none">
-        {
-            imagePaths.map(async (imagePath) => {
-            const image = images[imagePath]()
-            const optimizedImage = await getImage({
-                src: image,
-                width: 1200,
-            })
 
-            return (
-                <article class="relative overflow-hidden opacity-100 pointer-events-auto transition-opacity duration-[1250ms] ease-in-out touch-none">
-                <a class="absolute inset-0 bg-center bg-no-repeat bg-cover border-0 touch-none" href={optimizedImage.src}>
-                    <Image src={image} height="750" alt="Astro Multiverse" />
-                </a>
-                </article>
-            )
-            })
-        }
+    <div class="grid grid-cols-2 gap-2">
+        <div>
+            <Image src={image1} alt="Χώρος θεραπείας" class="h-auto max-w-full rounded-lg" />
+        </div>
+        <div>
+            <Image src={image2} alt="Χώρος θεραπείας" class="h-auto max-w-full rounded-lg" />
+        </div>
+        <div>
+            <Image src={image3} alt="Χώρος θεραπείας" class="h-auto max-w-full rounded-lg" />
+        </div>
+        <div>
+            <Image src={image2} alt="Χώρος θεραπείας" class="h-auto max-w-full rounded-lg" />
+        </div>
     </div>
+
 </BaseLayout>
     <!-- <div class="grid gap-4">
         <div>
