@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
-import image1 from '../public/images/our-place/image1.JPG';
-import image2 from '../public/images/our-place/image2.JPG';
-import image3 from '../public/images/our-place/image3.jpg';
+
 
 const images = [
   '/images/our-place/image1.jpg',
