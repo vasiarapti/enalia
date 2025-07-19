@@ -1,12 +1,34 @@
 ---
-// Props: { title: string, content: string, imgSrc: string, reverse?: boolean }
-const { title, content, imgSrc, reverse = false } = Astro.props;
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import atomiki from '../../assets/atomiki.jpg';
+import { Image } from 'astro:assets';
 ---
 
-<section class="flex flex-col md:flex-row gap-8 my-12 items-center" class:list={!reverse ? "md:flex-row" : "md:flex-row-reverse"}>
-  <img src={imgSrc} alt={title} class="w-full md:w-1/2 rounded shadow" loading="lazy" />
-  <div class="w-full md:w-1/2">
-    <h2 class="text-2xl font-bold mb-4">{title}</h2>
-    <p class="text-gray-700">{content}</p>
-  </div>
-</section>
+<BaseLayout>
+  <div class="max-w-screen-xl mx-auto py-8 px-4 lg:py-16 lg:px-6">
+    <div class="text-center mb-10">
+        <h2 class="text-4xl tracking-tight font-bold text-primary-800">Ατομική Ψυχοθεραπείαs</h2>
+    </div>
+
+    <div class="flex flex-col md:flex-row">
+        <!-- can help image -->
+        <div class="mr-0 md:mr-8 mb-6 md:mb-0">
+            <Image src={atomiki} alt="atomiki-psyxotherapeia" class="w-1/2 md:w-full mx-auto"/>
+        </div>
+        <!-- end can help image -->
+
+        <div class="flex-1 flex flex-col sm:flex-row flex-wrap -mb-4 -mx-2">
+            <div class="w-full sm:w-1/2 mb-4 px-2 ">
+                <div class="h-full py-4 px-6 border border-primary-500 border-t-0 border-l-0 rounded-br-xl">
+                    <p class="text-sm">Η ατομική ψυχοθεραπεία προσφέρει έναν ασφαλή και υποστηρικτικό χώρο, όπου το άτομο έχει τη δυνατότητα να επεξεργαστεί τα συναισθήματα, τις σκέψεις και τις προκλήσεις που αντιμετωπίζει. Μέσα από τη θεραπευτική διεργασία το άτομο αναλύει και επεξεργάζεται τις δυναμικές που διαμορφώνουν τη ζωή του και αναζητά πιο υγιείς και λειτουργικούς τρόπους αλληλεπίδρασης με το περιβάλλον του.</p>
+                </div>
+            </div>
+            <div class="w-full sm:w-1/2 mb-4 px-2 ">
+                <div class="h-full py-4 px-6 border border-primary-500 border-t-0 border-l-0 rounded-br-xl">
+                    <p class="text-sm">Η ατομική ψυχοθεραπεία μπορεί να είναι χρήσιμη για ποικίλες καταστάσεις, όπως το άγχος, η κατάθλιψη, οι διαταραχές διάθεσης, οι δυσκολίες στις διαπροσωπικές σχέσεις, ή ακόμη και για προσωπική ανάπτυξη και ενδυνάμωση. Στοχεύει στη βαθιά και σταθερή αλλαγή, ώστε το άτομο να μπορεί να αντιμετωπίσει αποτελεσματικότερα τις προκλήσεις της καθημερινής του ζωής.</p>
+                </div>
+            </div>
+          </div>
+    </div>
+</div>
+</BaseLayout>
