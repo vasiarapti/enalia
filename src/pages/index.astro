@@ -17,39 +17,7 @@ const BASE = import.meta.env.BASE_URL;
 
 <BaseLayout>
   <Fragment slot="banner">
-    <div class="relative w-full h-[320px] overflow-hidden bg-inpage">
-      <!-- <svg class="absolute inset-0 w-full h-full"
-    preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 1440 690" xmlns="http://www.w3.org/2000/svg" class="transition duration-300 ease-in-out delay-150">
-        <style>
-          .path-0 {
-            animation: pathAnim-0 4s linear infinite;
-          }
-          @keyframes pathAnim-0 {
-            0% {
-              d: path("M 0,700 L 0,262 C 138.92,328.46 277.85,394.92 405,381 C 532.14,367.07 647.5,272.75 760,260 C 872.5,247.24 982.14,316.07 1095,330 C 1207.85,343.92 1323.92,302.96 1440,262 L 1440,700 L 0,700 Z");
-            }
-            25% {
-              d: path("M 0,700 L 0,262 C 93,315.42 186,368.85 314,354 C 442,339.14 605,256 739,234 C 872.99,211.99 978,251.14 1090,266 C 1202,280.85 1321,271.42 1440,262 L 1440,700 L 0,700 Z");
-            }
-            50% {
-              d: path("M 0,700 L 0,262 C 155.53,219.28 311.07,176.57 426,169 C 540.92,161.42 615.25,189 731,218 C 846.74,247 1003.92,277.42 1129,285 C 1254.07,292.57 1347.03,277.28 1440,262 L 1440,700 L 0,700 Z");
-            }
-            75% {
-              d: path("M 0,700 L 0,262 C 128.25,316.10 256.5,370.21 385,370 C 513.5,369.78 642.25,315.25 758,313 C 873.75,310.75 976.5,360.78 1088,361 C 1199.5,361.21 1319.75,311.6 1440,262 L 1440,700 L 0,700 Z");
-            }
-            100% {
-              d: path("M 0,700 L 0,262 C 138.92,328.46 277.85,394.92 405,381 C 532.14,367.07 647.5,272.75 760,260 C 872.5,247.24 982.14,316.07 1095,330 C 1207.85,343.92 1323.92,302.96 1440,262 L 1440,700 L 0,700 Z");
-            }
-          }
-        </style>
-        <defs>
-          <linearGradient id="gradient" x1="72%" y1="95%" x2="28%" y2="5%">
-            <stop offset="5%" stop-color="#769d88" />
-            <stop offset="95%" stop-color="#fbfaf8" />
-          </linearGradient>
-        </defs>
-        <path d="M 0,700 L 0,262 C 138.92,328.46 277.85,394.92 405,381 C 532.14,367.07 647.5,272.75 760,260 C 872.5,247.24 982.14,316.07 1095,330 C 1207.85,343.92 1323.92,302.96 1440,262 L 1440,700 L 0,700 Z" fill="url(#gradient)" class="path-0" />
-      </svg> -->
+    <div class="relative w-full h-[320px] overflow-hidden bg-secondary">
       <svg class="absolute inset-0 w-full h-full" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 1440 690" xmlns="http://www.w3.org/2000/svg">
         <style>
           .path-0 {
@@ -149,10 +117,7 @@ const BASE = import.meta.env.BASE_URL;
           <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
             <div class="relative pl-16">
               <dt class="text-base/7 font-semibold text-gray-900">
-                <div class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-primary">
-                  <!-- <svg class="size-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0 3 3m-3-3-3 3M6.75 19.5a4.5 4.5 0 0 1-1.41-8.775 5.25 5.25 0 0 1 10.233-2.33 3 3 0 0 1 3.758 3.848A3.752 3.752 0 0 1 18 19.5H6.75Z" />
-                  </svg> -->
+                <div class="absolute top-0 left-0 flex size-16 items-center justify-center rounded-full ">
                   <Image src={atomiki} alt="Ατομική Ψυχοθεραπεία" class="rounded-full w-15 h-16 sm:w-22 sm:h-22 lg:w-30 lg:h-30 object-cover mx-auto" />
                 </div>
                 Ατομική Ψυχοθεραπεία
@@ -169,10 +134,7 @@ const BASE = import.meta.env.BASE_URL;
             </div>
             <div class="relative pl-16">
               <dt class="text-base/7 font-semibold text-gray-900">
-                <div class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-primary">
-                  <!-- <svg class="size-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
-                  </svg> -->
+                <div class="absolute top-0 left-0 flex size-16 items-center justify-center rounded-full ">
                   <Image src={zeugous} alt="Θεραπεία Zεύγους" class="rounded-full w-15 h-16 sm:w-22 sm:h-22 lg:w-30 lg:h-30 object-cover mx-auto" />
                 </div>
                 Θεραπεία Zεύγους
@@ -188,10 +150,7 @@ const BASE = import.meta.env.BASE_URL;
             </div>
             <div class="relative pl-16">
               <dt class="text-base/7 font-semibold text-gray-900">
-                <div class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-primary">
-                  <!-- <svg class="size-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
-                  </svg> -->
+                <div class="absolute top-0 left-0 flex size-16 items-center justify-center rounded-full ">
                   <Image src={oikogeneiakh} alt="Οικογενειακή Ψυχοθεραπεία" class="rounded-full w-15 h-16 sm:w-22 sm:h-22 lg:w-30 lg:h-30 object-cover mx-auto" />
                 </div>
                 Οικογενειακή Ψυχοθεραπεία
@@ -206,10 +165,7 @@ const BASE = import.meta.env.BASE_URL;
             </div>
             <div class="relative pl-16">
               <dt class="text-base/7 font-semibold text-gray-900">
-                <div class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-primary">
-                  <!-- <svg class="size-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M7.864 4.243A7.5 7.5 0 0 1 19.5 10.5c0 2.92-.556 5.709-1.568 8.268M5.742 6.364A7.465 7.465 0 0 0 4.5 10.5a7.464 7.464 0 0 1-1.15 3.993m1.989 3.559A11.209 11.209 0 0 0 8.25 10.5a3.75 3.75 0 1 1 7.5 0c0 .527-.021 1.049-.064 1.565M12 10.5a14.94 14.94 0 0 1-3.6 9.75m6.633-4.596a18.666 18.666 0 0 1-2.485 5.33" />
-                  </svg> -->
+                <div class="absolute top-0 left-0 flex size-16 items-center justify-center rounded-full ">
                   <Image src={omadiki} alt="Ομαδική Ψυχοθεραπεία" class="rounded-full w-15 h-16 sm:w-22 sm:h-22 lg:w-30 lg:h-30 object-cover mx-auto" />
                 </div>
                 Ομαδική Ψυχοθεραπεία
@@ -225,10 +181,7 @@ const BASE = import.meta.env.BASE_URL;
             </div>
             <div class="relative pl-16">
               <dt class="text-base/7 font-semibold text-gray-900">
-                <div class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-primary">
-                  <!-- <svg class="size-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
-                  </svg> -->
+                <div class="absolute top-0 left-0 flex size-16 items-center justify-center rounded-full ">
                   <Image src={goneis} alt="Ομαδική Ψυχοθεραπεία" class="rounded-full w-15 h-16 sm:w-22 sm:h-22 lg:w-30 lg:h-30 object-cover mx-auto" />
                 </div>
                 Συμβουλευτική Γονέων
@@ -242,21 +195,6 @@ const BASE = import.meta.env.BASE_URL;
               </a>
             </dd>
             </div>
-            <!-- <div class="relative pl-16">
-              <dt class="text-base/7 font-semibold text-gray-900">
-                <div class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-primary">
-                  <svg width="100px" height="100px" viewBox="-6.4 -6.4 76.80 76.80" xmlns="http://www.w3.org/2000/svg" stroke-width="1.28" stroke="#ffffff" fill="none" transform="matrix(1, 0, 0, 1, 0, 0)rotate(0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.128"></g><g id="SVGRepo_iconCarrier"><path d="M50.28,23.29V43.94a1.74,1.74,0,0,1-1.74,1.74H11.3a1.74,1.74,0,0,1-1.74-1.74V17.85a1.74,1.74,0,0,1,1.74-1.74H37.07"></path><line x1="9.56" y1="39.19" x2="50.28" y2="39.19"></line><path d="M22.23,52.54a5.72,5.72,0,0,0,3-6.86"></path><path d="M38.38,52.54a5.73,5.73,0,0,1-3.05-6.86"></path><line x1="17.45" y1="52.54" x2="42.39" y2="52.54" stroke-linecap="round"></line><circle cx="22.13" cy="25.21" r="3.53"></circle><path d="M29.28,39.19a7.15,7.15,0,0,0-7.15-7.14h0A7.14,7.14,0,0,0,15,39.19Z"></path><path d="M53.58,23.29h-8.4L40.1,26.88a.09.09,0,0,1-.14-.07l0-3.52H37.93a.87.87,0,0,1-.86-.86V12.32a.86.86,0,0,1,.86-.86H53.58a.86.86,0,0,1,.86.86V22.43A.87.87,0,0,1,53.58,23.29Z"></path></g></svg>
-                </div>
-                Online Ψυχοθεραπεία
-              </dt>
-              <dd class="mt-2 text-base/7 text-gray-600">Η online ψυχοθεραπεία είναι μια σύγχρονη μορφή υποστήριξης που προσφέρει ευελιξία και προσβασιμότητα, χωρίς να στερείται τη σύνδεση και το βάθος της διαπροσωπικής επαφής. <a class="group mt-2 flex flex-col justify-center hover:bg-gray focus:outline-hidden rounded-xl p-1 md:p-1" href="#">
-                  <span class="inline-flex items-center text-sm text-primary-600 decoration-2 group-focus:underline font-medium">
-                  Μάθε Περισσότερα
-                  <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-                </span>
-              </a>
-              </dd>
-            </div> -->
           </dl>
         </div>
     </div>
