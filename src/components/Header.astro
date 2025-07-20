@@ -9,18 +9,18 @@ import {
 const BASE = import.meta.env.BASE_URL || '/';
 ---
 
-<header class="fixed top-0 left-0 z-20 w-full md:left-72 md:w-[calc(100%-18rem)] bg-secondary flex flex-col">
+<header class="fixed top-0 left-0 z-20 w-full md:left-72 md:w-[calc(100%-18rem)] bg-primary flex flex-col">
   <!-- Top bar -->
-  <div class="flex justify-between w-full h-10 bg-secondary px-4 items-center">
+  <div class="flex justify-between w-full h-10 bg-primary px-4 items-center">
     <a
-      class="text-md font-semibold text-center"
+      class="text-md font-semibold text-center text-secondary"
       href={`${BASE}contact`}
     >
       Κλείστε την πρώτη σας συνεδρία
     </a>
 
   <!-- Social links / contact bar -->
-  <ul class="flex items-center h-full gap-8 px-6 text-sm font-semibold tracking-wide">
+  <ul class="flex items-center h-full gap-8 px-6 text-sm font-semibold tracking-wide text-secondary">
     <li class="flex items-center h-full">
       <span class="flex items-center gap-1 h-full">
           <Facebook class="w-4 h-4" />
@@ -37,7 +37,7 @@ const BASE = import.meta.env.BASE_URL || '/';
         </span>
       </li>
     </ul>
-    <ul class="flex items-center h-full gap-8 px-6 text-sm font-semibold tracking-wide">
+    <ul class="flex items-center h-full gap-8 px-6 text-sm font-semibold tracking-wide text-secondary">
       <li class="flex items-center h-full">
         <span class="flex items-center gap-1 h-full">
           <a class="self-center" href="https://maps.app.goo.gl/yRFXY9cB1Xb4ipSA8" target="_blank" rel="noopener noreferrer" aria-label="Open Google Maps">Λευκής 12, Νέα Ιωνία</a>
