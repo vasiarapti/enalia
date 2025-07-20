@@ -8,7 +8,12 @@ import { Image } from 'astro:assets';
 
 
 <BaseLayout>
-
+    <div class="min-h-screen flex flex-col">
+        <div class="max-w-screen-xl mx-auto px-4 lg:px-6 flex-1 py-10">
+        <h2 class="text-4xl font-bold tracking-tight text-primary-800 text-center mb-10">
+            Ο Χώρος
+        </h2>
+        </div>
     <div class="grid grid-cols-2 gap-2">
         <div>
             <Image src={image1} alt="Χώρος θεραπείας" class="h-auto max-w-full rounded-lg" />
@@ -23,27 +28,5 @@ import { Image } from 'astro:assets';
             <Image src={image2} alt="Χώρος θεραπείας" class="h-auto max-w-full rounded-lg" />
         </div>
     </div>
-
+</div>
 </BaseLayout>
-    <!-- <div class="grid gap-4">
-        <div>
-            <Image src={place1} alt="Χώρος" class="h-auto max-w-full rounded-lg"/>
-        </div>
-        <div class="grid grid-cols-5 gap-4">
-            <div>
-                <Image src={place2} alt="Χώρος" class="h-auto max-w-full rounded-lg"/>
-            </div>
-            <div>
-                <Image src={place3} alt="Χώρος" class="h-auto max-w-full rounded-lg"/>
-            </div>
-           <div>
-                <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg" alt="">
-            </div>
-            <div>
-                <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg" alt="">
-            </div>
-            <div>
-                <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg" alt="">
-            </div> -->
-        <!-- </div>
-    </div> -->
