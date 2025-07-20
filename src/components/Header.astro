@@ -11,7 +11,7 @@ const BASE = import.meta.env.BASE_URL || '/';
 
 <header class="fixed top-0 left-0 z-20 w-full md:left-72 md:w-[calc(100%-18rem)] bg-secondary flex flex-col">
   <!-- Top bar -->
-  <div class="flex justify-center w-full h-10 bg-secondary px-4 items-center">
+  <div class="flex justify-between w-full h-10 bg-secondary px-4 items-center">
     <a
       class="text-md font-semibold text-center"
       href={`${BASE}contact`}
@@ -21,35 +21,39 @@ const BASE = import.meta.env.BASE_URL || '/';
   </div>
 
   <!-- Social links / contact bar -->
-  <div class="header-nav hidden lg:flex h-16 bg-inpage w-full justify-center">
-    <ul class="flex items-center h-full gap-8 px-6 text-sm font-semibold tracking-wide">
-      <li class="flex items-center h-full">
-        <span class="flex items-center gap-1 h-full">
+  <ul class="flex items-center h-full gap-8 px-6 text-sm font-semibold tracking-wide">
+    <li class="flex items-center h-full">
+      <span class="flex items-center gap-1 h-full">
           <Facebook class="w-4 h-4" />
-          <p>Enalia</p>
         </span>
       </li>
       <li class="flex items-center h-full">
         <span class="flex items-center gap-1 h-full">
           <Mail class="w-4 h-4" />
-          <p>enalia-therapy.com</p>
         </span>
       </li>
       <li class="flex items-center h-full">
         <span class="flex items-center gap-1 h-full">
           <Linkedin class="w-4 h-4" />
-          <p>Linked In</p>
         </span>
       </li>
+    </ul>
+    <ul class="flex items-center h-full gap-8 px-6 text-sm font-semibold tracking-wide">
       <li class="flex items-center h-full">
         <span class="flex items-center gap-1 h-full">
-          <a class="self-center" href="https://maps.app.goo.gl/yRFXY9cB1Xb4ipSA8" target="_blank" rel="noopener noreferrer" aria-label="Open Google Maps">Νέα Ιονία</a>
+          <a class="self-center" href="https://maps.app.goo.gl/yRFXY9cB1Xb4ipSA8" target="_blank" rel="noopener noreferrer" aria-label="Open Google Maps">Λευκής 12, Νέα Ιωνία</a>
         </span>
       </li>
       <li class="flex items-center h-full">
         <span class="flex items-center gap-1 h-full">
           <Phone class="w-4 h-4" />
-          <a class="self-center" href="tel:+2101111111">2101111111</a>
+          <a class="self-center" href="tel:+2101111111">6988888888</a>
+        </span>
+      </li>
+      <li class="flex items-center h-full">
+        <span class="flex items-center gap-1 h-full">
+          <Phone class="w-4 h-4" />
+          <a class="self-center" href="tel:+2101111111">6988888888</a>
         </span>
       </li>
     </ul>
