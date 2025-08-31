@@ -24,8 +24,8 @@ export default function ContactDropdown({ label, options, name }) {
       </button>
 
       <div
-        className={`absolute z-10 w-full bg-white rounded-lg shadow mt-1 overflow-hidden transition-all duration-300 ${
-          open ? "max-h-60 opacity-100" : "max-h-0 opacity-0"
+        className={`absolute z-10 w-full bg-white rounded-lg shadow mt-1 overflow-y-auto transition-all duration-300 ${
+    open ? "max-h-60 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         {options.map((option, i) => (
