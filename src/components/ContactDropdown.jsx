@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 
-export default function ContactDropdown({ label, options, name }) {
+export default function ContactDropdown({ label, options, name, onChange }) {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState("");
   const dropdownRef = useRef(null);
@@ -9,6 +9,7 @@ export default function ContactDropdown({ label, options, name }) {
   const handleSelect = (option) => {
     setSelected(option.label);
     setOpen(false);
+    if (onChange) onChange(option.label); // update parent state
   };
 
   // Auto height based on content
@@ -28,16 +29,16 @@ export default function ContactDropdown({ label, options, name }) {
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   return (
     <div className="relative w-full md:w-full group">
       <button
         type="button"
-        className={`w-full bg-white p-2.5 border border-gray-300 rounded-lg flex justify-between items-center text-gray-900 group-hover:text-gray-700 focus:text-gray-700`}
+        className={`w-full bg-white p-2.5 border border-gray-300 rounded-lg flex justify-between items-center text-gray-900 ${
+          !selected ? "text-gray-500" : "text-gray-900"
+        }`}
         onClick={() => setOpen(!open)}
       >
         {selected || label}
@@ -47,7 +48,7 @@ export default function ContactDropdown({ label, options, name }) {
           aria-hidden="true"
           className={`-mr-1 ml-2 size-5 transition-transform duration-300 ${
             open ? "rotate-180 text-gray-700" : "rotate-0 text-gray-400"
-          } group-hover:text-gray-700 group-focus:text-gray-700`}
+          }`}
         >
           <path
             d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
@@ -74,7 +75,7 @@ export default function ContactDropdown({ label, options, name }) {
         ))}
       </div>
 
-      {/* Hidden input for form validation */}
+      {/* Hidden input for HTML5 form validation */}
       <input type="hidden" name={name || label} value={selected} required />
     </div>
   );
