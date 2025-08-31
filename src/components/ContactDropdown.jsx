@@ -1,22 +1,31 @@
-// src/components/ContactDropdown.jsx
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function ContactDropdown({ label, options, name }) {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState("");
+  const dropdownRef = useRef(null);
+  const [height, setHeight] = useState(0);
 
   const handleSelect = (option) => {
     setSelected(option.label);
     setOpen(false);
   };
 
+  useEffect(() => {
+    if (open && dropdownRef.current) {
+      setHeight(dropdownRef.current.scrollHeight);
+    } else {
+      setHeight(0);
+    }
+  }, [open, options]);
+
   return (
     <div className="relative">
       <button
         type="button"
-        className={`w-full bg-white p-2.5 border border-gray-300 rounded-lg text-gray-900 ${
+        className={`w-full bg-white p-2.5 border border-gray-300 rounded-lg ${
           !selected ? "text-gray-500" : "text-gray-900"
-        }`}
+        } flex justify-between items-center`}
         onClick={() => setOpen(!open)}
       >
         {selected || label}
@@ -24,9 +33,9 @@ export default function ContactDropdown({ label, options, name }) {
       </button>
 
       <div
-        className={`absolute z-10 w-full bg-white rounded-lg shadow mt-1 overflow-y-auto transition-all duration-300 ${
-    open ? "max-h-60 opacity-100" : "max-h-0 opacity-0"
-        }`}
+        ref={dropdownRef}
+        style={{ maxHeight: `${height}px` }}
+        className="absolute z-10 w-full bg-white rounded-lg shadow mt-1 overflow-hidden transition-all duration-300"
       >
         {options.map((option, i) => (
           <button
