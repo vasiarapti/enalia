@@ -48,29 +48,32 @@ import ContactDropdown from '../components/ContactDropdown.jsx';
         </div>
 
         <!-- Therapist Dropdown -->
-        <ContactDropdown 
-          client:load 
-            label="Επιλέξτε Θεραπευτή"
-            options={[
-                { label: "Εύη Καραβάνα" },
-                { label: "Χρήστος Κωστικίδης" }
-          ]} />
+        <div>
+            <ContactDropdown 
+                client:load 
+                    label="Επιλέξτε Θεραπευτή"
+                    options={[
+                        { label: "Εύη Καραβάνα" },
+                        { label: "Χρήστος Κωστικίδης" }
+                ]} />
+        </div>
 
         <!-- Service Dropdown -->
-        <ContactDropdown
-          client:load 
-          label="Επιλέξτε Υπηρεσία"
-          options={[
-            { label: "Ατομική Θεραπεία" },
-            { label: "Θεραπεία Ζεύγους" },
-            { label: "Οικογενειακή Θεραπεία" },
-            { label: "Συμβουλευτική Γονέων" },
-            { label: "Online Ψυχοθεραπεία" },
-            { label: "Βιωματικές Δράσεις" },
-            { label: "Άλλο" }
-          ]}
-        />
-
+        <div>
+            <ContactDropdown
+            client:load 
+            label="Επιλέξτε Υπηρεσία"
+            options={[
+                { label: "Ατομική Θεραπεία" },
+                { label: "Θεραπεία Ζεύγους" },
+                { label: "Οικογενειακή Θεραπεία" },
+                { label: "Συμβουλευτική Γονέων" },
+                { label: "Online Ψυχοθεραπεία" },
+                { label: "Βιωματικές Δράσεις" },
+                { label: "Άλλο" }
+            ]}
+            />
+        </div>
         <div>
           <label for="message" class="block mb-2 text-sm font-medium text-gray-900">Μήνυμα</label>
           <textarea id="message" rows="6" placeholder="Αφήστε ένα σχόλιο" class="w-full p-2.5 border border-gray-300 rounded-lg text-gray-900"></textarea>
