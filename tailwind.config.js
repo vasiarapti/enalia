@@ -2,7 +2,7 @@
 export default {
   content: [
     './src/**/*.{astro,html,js,jsx,ts,tsx,md,mdx}',
-    './node_modules/flowbite/**/*.js', // 👈 add this
+    './node_modules/flowbite/**/*.js',
   ],
   theme: {
     extend: {
@@ -12,7 +12,7 @@ export default {
       keyframes: {
         marquee: {
           '0%': { transform: 'translateX(100%)' },
-          '100%': { transform: 'translateX(-100%)' }, // 👈 typo fixed: "tramslateX"
+          '100%': { transform: 'translateX(-100%)' },
         },
       },
       colors: {
@@ -29,6 +29,6 @@ export default {
     },
   },
   plugins: [
-    require('flowbite/plugin'), // 👈 add this
+    require('flowbite/plugin'),
   ],
 };
