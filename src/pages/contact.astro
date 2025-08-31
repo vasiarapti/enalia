@@ -1,17 +1,35 @@
----
-import BaseLayout from '../layouts/BaseLayout.astro';
-import ContactForm from '../components/ContactForm.jsx';
----
-
 <BaseLayout>
   <section class="text-white min-h-screen py-12 px-6">
     <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
-      <h2 class="mb-4 text-3xl tracking-tight font-bold text-center text-gray-900">Φόρμα Επικοινωνίας</h2>
-      <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 sm:text-xl">
-        Αν θέλετε να κλείσετε ραντεβού, συμπληρώστε τα στοιχεία σας παρακάτω και θα επικοινωνήσουμε άμεσα μαζί σας.
-      </p>
+      <h2 class="mb-4 text-3xl tracking-tight font-bold text-center text-gray-900">Στοιχεία Επικοινωνίας</h2>
 
-      <ContactForm client:visible />
+      <div class="space-y-4">
+        <!-- Address -->
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="black" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+          </svg>
+          <a class="text-gray-900" href="https://maps.app.goo.gl/yRFXY9cB1Xb4ipSA8" target="_blank">Λευκής 12, Νέα Ιωνία, 14231</a>
+        </span>
+
+        <!-- Other info: phones, hours -->
+        <span class="flex items-center gap-2">
+          ...
+        </span>
+
+        <!-- Google Map -->
+        <iframe class="w-full h-96 mt-4 border-0"
+          src="https://www.google.com/maps/embed?pb=..."
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+      <h2 class="mb-4 text-3xl tracking-tight font-bold text-center text-gray-900">Φόρμα Επικοινωνίας</h2>
+      <ContactForm client:load />
     </div>
   </section>
 </BaseLayout>
