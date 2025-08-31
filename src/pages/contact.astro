@@ -6,7 +6,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="text-white min-h-screen py-12 px-6">
     <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
       <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900">Στοιχεία Επικοινωνίας</h2>
-      
+
       <!-- Contact Info -->
       <div class="space-y-4">
         <span class="flex items-center gap-2">
@@ -35,7 +35,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <svg fill="#000000" width="24" height="24" viewBox="0 0 24 24">
             <path fill-rule="evenodd" d="M12,23 C5.92486775,23 1,18.0751322 1,12 C1,5.92486775 5.92486775,1 12,1 C18.0751322,1 23,5.92486775 23,12 C23,18.0751322 18.0751322,23 12,23 Z M12,21 C16.9705627,21 21,16.9705627 21,12 C21,7.02943725 16.9705627,3 12,3 C7.02943725,3 3,7.02943725 3,12 C3,16.9705627 7.02943725,21 12,21 Z M13,11 L17,11 L17,13 L11,13 L11,6 L13,6 L13,11 Z"/>
           </svg>
-          <span class="text-gray-900">Ωράριο Λειτουργίας: 9:00 - 21:00</span>
+          <span class="text-gray-900">Ωράριο Λειτουργία: 9:00 - 21:00</span>
         </span>
 
         <iframe class="w-full h-96 mt-4 border-0"
@@ -45,23 +45,33 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
 
-    <!-- Contact Form -->
     <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
       <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900">Φόρμα Επικοινωνίας</h2>
       <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 sm:text-xl">Αν θέλετε να κλείσετε ραντεβού, συμπληρώστε τα στοιχεία σας παρακάτω και θα επικοινωνήσουμε άμεσα μαζί σας.</p>
 
-      <form action="#" class="space-y-6">
-        <input type="text" id="name" placeholder="Ονοματεπώνυμο*" required class="w-full p-2.5 border border-gray-300 rounded-lg text-gray-900" />
-        <input type="email" id="email" placeholder="Email*" required class="w-full p-2.5 border border-gray-300 rounded-lg text-gray-900" />
-        <input type="text" id="phone" placeholder="Τηλέφωνο Επικοινωνίας*" required class="w-full p-2.5 border border-gray-300 rounded-lg text-gray-900" />
+      <form action="#" class="space-y-8">
+        <div>
+          <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Ονοματεπώνυμο*</label> 
+          <input type="text" id="name" placeholder="Μαρία Παπαδοπούλου" required class="w-full p-2.5 border border-gray-300 rounded-lg text-gray-900" />
+        </div>
 
-        <!-- Dropdowns -->
+        <div>
+          <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email*</label>
+          <input type="email" id="email" placeholder="name@gmail.com" required class="w-full p-2.5 border border-gray-300 rounded-lg text-gray-900" />
+        </div>
+
+        <div>
+          <label for="phone" class="block mb-2 text-sm font-medium text-gray-900">Τηλέφωνο Επικοινωνίας*</label>
+          <input type="text" id="phone" placeholder="+306999999999" required class="w-full p-2.5 border border-gray-300 rounded-lg text-gray-900" />
+        </div>
+
+        <!-- Therapist Dropdown -->
         <div class="relative">
           <button id="dropdownButton1" data-dropdown-toggle="dropdown1" class="w-full text-left p-2.5 border border-gray-300 rounded-lg flex justify-between items-center" type="button">
             Επιλέξτε Θεραπευτή
             <svg class="w-3 h-3 ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m1 1 4 4 4-4"/></svg>
           </button>
-          <div id="dropdown1" class="hidden z-10 w-full bg-white rounded-lg shadow mt-1">
+          <div id="dropdown1" class="hidden absolute z-10 w-full bg-white rounded-lg shadow mt-1">
             <ul class="py-2 text-gray-700">
               <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Εύη Καραβάνα</a></li>
               <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Χρήστος Κωστικίδης</a></li>
@@ -69,12 +79,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
         </div>
 
+        <!-- Service Dropdown -->
         <div class="relative">
           <button id="dropdownButton2" data-dropdown-toggle="dropdown2" class="w-full text-left p-2.5 border border-gray-300 rounded-lg flex justify-between items-center" type="button">
             Επιλέξτε Υπηρεσία
             <svg class="w-3 h-3 ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m1 1 4 4 4-4"/></svg>
           </button>
-          <div id="dropdown2" class="hidden z-10 w-full bg-white rounded-lg shadow mt-1">
+          <div id="dropdown2" class="hidden absolute z-10 w-full bg-white rounded-lg shadow mt-1">
             <ul class="py-2 text-gray-700">
               <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Ατομική Θεραπεία</a></li>
               <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Θεραπεία Ζεύγους</a></li>
@@ -87,12 +98,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
         </div>
 
-        <textarea id="message" rows="6" placeholder="Μήνυμα" class="w-full p-2.5 border border-gray-300 rounded-lg text-gray-900"></textarea>
+        <div>
+          <label for="message" class="block mb-2 text-sm font-medium text-gray-900">Μήνυμα</label>
+          <textarea id="message" rows="6" placeholder="Αφήστε ένα σχόλιο" class="w-full p-2.5 border border-gray-300 rounded-lg text-gray-900"></textarea>
+        </div>
+
         <button type="submit" class="w-full py-2.5 rounded-lg bg-black text-white hover:bg-gray-800">Αποστολή</button>
       </form>
     </div>
   </section>
 
-  <!-- Flowbite JS -->
   <script type="module" src="/src/scripts/flowbite.js" client:load></script>
 </BaseLayout>
