@@ -14,7 +14,7 @@ export default function ContactDropdown({ label, options, name }) {
     <div className="relative">
       <button
         type="button"
-        className={`w-full bg-white p-2.5 border border-gray-300 rounded-lg text-gray-900 text-left ${
+        className={`w-full bg-white p-2.5 border border-gray-300 rounded-lg text-gray-900 ${
           !selected ? "text-gray-500" : "text-gray-900"
         }`}
         onClick={() => setOpen(!open)}
@@ -32,7 +32,7 @@ export default function ContactDropdown({ label, options, name }) {
           <button
             key={i}
             type="button"
-            className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
+            className="block w-full px-4 py-2 text-gray-700 hover:bg-gray-100"
             onClick={() => handleSelect(option)}
           >
             {option.label}
