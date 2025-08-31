@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import 'flowbite';
+import initFlowbite from '../scripts/initFlowbite.js';
 ---
 
 <BaseLayout>
@@ -111,4 +111,8 @@ import 'flowbite';
       </form>
   </div>
 </section>
+<!-- Load Flowbite JS only on the client -->
+  <script is:inline>
+    import("../scripts/initFlowbite.js");
+  </script>
 </BaseLayout>
