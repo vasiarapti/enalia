@@ -48,16 +48,17 @@ import ContactDropdown from '../components/ContactDropdown.jsx';
         </div>
 
         <!-- Therapist Dropdown -->
-        <ContactDropdown
-          label="Επιλέξτε Θεραπευτή"
-          options={[
-            { label: "Εύη Καραβάνα" },
-            { label: "Χρήστος Κωστικίδης" }
-          ]}
-        />
+        <ContactDropdown 
+          client:load 
+            label="Επιλέξτε Θεραπευτή"
+            options={[
+                { label: "Εύη Καραβάνα" },
+                { label: "Χρήστος Κωστικίδης" }
+          ]} />
 
         <!-- Service Dropdown -->
         <ContactDropdown
+          client:load 
           label="Επιλέξτε Υπηρεσία"
           options={[
             { label: "Ατομική Θεραπεία" },
