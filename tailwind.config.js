@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./src/**/*.{astro,html,js,jsx,ts,tsx,md,mdx}'],
+  content: [
+    './src/**/*.{astro,html,js,jsx,ts,tsx,md,mdx}',
+    './node_modules/flowbite/**/*.js', // 👈 add this
+  ],
   theme: {
     extend: {
       animation: {
@@ -9,18 +12,15 @@ export default {
       keyframes: {
         marquee: {
           '0%': { transform: 'translateX(100%)' },
-          '100%': { transform: 'tramslateX(-100%)' },
+          '100%': { transform: 'translateX(-100%)' }, // 👈 typo fixed: "tramslateX"
         },
       },
       colors: {
-        //primary: '#769d88',        // Sidebar background - dark green
         primary: '#7a9d8a',
-        hover: '#617d6e',          // Hover color -grey green
-        // secondary: '#edeae8',      // Text color - beige
-        secondary: '#F7EADF',      // Text color - beige
-        inpage: '#fbfaf8',        // Like-white
-        footer: '#7a9d8a'
-        // footer: '#efdfd2'
+        hover: '#617d6e',
+        secondary: '#F7EADF',
+        inpage: '#fbfaf8',
+        footer: '#7a9d8a',
       },
     },
     backgroundImage: {
@@ -28,5 +28,7 @@ export default {
       'background': "url('../assets/wave-haikei.svg')",
     },
   },
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin'), // 👈 add this
+  ],
 };
