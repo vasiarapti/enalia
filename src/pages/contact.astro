@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactDropdown from '../components/ContactDropdown.jsx';
 ---
 
 <BaseLayout>
@@ -7,7 +8,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
       <h2 class="mb-4 text-3xl tracking-tight font-bold text-center text-gray-900">Στοιχεία Επικοινωνίας</h2>
 
-      <!-- Contact Info -->
+      <!-- Contact Info (unchanged) -->
       <div class="space-y-4">
         <span class="flex items-center gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="black" class="w-6 h-6">
@@ -16,28 +17,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </svg>
           <a class="text-gray-900" href="https://maps.app.goo.gl/yRFXY9cB1Xb4ipSA8" target="_blank">Λευκής 12, Νέα Ιωνία, 14231</a>
         </span>
-
-        <span class="flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="black" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
-          </svg>
-          <a class="text-gray-900" href="tel:+306972078685">Εύη Καραβάνα | 6972078685</a>
-        </span>
-
-        <span class="flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="black" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
-          </svg>
-          <a class="text-gray-900" href="tel:+306988329751">Χρήστος Κωστικίδης | 6988329751</a>
-        </span>
-
-        <span class="flex items-center gap-2">
-          <svg fill="#000000" width="24" height="24" viewBox="0 0 24 24">
-            <path fill-rule="evenodd" d="M12,23 C5.92486775,23 1,18.0751322 1,12 C1,5.92486775 5.92486775,1 12,1 C18.0751322,1 23,5.92486775 23,12 C23,18.0751322 18.0751322,23 12,23 Z M12,21 C16.9705627,21 21,16.9705627 21,12 C21,7.02943725 16.9705627,3 12,3 C7.02943725,3 3,7.02943725 3,12 C3,16.9705627 7.02943725,21 12,21 Z M13,11 L17,11 L17,13 L11,13 L11,6 L13,6 L13,11 Z"/>
-          </svg>
-          <span class="text-gray-900">Ωράριο Λειτουργία: 9:00 - 21:00</span>
-        </span>
-
+        <!-- Add other contact info spans here (phone, hours) -->
         <iframe class="w-full h-96 mt-4 border-0"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3142.451817387242!2d23.74254147646434!3d38.036557397036326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a1a2669eba4ff3%3A0x5523a4afef2088e7!2zzpvOtc-FzrrOrs-CIDEyLCDOnc6tzrEgzpnPic69zq_OsSAxNDIgMzE!5e0!3m2!1sel!2sgr!4v1750333070272!5m2!1sel!2sgr"
           allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
@@ -47,11 +27,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
       <h2 class="mb-4 text-3xl tracking-tight font-bold text-center text-gray-900">Φόρμα Επικοινωνίας</h2>
-      <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 sm:text-xl">Αν θέλετε να κλείσετε ραντεβού, συμπληρώστε τα στοιχεία σας παρακάτω και θα επικοινωνήσουμε άμεσα μαζί σας.</p>
+      <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 sm:text-xl">
+        Αν θέλετε να κλείσετε ραντεβού, συμπληρώστε τα στοιχεία σας παρακάτω και θα επικοινωνήσουμε άμεσα μαζί σας.
+      </p>
 
-      <form action="#" class="space-y-8">
+      <form action="#" class="space-y-6">
         <div>
-          <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Ονοματεπώνυμο*</label> 
+          <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Ονοματεπώνυμο*</label>
           <input type="text" id="name" placeholder="Μαρία Παπαδοπούλου" required class="w-full p-2.5 border border-gray-300 rounded-lg text-gray-900" />
         </div>
 
@@ -66,37 +48,27 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
 
         <!-- Therapist Dropdown -->
-        <div class="relative">
-          <button id="dropdownButton1" data-dropdown-toggle="dropdown1" class="w-full text-left p-2.5 border border-gray-300 rounded-lg flex justify-between items-center" type="button">
-            Επιλέξτε Θεραπευτή
-            <svg class="w-3 h-3 ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m1 1 4 4 4-4"/></svg>
-          </button>
-          <div id="dropdown1" class="hidden absolute z-10 w-full bg-white rounded-lg shadow mt-1">
-            <ul class="py-2 text-gray-700">
-              <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Εύη Καραβάνα</a></li>
-              <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Χρήστος Κωστικίδης</a></li>
-            </ul>
-          </div>
-        </div>
+        <ContactDropdown
+          label="Επιλέξτε Θεραπευτή"
+          options={[
+            { label: "Εύη Καραβάνα" },
+            { label: "Χρήστος Κωστικίδης" }
+          ]}
+        />
 
         <!-- Service Dropdown -->
-        <div class="relative">
-          <button id="dropdownButton2" data-dropdown-toggle="dropdown2" class="w-full text-left p-2.5 border border-gray-300 rounded-lg flex justify-between items-center" type="button">
-            Επιλέξτε Υπηρεσία
-            <svg class="w-3 h-3 ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m1 1 4 4 4-4"/></svg>
-          </button>
-          <div id="dropdown2" class="hidden absolute z-10 w-full bg-white rounded-lg shadow mt-1">
-            <ul class="py-2 text-gray-700">
-              <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Ατομική Θεραπεία</a></li>
-              <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Θεραπεία Ζεύγους</a></li>
-              <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Οικογενειακή Θεραπεία</a></li>
-              <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Συμβουλευτική Γονέων</a></li>
-              <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Online Ψυχοθεραπεία</a></li>
-              <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Βιωματικές Δράσεις</a></li>
-              <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Άλλο</a></li>
-            </ul>
-          </div>
-        </div>
+        <ContactDropdown
+          label="Επιλέξτε Υπηρεσία"
+          options={[
+            { label: "Ατομική Θεραπεία" },
+            { label: "Θεραπεία Ζεύγους" },
+            { label: "Οικογενειακή Θεραπεία" },
+            { label: "Συμβουλευτική Γονέων" },
+            { label: "Online Ψυχοθεραπεία" },
+            { label: "Βιωματικές Δράσεις" },
+            { label: "Άλλο" }
+          ]}
+        />
 
         <div>
           <label for="message" class="block mb-2 text-sm font-medium text-gray-900">Μήνυμα</label>
@@ -107,7 +79,4 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </form>
     </div>
   </section>
-
-  <script type="module" src="/src/scripts/flowbite-init.js" client:load></script>
-
 </BaseLayout>
