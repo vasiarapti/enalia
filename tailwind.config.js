@@ -1,3 +1,5 @@
+import flowbitePlugin from 'flowbite/plugin';
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -28,7 +30,5 @@ export default {
       'background': "url('../assets/wave-haikei.svg')",
     },
   },
-  plugins: [
-    [flowbite]
-  ],
+  plugins: [flowbitePlugin]
 };
