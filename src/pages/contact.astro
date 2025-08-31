@@ -17,7 +17,9 @@ import ContactDropdown from '../components/ContactDropdown.jsx';
           </svg>
           <a class="text-gray-900" href="https://maps.app.goo.gl/yRFXY9cB1Xb4ipSA8" target="_blank">Λευκής 12, Νέα Ιωνία, 14231</a>
         </span>
+
         <!-- Add other contact info spans here (phone, hours) -->
+
         <iframe class="w-full h-96 mt-4 border-0"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3142.451817387242!2d23.74254147646434!3d38.036557397036326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a1a2669eba4ff3%3A0x5523a4afef2088e7!2zzpvOtc-FzrrOrs-CIDEyLCDOnc6tzrEgzpnPic69zq_OsSAxNDIgMzE!5e0!3m2!1sel!2sgr!4v1750333070272!5m2!1sel!2sgr"
           allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
@@ -31,56 +33,63 @@ import ContactDropdown from '../components/ContactDropdown.jsx';
         Αν θέλετε να κλείσετε ραντεβού, συμπληρώστε τα στοιχεία σας παρακάτω και θα επικοινωνήσουμε άμεσα μαζί σας.
       </p>
 
-      <form action="#" class="space-y-6">
+      <form class="space-y-6" on:submit="return validateDropdowns(event)">
         <div>
           <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Ονοματεπώνυμο*</label>
-          <input type="text" id="name" placeholder="Μαρία Παπαδοπούλου" required class="w-full p-2.5 border border-gray-300 rounded-lg text-gray-900" />
+          <input type="text" id="name" name="name" placeholder="Μαρία Παπαδοπούλου" required class="w-full p-2.5 border border-gray-300 rounded-lg text-gray-900" />
         </div>
 
         <div>
           <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email*</label>
-          <input type="email" id="email" placeholder="name@gmail.com" required class="w-full p-2.5 border border-gray-300 rounded-lg text-gray-900" />
+          <input type="email" id="email" name="email" placeholder="name@gmail.com" required class="w-full p-2.5 border border-gray-300 rounded-lg text-gray-900" />
         </div>
 
         <div>
           <label for="phone" class="block mb-2 text-sm font-medium text-gray-900">Τηλέφωνο Επικοινωνίας*</label>
-          <input type="text" id="phone" placeholder="+306999999999" required class="w-full p-2.5 border border-gray-300 rounded-lg text-gray-900" />
+          <input type="text" id="phone" name="phone" placeholder="+306999999999" required class="w-full p-2.5 border border-gray-300 rounded-lg text-gray-900" />
         </div>
 
         <!-- Therapist Dropdown -->
         <div>
-            <ContactDropdown 
-                client:load 
-                    label="Επιλέξτε Θεραπευτή"
-                    options={[
-                        { label: "Εύη Καραβάνα" },
-                        { label: "Χρήστος Κωστικίδης" }
-                ]} />
+          <ContactDropdown client:load label="Επιλέξτε Θεραπευτή*" name="therapist" options={[
+            { label: "Εύη Καραβάνα" },
+            { label: "Χρήστος Κωστικίδης" }
+          ]} />
         </div>
 
         <!-- Service Dropdown -->
         <div>
-            <ContactDropdown
-            client:load 
-            label="Επιλέξτε Υπηρεσία"
-            options={[
-                { label: "Ατομική Θεραπεία" },
-                { label: "Θεραπεία Ζεύγους" },
-                { label: "Οικογενειακή Θεραπεία" },
-                { label: "Συμβουλευτική Γονέων" },
-                { label: "Online Ψυχοθεραπεία" },
-                { label: "Βιωματικές Δράσεις" },
-                { label: "Άλλο" }
-            ]}
-            />
+          <ContactDropdown client:load label="Επιλέξτε Υπηρεσία*" name="service" options={[
+            { label: "Ατομική Θεραπεία" },
+            { label: "Θεραπεία Ζεύγους" },
+            { label: "Οικογενειακή Θεραπεία" },
+            { label: "Συμβουλευτική Γονέων" },
+            { label: "Online Ψυχοθεραπεία" },
+            { label: "Βιωματικές Δράσεις" },
+            { label: "Άλλο" }
+          ]} />
         </div>
+
         <div>
           <label for="message" class="block mb-2 text-sm font-medium text-gray-900">Μήνυμα</label>
-          <textarea id="message" rows="6" placeholder="Αφήστε ένα σχόλιο" class="w-full p-2.5 border border-gray-300 rounded-lg text-gray-900"></textarea>
+          <textarea id="message" name="message" rows="6" placeholder="Αφήστε ένα σχόλιο" class="w-full p-2.5 border border-gray-300 rounded-lg text-gray-900"></textarea>
         </div>
 
         <button type="submit" class="w-full py-2.5 rounded-lg bg-white text-gray-800 hover:bg-primary hover:text-white">Αποστολή</button>
       </form>
     </div>
+
+    <script type="module">
+      function validateDropdowns(event) {
+        const therapist = event.target.querySelector('[name="therapist"]').value;
+        const service = event.target.querySelector('[name="service"]').value;
+        if (!therapist || !service) {
+          alert("Παρακαλώ επιλέξτε Θεραπευτή και Υπηρεσία.");
+          event.preventDefault();
+          return false;
+        }
+        return true;
+      }
+    </script>
   </section>
 </BaseLayout>
