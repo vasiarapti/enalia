@@ -11,6 +11,7 @@ export default function ContactDropdown({ label, options, name }) {
     setOpen(false);
   };
 
+  // Auto height based on content
   useEffect(() => {
     if (open && dropdownRef.current) {
       setHeight(dropdownRef.current.scrollHeight);
@@ -19,13 +20,26 @@ export default function ContactDropdown({ label, options, name }) {
     }
   }, [open, options]);
 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.parentNode.contains(event.target)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className="relative">
+    <div className="relative w-full md:w-full">
       <button
         type="button"
-        className={`w-full bg-white p-2.5 border border-gray-300 rounded-lg ${
+        className={`w-full bg-white p-2.5 border border-gray-300 rounded-lg flex justify-between items-center ${
           !selected ? "text-gray-500" : "text-gray-900"
-        } flex justify-between items-center`}
+        }`}
         onClick={() => setOpen(!open)}
       >
         {selected || label}
