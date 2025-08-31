@@ -37,7 +37,7 @@ export default function ContactDropdown({ label, options, name }) {
     <div className="relative w-full md:w-full group">
       <button
         type="button"
-        className={`w-full bg-white p-2.5 border border-gray-300 rounded-lg text-left flex justify-between items-center text-gray-900 group-hover:text-gray-700 focus:text-gray-700`}
+        className={`w-full bg-white p-2.5 border border-gray-300 rounded-lg flex justify-between items-center text-gray-900 group-hover:text-gray-700 focus:text-gray-700`}
         onClick={() => setOpen(!open)}
       >
         {selected || label}
@@ -66,7 +66,7 @@ export default function ContactDropdown({ label, options, name }) {
           <button
             key={i}
             type="button"
-            className="block w-full px-4 py-2 text-gray-700 hover:bg-gray-100"
+            className="block w-full px-4 py-2 text-gray-700 hover:bg-gray-100 text-left"
             onClick={() => handleSelect(option)}
           >
             {option.label}
