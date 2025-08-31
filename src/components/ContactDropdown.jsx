@@ -5,10 +5,10 @@ export default function ContactDropdown({ label, options }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="relative">
+    <div className="relative py-2">
       <button
         type="button"
-        className="w-full p-2.5 border border-gray-300 rounded-lg flex justify-between items-center mb-2"
+        className="w-full bg-white p-2.5 border border-gray-300 rounded-lg text-gray-900 "
         onClick={() => setOpen(!open)}
       >
         {label}
