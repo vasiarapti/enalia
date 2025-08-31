@@ -34,16 +34,27 @@ export default function ContactDropdown({ label, options, name }) {
   }, []);
 
   return (
-    <div className="relative w-full md:w-full">
+    <div className="relative w-full md:w-full group">
       <button
         type="button"
-        className={`w-full bg-white p-2.5 border border-gray-300 rounded-lg flex justify-between items-center ${
-          !selected ? "text-gray-500" : "text-gray-900"
-        }`}
+        className={`w-full bg-white p-2.5 border border-gray-300 rounded-lg flex justify-between items-center text-gray-900 group-hover:text-gray-700 focus:text-gray-700`}
         onClick={() => setOpen(!open)}
       >
         {selected || label}
-        <span className={`ml-2 transform transition-transform ${open ? "rotate-180" : ""}`}>&#9660;</span>
+        <svg
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          aria-hidden="true"
+          className={`-mr-1 ml-2 size-5 transition-transform duration-300 ${
+            open ? "rotate-180 text-gray-700" : "rotate-0 text-gray-400"
+          } group-hover:text-gray-700 group-focus:text-gray-700`}
+        >
+          <path
+            d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+            clipRule="evenodd"
+            fillRule="evenodd"
+          />
+        </svg>
       </button>
 
       <div
