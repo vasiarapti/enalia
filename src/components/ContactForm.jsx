@@ -49,10 +49,7 @@ export default function ContactForm() {
       <ContactDropdown
         label="Επιλέξτε Θεραπευτή*"
         name="therapist"
-        options={[
-          { label: "Εύη Καραβάνα" },
-          { label: "Χρήστος Κωστικίδης" }
-        ]}
+        options={[{ label: "Εύη Καραβάνα" }, { label: "Χρήστος Κωστικίδης" }]}
         onChange={setTherapist}
       />
 
@@ -66,7 +63,7 @@ export default function ContactForm() {
           { label: "Συμβουλευτική Γονέων" },
           { label: "Online Ψυχοθεραπεία" },
           { label: "Βιωματικές Δράσεις" },
-          { label: "Άλλο" }
+          { label: "Άλλο" },
         ]}
         onChange={setService}
       />
