@@ -54,24 +54,16 @@ export default function Sidebar() {
     <>
       {/* Burger Button */}
       <button
-        className="md:hidden fixed mt-2 left-4 z-[60]"
+        className="md:hidden fixed top-2 left-4 z-[60]"
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Toggle menu"
       >
         {isOpen ? (
           <X size={30} className="text-secondary" />
         ) : (
-          <Menu size={30} className="text-primary" />
+          <Menu size={30} className="text-secondary" />
         )}
       </button>
-
-      {/* Dark overlay (mobile only) */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
-          onClick={() => setIsOpen(false)}
-        />
-      )}
 
       {/* Sidebar */}
       <div
