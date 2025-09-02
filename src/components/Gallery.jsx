@@ -3,12 +3,6 @@ import image1 from "../assets/our-place/place1.jpg";
 import image2 from "../assets/our-place/place2.jpg";
 import image3 from "../assets/our-place/place3.jpg";
 
-/**
- * SpaceSlider – main image with arrows + thumbnail strip
- * - No external deps
- * - Keyboard: ←/→ navigate
- * - Responsive; thumbnails scroll on small screens
- */
 export default function SpaceSlider() {
   const images = useMemo(
     () => [
@@ -34,7 +28,7 @@ export default function SpaceSlider() {
   }, []);
 
   return (
-    <div role="region" aria-label="Ο Χώρος – προβολέας εικόνων" className="w-1/3">
+    <div role="region" aria-label="Ο Χώρος – προβολέας εικόνων" className="w-full mx-auto px-2 max-w-2xl md:max-w-3xl lg:max-w-2xl xl:max-w-[42rem]">
       {/* Main viewport */}
       <div className="relative w-full aspect-video overflow-hidden rounded-xl border-4 border-white shadow-lg bg-gray-200">
         <img

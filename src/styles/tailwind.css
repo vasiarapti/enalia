@@ -10,7 +10,7 @@
 /* --- Scroll reveal --- */
 [data-reveal]{
   opacity: 0;
-  transform: translateY(24px);            /* default: slide up a bit */
+  transform: translateY(24px);
   transition: opacity 700ms ease-out, transform 700ms ease-out;
   will-change: opacity, transform;
 }
