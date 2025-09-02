@@ -36,7 +36,7 @@ export default function SpaceSlider() {
   return (
     <div role="region" aria-label="Ο Χώρος – προβολέας εικόνων" className="w-full">
       {/* Main viewport */}
-      <div className="relative w-full aspect-video overflow-hidden rounded-xl border-4 border-white shadow-lg bg-gray-200">
+      <div className="relative w-1/3 aspect-video overflow-hidden rounded-xl border-4 border-white shadow-lg bg-gray-200">
         <img
           src={images[index].src}
           alt={images[index].alt}
