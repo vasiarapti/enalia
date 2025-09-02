@@ -6,3 +6,30 @@
 
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* --- Scroll reveal --- */
+[data-reveal]{
+  opacity: 0;
+  transform: translateY(24px);            /* default: slide up a bit */
+  transition: opacity 700ms ease-out, transform 700ms ease-out;
+  will-change: opacity, transform;
+}
+[data-reveal="in"]{
+  opacity: 1;
+  transform: none;
+}
+
+/* Direction variants */
+[data-reveal][data-reveal-from="left"]  { transform: translateX(-24px); }
+[data-reveal][data-reveal-from="right"] { transform: translateX(24px);  }
+[data-reveal][data-reveal-from="up"]    { transform: translateY(24px);  }
+[data-reveal][data-reveal-from="down"]  { transform: translateY(-24px); }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal]{
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
