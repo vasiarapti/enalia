@@ -5,13 +5,24 @@ import {
   Linkedin,
   Phone
 } from '@lucide/astro';
-
+import logo from "../assets/logo.webp"; // <-- add this
 const BASE = import.meta.env.BASE_URL || '/';
 ---
 
-<header class="fixed top-0 left-0 z-20 w-full md:left-72 md:w-[calc(100%-18rem)] bg-primary flex flex-col">
-  <!-- Top bar -->
-  <div class="flex justify-between w-full h-10 bg-primary px-4 items-center">
+<header class="fixed top-0 left-0 z-40 w-full bg-primary">
+  <!-- MOBILE HEADER: only burger (from Sidebar) + logo -->
+  <div class="md:hidden flex items-center justify-between h-12 px-4">
+    <!-- Left space visually aligns with burger button (which is fixed from Sidebar.jsx) -->
+    <div class="w-8 h-8"></div>
+    <img
+      src={logo.src}
+      alt="Ενάλια"
+      class="h-8 w-auto object-contain"
+    />
+  </div>
+
+  <!-- DESKTOP/TABLET HEADER (unchanged content), hidden on mobile -->
+  <div class="hidden md:flex justify-between w-full h-10 bg-primary px-4 items-center">
     <a
       class="text-md font-semibold text-center text-secondary"
       href={`${BASE}contact`}
@@ -19,10 +30,10 @@ const BASE = import.meta.env.BASE_URL || '/';
       Κλείστε την πρώτη σας συνεδρία
     </a>
 
-  <!-- Social links / contact bar -->
-  <ul class="flex items-center h-full gap-8 px-6 text-sm font-semibold tracking-wide text-secondary">
-    <li class="flex items-center h-full">
-      <span class="flex items-center gap-1 h-full">
+    <!-- Social links / contact bar -->
+    <ul class="flex items-center h-full gap-8 px-6 text-sm font-semibold tracking-wide text-secondary">
+      <li class="flex items-center h-full">
+        <span class="flex items-center gap-1 h-full">
           <Facebook class="w-4 h-4" />
         </span>
       </li>
@@ -37,13 +48,15 @@ const BASE = import.meta.env.BASE_URL || '/';
         </span>
       </li>
     </ul>
+
     <ul class="flex items-center h-full gap-8 px-6 text-sm font-semibold tracking-wide text-secondary">
       <li class="flex items-center h-full">
         <span class="flex items-center gap-1 h-full">
           <a class="self-center" href="https://maps.app.goo.gl/yRFXY9cB1Xb4ipSA8" target="_blank" rel="noopener noreferrer" aria-label="Open Google Maps">Λευκής 12, Νέα Ιωνία</a>
         </span>
       </li>
-      <!-- <li class="flex items-center h-full">
+      {/*
+      <li class="flex items-center h-full">
         <span class="flex items-center gap-1 h-full">
           <Phone class="w-4 h-4" />
           <a class="self-center" href="tel:+306972078685">6972078685</a>
@@ -54,7 +67,8 @@ const BASE = import.meta.env.BASE_URL || '/';
           <Phone class="w-4 h-4" />
           <a class="self-center" href="tel:+306988329751">6988329751</a>
         </span>
-      </li> -->
+      </li>
+      */}
     </ul>
   </div>
 </header>
