@@ -42,7 +42,7 @@ export default function SpaceSlider() {
     <div
       role="region"
       aria-label="Ο Χώρος – προβολέας εικόνων"
-      className="w-full mx-auto px-2 max-w-2xl md:max-w-3xl lg:max-w-2xl xl:max-w-[42rem]"
+      className="w-full mx-auto px-2 max-w-[42rem]"
     >
       {/* Main viewport (slightly shorter on larger screens) */}
       <div className="relative w-full aspect-video md:aspect-[2/1] lg:aspect-[21/9] overflow-hidden rounded-xl border-4 border-white shadow-lg bg-gray-200">
