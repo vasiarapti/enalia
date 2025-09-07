@@ -4,10 +4,7 @@ import image2 from "../assets/our-place/place2.jpg";
 import image3 from "../assets/our-place/place3.jpg";
 
 /**
- * SpaceSlider – main image with arrows + thumbnail strip
- * - No external deps
- * - Keyboard: ←/→ navigate
- * - Responsive; thumbnails scroll on small screens
+ * SpaceSlider – main image + thumbnails + fullscreen modal
  */
 export default function SpaceSlider() {
   const images = useMemo(
@@ -20,6 +17,7 @@ export default function SpaceSlider() {
   );
 
   const [index, setIndex] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
 
   const prev = () => setIndex((i) => (i - 1 + images.length) % images.length);
   const next = () => setIndex((i) => (i + 1) % images.length);
@@ -28,20 +26,34 @@ export default function SpaceSlider() {
     const onKey = (e) => {
       if (e.key === "ArrowLeft") prev();
       if (e.key === "ArrowRight") next();
+      if (e.key === "Escape") setIsOpen(false);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
+  // lock scroll when modal is open
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    return () => (document.body.style.overflow = "");
+  }, [isOpen]);
+
   return (
     <div role="region" aria-label="Ο Χώρος – προβολέας εικόνων" className="w-full">
-      {/* Main viewport */}
-      <div className="relative w-full aspect-video overflow-hidden rounded-xl border-4 border-white shadow-lg bg-gray-200">
+      {/* Main viewport (slightly shorter on md+) */}
+      <div className="relative w-full aspect-video md:aspect-[2/1] lg:aspect-[21/9] overflow-hidden rounded-xl border-4 border-white shadow-lg bg-gray-200">
         <img
           src={images[index].src}
-          alt={images[index].alt}
+          alt={images[index].alt]}
           className="absolute inset-0 h-full w-full object-cover"
           loading="eager"
+        />
+
+        {/* Click anywhere on image to open fullscreen (keeps arrows clickable via z-index) */}
+        <button
+          onClick={() => setIsOpen(true)}
+          aria-label="Πλήρης οθόνη"
+          className="absolute inset-0 z-10"
         />
 
         {/* Prev */}
@@ -49,7 +61,7 @@ export default function SpaceSlider() {
           type="button"
           onClick={prev}
           aria-label="Προηγούμενη εικόνα"
-          className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 hover:bg-black/60 text-white p-2 md:p-3 focus:outline-none focus:ring-2 focus:ring-white/80"
+          className="absolute z-20 left-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 hover:bg-black/60 text-white p-2 md:p-3 focus:outline-none focus:ring-2 focus:ring-white/80"
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5 md:h-6 md:w-6"><path d="m15 18-6-6 6-6"/></svg>
         </button>
@@ -59,13 +71,13 @@ export default function SpaceSlider() {
           type="button"
           onClick={next}
           aria-label="Επόμενη εικόνα"
-          className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 hover:bg-black/60 text-white p-2 md:p-3 focus:outline-none focus:ring-2 focus:ring-white/80"
+          className="absolute z-20 right-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 hover:bg-black/60 text-white p-2 md:p-3 focus:outline-none focus:ring-2 focus:ring-white/80"
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5 md:h-6 md:w-6"><path d="m9 18 6-6-6-6"/></svg>
         </button>
       </div>
 
-      {/* Thumbnails */}
+      {/* Bigger thumbnails */}
       <div className="mt-4 flex items-center justify-center gap-4 overflow-x-auto no-scrollbar">
         {images.map((img, i) => (
           <button
@@ -76,7 +88,7 @@ export default function SpaceSlider() {
             className={
               `group relative overflow-hidden rounded-lg border-4 ${
                 i === index ? "ring-2 ring-primary" : "ring-1 ring-black/10"
-              } w-28 sm:w-36 md:w-40 aspect-video focus:outline-none focus:ring-2 focus:ring-primary/60`
+              } w-32 sm:w-40 md:w-48 aspect-video focus:outline-none focus:ring-2 focus:ring-primary/60`
             }
           >
             <img
@@ -88,10 +100,51 @@ export default function SpaceSlider() {
           </button>
         ))}
       </div>
+
+      {/* Fullscreen modal */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Πλήρης οθόνη εικόνας"
+          onClick={() => setIsOpen(false)}
+        >
+          <img
+            src={images[index].src}
+            alt={images[index].alt}
+            className="max-w-full max-h-full rounded-xl shadow-xl"
+            onClick={(e) => e.stopPropagation()}
+          />
+          <button
+            onClick={() => setIsOpen(false)}
+            aria-label="Κλείσιμο"
+            className="absolute top-4 right-4 rounded-full bg-black/60 text-white p-2 focus:outline-none focus:ring-2 focus:ring-white/80"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+
+          {/* Optional: nav inside modal */}
+          <button
+            onClick={(e) => { e.stopPropagation(); prev(); }}
+            aria-label="Προηγούμενη"
+            className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-black/50 text-white p-3"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-6 w-6"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <button
+            onClick={(e) => { e.stopPropagation(); next(); }}
+            aria-label="Επόμενη"
+            className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-black/50 text-white p-3"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-6 w-6"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
+      )}
     </div>
   );
 }
 
 /* Optional: hide native scrollbar on thumbnail row for a cleaner look */
-// .no-scrollbar::-webkit-scrollbar { display: none; }
-// .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+/* .no-scrollbar::-webkit-scrollbar { display: none; }
+   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; } */
