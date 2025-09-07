@@ -2,11 +2,10 @@
 import {
   Facebook,
   Mail,
-  instagram,
   Phone
 } from '@lucide/astro';
-// import logo from "../assets/logo.webp"; // <-- add this
-import logo from "../../public/images/logo.svg"
+import logo from "../assets/logo.webp"; // <-- add this
+import instagram from "../assets/instagram.svg"
 const BASE = import.meta.env.BASE_URL || '/';
 ---
 
@@ -14,8 +13,7 @@ const BASE = import.meta.env.BASE_URL || '/';
   <!-- MOBILE HEADER -->
   <div class="md:hidden flex items-center justify-between h-12 px-4">
     <div class="w-8 h-8"></div>
-    <!-- <img src={logo.src} alt="Ενάλια" class="h-8 w-auto object-contain" /> -->
-    <svg class="fill-secondary h-8 w-auto object-contain"><{logo}/svg>
+    <img src={logo.src} alt="Ενάλια" class="h-8 w-auto object-contain" />
   </div>
 
   <!-- DESKTOP/TABLET HEADER -->
@@ -30,7 +28,7 @@ const BASE = import.meta.env.BASE_URL || '/';
     <ul class="flex items-center h-full gap-8 px-6 text-md font-semibold tracking-wide text-secondary">
       <li class="flex items-center h-full"><span class="flex items-center gap-1 h-full"><Facebook class="w-4 h-4" /></span></li>
       <li class="flex items-center h-full"><span class="flex items-center gap-1 h-full"><Mail class="w-4 h-4" /></span></li>
-      <li class="flex items-center h-full"><span class="flex items-center gap-1 h-full"><instagram class="w-4 h-4" /></span></li>
+      <li class="flex items-center h-full"><span class="flex items-center gap-1 h-full"><img src={instagram.src} class="w-4 h-4" /></span></li>
     </ul>
 
     <ul class="flex items-center h-full gap-8 px-6 text-md font-semibold tracking-wide text-secondary">
