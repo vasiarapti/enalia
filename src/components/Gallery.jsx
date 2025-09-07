@@ -4,7 +4,7 @@ import image2 from "../assets/our-place/place2.jpg";
 import image3 from "../assets/our-place/place3.jpg";
 
 /**
- * SpaceSlider – main image + thumbnails + fullscreen modal
+ * SpaceSlider – main image + thumbnails (equal width) + fullscreen modal
  */
 export default function SpaceSlider() {
   const images = useMemo(
@@ -32,15 +32,19 @@ export default function SpaceSlider() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  // lock scroll when modal is open
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
     return () => (document.body.style.overflow = "");
   }, [isOpen]);
 
   return (
-    <div role="region" aria-label="Ο Χώρος – προβολέας εικόνων" className="w-full">
-      {/* Main viewport (slightly shorter on md+) */}
+    // Wrapper caps overall width; thumbs will match this width exactly
+    <div
+      role="region"
+      aria-label="Ο Χώρος – προβολέας εικόνων"
+      className="w-full mx-auto px-2 max-w-2xl md:max-w-3xl lg:max-w-2xl xl:max-w-[42rem]"
+    >
+      {/* Main viewport (slightly shorter on larger screens) */}
       <div className="relative w-full aspect-video md:aspect-[2/1] lg:aspect-[21/9] overflow-hidden rounded-xl border-4 border-white shadow-lg bg-gray-200">
         <img
           src={images[index].src}
@@ -49,11 +53,11 @@ export default function SpaceSlider() {
           loading="eager"
         />
 
-        {/* Click anywhere on image to open fullscreen (keeps arrows clickable via z-index) */}
+        {/* Click to open fullscreen */}
         <button
           onClick={() => setIsOpen(true)}
           aria-label="Πλήρης οθόνη"
-          className="absolute inset-0 z-10"
+          className="absolute inset-0 z-10 cursor-zoom-in"
         />
 
         {/* Prev */}
@@ -63,7 +67,7 @@ export default function SpaceSlider() {
           aria-label="Προηγούμενη εικόνα"
           className="absolute z-20 left-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 hover:bg-black/60 text-white p-2 md:p-3 focus:outline-none focus:ring-2 focus:ring-white/80"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5 md:h-6 md:w-6"><path d="m15 18-6-6 6-6"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5 md:h-6 md:w-6"><path d="m15 18-6-6 6-6"/></svg>
         </button>
 
         {/* Next */}
@@ -73,12 +77,15 @@ export default function SpaceSlider() {
           aria-label="Επόμενη εικόνα"
           className="absolute z-20 right-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 hover:bg-black/60 text-white p-2 md:p-3 focus:outline-none focus:ring-2 focus:ring-white/80"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5 md:h-6 md:w-6"><path d="m9 18 6-6-6-6"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5 md:h-6 md:w-6"><path d="m9 18 6-6-6-6"/></svg>
         </button>
       </div>
 
-      {/* Bigger thumbnails */}
-      <div className="mt-4 flex items-center justify-center gap-4 overflow-x-auto no-scrollbar">
+      {/* Thumbnails: grid with equal columns so total width == main image width */}
+      <div
+        className="mt-4 grid gap-4 w-full"
+        style={{ gridTemplateColumns: `repeat(${images.length}, minmax(0, 1fr))` }}
+      >
         {images.map((img, i) => (
           <button
             key={i}
@@ -88,7 +95,7 @@ export default function SpaceSlider() {
             className={
               `group relative overflow-hidden rounded-lg border-4 ${
                 i === index ? "ring-2 ring-primary" : "ring-1 ring-black/10"
-              } w-32 sm:w-40 md:w-48 aspect-video focus:outline-none focus:ring-2 focus:ring-primary/60`
+              } w-full aspect-video focus:outline-none focus:ring-2 focus:ring-primary/60`
             }
           >
             <img
@@ -116,15 +123,16 @@ export default function SpaceSlider() {
             className="max-w-full max-h-full rounded-xl shadow-xl"
             onClick={(e) => e.stopPropagation()}
           />
+
           <button
             onClick={() => setIsOpen(false)}
             aria-label="Κλείσιμο"
             className="absolute top-4 right-4 rounded-full bg-black/60 text-white p-2 focus:outline-none focus:ring-2 focus:ring-white/80"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
           </button>
 
-          {/* Optional: nav inside modal */}
+          {/* Modal nav */}
           <button
             onClick={(e) => { e.stopPropagation(); prev(); }}
             aria-label="Προηγούμενη"
@@ -144,7 +152,3 @@ export default function SpaceSlider() {
     </div>
   );
 }
-
-/* Optional: hide native scrollbar on thumbnail row for a cleaner look */
-/* .no-scrollbar::-webkit-scrollbar { display: none; }
-   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; } */
