@@ -5,7 +5,8 @@ import {
   instagram,
   Phone
 } from '@lucide/astro';
-import logo from "../assets/logo.webp"; // <-- add this
+// import logo from "../assets/logo.webp"; // <-- add this
+import logo from "../../public/images/logo.svg"
 const BASE = import.meta.env.BASE_URL || '/';
 ---
 
@@ -13,7 +14,8 @@ const BASE = import.meta.env.BASE_URL || '/';
   <!-- MOBILE HEADER -->
   <div class="md:hidden flex items-center justify-between h-12 px-4">
     <div class="w-8 h-8"></div>
-    <img src={logo.src} alt="Ενάλια" class="h-8 w-auto object-contain" />
+    <!-- <img src={logo.src} alt="Ενάλια" class="h-8 w-auto object-contain" /> -->
+    <svg class="fill-secondary h-8 w-auto object-contain"><{logo}/svg>
   </div>
 
   <!-- DESKTOP/TABLET HEADER -->
