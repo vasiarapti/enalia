@@ -44,7 +44,7 @@ export default function SpaceSlider() {
       <div className="relative w-full aspect-video md:aspect-[2/1] lg:aspect-[21/9] overflow-hidden rounded-xl border-4 border-white shadow-lg bg-gray-200">
         <img
           src={images[index].src}
-          alt={images[index].alt]}
+          alt={images[index].alt}
           className="absolute inset-0 h-full w-full object-cover"
           loading="eager"
         />
