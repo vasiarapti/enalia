@@ -46,14 +46,7 @@ export default function ContactForm() {
         />
       </div>
 
-      <ContactDropdown
-        label="Επιλέξτε Θεραπευτή*"
-        name="therapist"
-        options={[{ label: "Εύη Καραβάνα" }, { label: "Χρήστος Κωστικίδης" }]}
-        onChange={setTherapist}
-      />
-
-      <ContactDropdown
+       <ContactDropdown
         label="Επιλέξτε Υπηρεσία*"
         name="service"
         options={[
@@ -66,6 +59,13 @@ export default function ContactForm() {
           { label: "Άλλο" },
         ]}
         onChange={setService}
+      />
+
+      <ContactDropdown
+        label="Επιλέξτε Θεραπευτή*"
+        name="therapist"
+        options={[{ label: "Εύη Καραβάνα" }, { label: "Χρήστος Κωστικίδης" }]}
+        onChange={setTherapist}
       />
 
       <div>
