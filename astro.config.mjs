@@ -15,6 +15,6 @@ export default defineConfig({
   ],
   trailingSlash: 'never',
   site: LIVE_URL,
-  base: '/enalia'
+  base: '/enalia/'
   // adapter: staticAdapter()
 });
