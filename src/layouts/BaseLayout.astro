@@ -6,14 +6,12 @@ import Seo from '../components/Seo.astro';
 import '../styles/tailwind.css';
 import logo_fav from '../assets/favicon-16x16.png';
 
-// Build canonical that respects site+base from astro.config
 const baseURL = new URL(import.meta.env.BASE_URL || '/', Astro.site);
 const pageUrl = new URL(
   Astro.url.pathname.replace(/^\//, ''),
   baseURL
 ).toString();
 
-// Use distinct names so nothing clashes
 const {
   title: layoutTitle = 'Ενάλια | Κέντρο Ψυχοθεραπείας στη Νέα Ιωνία',
   description: layoutDescription = 'Ψυχοθεραπεία στη Νέα Ιωνία: Ατομική, Ζεύγους, Οικογενειακή, Online.',

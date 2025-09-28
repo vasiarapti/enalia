@@ -6,8 +6,6 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   integrations: [tailwind(), sitemap(), react()],
   trailingSlash: 'never',
-  site: 'https://vasiarapti.github.io', // ← no trailing slash
-  base: '/enalia/',                      // ← with trailing slash
-  //site: 'https:/www.enalia-therapy.gr',
-  //base: '/',
+  site: 'https://enalia-therapy.gr',
+  base: '/enalia/',
 });
