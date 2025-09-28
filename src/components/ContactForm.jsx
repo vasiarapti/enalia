@@ -179,7 +179,7 @@ export default function ContactForm() {
 
       {/* Θεραπευτής */}
       <ContactDropdown
-        label="Επιλέξτε Θεραπευτή*"
+        label="Επιλέξτε Θεραπευτή" //optional
         name="therapist"
         options={[{ label: "Εύη Καραβάνα" }, { label: "Χρήστος Κωστικίδης" }]}
         onChange={setTherapist}

@@ -28,18 +28,10 @@ const {
 
 <html lang="el">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Let Seo set <title> + meta -->
     <Seo title={title} description={description} url={pageUrl} />
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="16x16" href={logo_fav.src} />
-
-    <slot name="head" />
-
-    <!-- LocalBusiness JSON-LD -->
+    <base href={import.meta.env.BASE_URL} />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
