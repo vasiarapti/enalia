@@ -3,6 +3,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Sidebar from '../components/Sidebar.jsx';
 import '../styles/tailwind.css';
+import logo_fav from '../assets/favicon-16x16.png';
 ---
 
 <html lang="el">
@@ -10,6 +11,7 @@ import '../styles/tailwind.css';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ενάλια</title>
+    <Image src={logo_fav} alt="enalia-logo" type="image/x-icon" />
   </head>
 
   <script is:inline>
