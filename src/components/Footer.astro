@@ -54,14 +54,14 @@ const BASE = import.meta.env.BASE_URL;
 
     <!-- Legal Links -->
     <div class="space-x-4 text-center sm:text-left">
-      <a class="text-inpage hover:text-gray-800" href="#">Όροι Χρήσης</a>
-      <a class="text-inpage hover:text-gray-800" href="#">Προσωπικά Δεδομένα</a>
-      <a class="text-inpage hover:text-gray-800" href="#">Πολιτική Cookies</a>
+      <a class="text-inpage hover:text-gray-800" href={`${BASE}terms`}>Όροι Χρήσης</a>
+      <a class="text-inpage hover:text-gray-800" href={`${BASE}privacy`}>Προσωπικά Δεδομένα</a>
+      <a class="text-inpage hover:text-gray-800" href={`${BASE}cookies`}>Πολιτική Cookies</a>
     </div>
 
     <!-- Copyright -->
     <p class="text-inpage text-center sm:text-right w-full sm:w-auto mt-4 sm:mt-0">
-      © 2025 Ενάλια. All rights reserved.
+      © {new Date().getFullYear()} Ενάλια. All rights reserved.
     </p>
   </div>
 </footer>
