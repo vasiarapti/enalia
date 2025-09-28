@@ -15,6 +15,7 @@ import logo_fav from '../assets/favicon-16x16.png';
     <link rel="icon" type="image/png" sizes="16x16" href={logo_fav.src} />
     <!-- <link rel="icon" type="image/png" sizes="32x32" href={logo32.src} /> -->
     <Seo title={title} description={description} url={pageUrl} />
+    <slot name="head" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
