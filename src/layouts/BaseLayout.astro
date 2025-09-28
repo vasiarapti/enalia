@@ -14,11 +14,11 @@ import logo_fav from '../assets/favicon-16x16.png';
  * - `Astro.site` is a URL object (from `site`)
  * - `import.meta.env.BASE_URL` is your base (e.g. '/enalia/')
  */
-const baseURL = new URL(import.meta.env.BASE_URL || '/', Astro.site);
+const BASE = import.meta.env.BASE_URL;
 const pageUrl = new URL(
-  Astro.url.pathname.replace(/^\//, ''), // strip leading slash so join is clean
-  baseURL
-).toString();
+//   Astro.url.pathname.replace(/^\//, ''), // strip leading slash so join is clean
+//   baseURL
+// ).toString();
 
 const {
   title = 'Ενάλια | Κέντρο Ψυχοθεραπείας στη Νέα Ιωνία',
