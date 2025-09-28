@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import logo from "../assets/logo.webp";
+import logo from "../assets/logo.png";
 
 const BASE = import.meta.env.BASE_URL;
 

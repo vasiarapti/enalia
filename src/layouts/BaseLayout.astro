@@ -2,24 +2,18 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Sidebar from '../components/Sidebar.jsx';
-
-// Make sure the filename matches exactly (capital S)
 import Seo from '../components/Seo.astro';
-
 import '../styles/tailwind.css';
 import logo_fav from '../assets/favicon-16x16.png';
 
-/**
- * Canonical URL builder that respects `site` and `base` from astro.config.mjs
- * - `Astro.site` is a URL object (from `site`)
- * - `import.meta.env.BASE_URL` is your base (e.g. '/enalia/')
- */
-const BASE = import.meta.env.BASE_URL;
-// const pageUrl = new URL(
-//   Astro.url.pathname.replace(/^\//, ''), // strip leading slash so join is clean
-//   baseURL
-// ).toString();
+// Build canonical that respects site+base from astro.config
+const baseURL = new URL(import.meta.env.BASE_URL || '/', Astro.site);
+const pageUrl = new URL(
+  Astro.url.pathname.replace(/^\//, ''),
+  baseURL
+).toString();
 
+// Use distinct names so nothing clashes
 const {
   title: layoutTitle = 'Ενάλια | Κέντρο Ψυχοθεραπείας στη Νέα Ιωνία',
   description: layoutDescription = 'Ψυχοθεραπεία στη Νέα Ιωνία: Ατομική, Ζεύγους, Οικογενειακή, Online.',
@@ -28,10 +22,21 @@ const {
 
 <html lang="el">
   <head>
-    <Seo title={title} description={description} url={pageUrl} />
-    <base href={import.meta.env.BASE_URL} />
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Base so relative links work under /enalia/ -->
+    <base href={import.meta.env.BASE_URL} />
+
+    <!-- SEO (sets <title> + meta tags) -->
+    <Seo title={layoutTitle} description={layoutDescription} url={pageUrl} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="16x16" href={logo_fav.src} />
+
+    <slot name="head" />
+
+    <!-- LocalBusiness JSON-LD -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -47,57 +52,48 @@ const {
           "postalCode": "14231",
           "addressCountry": "GR"
         },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": 38.03656,
-          "longitude": 23.74254
-        },
+        "geo": { "@type": "GeoCoordinates", "latitude": 38.03656, "longitude": 23.74254 },
         "openingHoursSpecification": [{
           "@type": "OpeningHoursSpecification",
           "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-          "opens": "09:00",
-          "closes": "21:00"
+          "opens": "09:00", "closes": "21:00"
         }]
       }
     </script>
   </head>
 
-  <script is:inline>
-    (() => {
-      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const els = document.querySelectorAll('[data-reveal]');
-      if (reduce) { els.forEach(el => el.setAttribute('data-reveal','in')); return; }
-      const io = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const el = entry.target;
-            const delay = el.dataset.revealDelay || 0;
-            el.style.transitionDelay = delay ? `${delay}ms` : '';
-            requestAnimationFrame(() => el.setAttribute('data-reveal','in'));
-            obs.unobserve(el);
-          }
-        });
-      }, { threshold: 0.15, rootMargin: '0px 0px -5% 0px' });
-      els.forEach(el => io.observe(el));
-    })();
-  </script>
-
   <body class="min-h-screen bg-secondary">
+    <!-- inline script belongs inside head or body; keeping here inside body -->
+    <script is:inline>
+      (() => {
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const els = document.querySelectorAll('[data-reveal]');
+        if (reduce) { els.forEach(el => el.setAttribute('data-reveal','in')); return; }
+        const io = new IntersectionObserver((entries, obs) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const el = entry.target;
+              const delay = el.dataset.revealDelay || 0;
+              el.style.transitionDelay = delay ? `${delay}ms` : '';
+              requestAnimationFrame(() => el.setAttribute('data-reveal','in'));
+              obs.unobserve(el);
+            }
+          });
+        }, { threshold: 0.15, rootMargin: '0px 0px -5% 0px' });
+        els.forEach(el => io.observe(el));
+      })();
+    </script>
+
     <div class="flex flex-col md:flex-row min-h-screen">
       <Sidebar client:load />
-
       <div class="flex flex-col flex-1 min-h-screen relative">
         <Header />
-
-        <!-- Banner slot -->
         <div class="top-[76px] md:left-72 w-full md:w-[calc(100%-0rem)] z-10">
           <slot name="banner" />
         </div>
-
         <main class="flex-1 bg-secondary px-4 md:px-8 pt-16 md:pt-16">
           <slot />
         </main>
-
         <footer>
           <Footer />
         </footer>
