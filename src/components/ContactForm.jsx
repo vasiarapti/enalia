@@ -80,7 +80,7 @@ export default function ContactForm() {
 
       {/* Προτιμώμενος τρόπος (dropdown) */}
       <div>
-        <label className="block mb-2 text-sm font-medium text-gray-900">Προτιμώμενος τρόπος επικοινωνίας*</label>
+        <label className="block mb-2 text-sm font-medium text-gray-900">Επιλέξτε τρόπο επικοινωνίας*</label>
         <select
           name="preferred"
           className={`w-full p-2.5 border rounded-lg text-gray-900 bg-white ${errors.preferred ? "border-red-500" : "border-gray-300"}`}
@@ -90,9 +90,9 @@ export default function ContactForm() {
           aria-describedby={errors.preferred ? "preferred-error" : undefined}
           required
         >
-          <option value="" disabled>— Επιλέξτε —</option>
+          <option value="" disabled>--Επιλέξτε--</option>
           <option value="email">Email</option>
-          <option value="phone">Κινητό</option>
+          <option value="phone">Τηλέφωνο</option>
         </select>
         {errors.preferred && <p id="preferred-error" className="mt-1 text-sm text-red-600">{errors.preferred}</p>}
       </div>
