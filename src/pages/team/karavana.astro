@@ -12,9 +12,11 @@ const accordionItems = [
   { title: "Ανακοινώσεις σε συνέδρια", id: "conferences" },
   { title: "Η θεραπευτική μου ματιά", id: "perspective" },
 ];
+const title = 'Εύη Καραβάνα | Ενάλια';
+const description = 'Ψυχοθεραπευτικό κέντρο στη Νέα Ιωνία. Ατομική θεραπεία, ζεύγους, οικογενειακή.';
 ---
 
-<BaseLayout>
+<BaseLayout {title} {description}>
   <script type="application/ld+json">
     {
       "@context":"https://schema.org",

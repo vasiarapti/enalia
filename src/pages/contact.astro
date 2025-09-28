@@ -2,9 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactForm from '../components/ContactForm.jsx';
 import initFlowbite from '../scripts/initFlowbite.js';
+const title = 'Επικοινωνία | Ενάλια';
+const description = 'Ψυχοθεραπευτικό κέντρο στη Νέα Ιωνία. Ατομική θεραπεία, ζεύγους, οικογενειακή.';
 ---
 
-<BaseLayout>
+<BaseLayout {title} {description}>
   <section class="text-white min-h-screen py-12 px-6">
     <!-- Contact Info -->
     <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">

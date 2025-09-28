@@ -2,9 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import viomatikes from '../assets/viomatikes.png';
 import { Image } from 'astro:assets';
+const title = 'Βιωματικές Δράσεις | Ενάλια';
+const description = 'Ψυχοθεραπευτικό κέντρο στη Νέα Ιωνία. Ατομική θεραπεία, ζεύγους, οικογενειακή.';
 ---
 
-<BaseLayout>
+<BaseLayout {title} {description}>
   <div class="min-h-screen flex flex-col">
     <div class="max-w-screen-xl mx-auto px-4 lg:px-6 flex-1 py-10">
       <h2 class="text-4xl font-bold tracking-tight text-primary-800 text-center mb-10">
