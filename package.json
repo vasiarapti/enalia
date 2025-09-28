@@ -21,7 +21,8 @@
     "lucide-react": "^0.511.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-responsive-carousel": "^3.2.23"
+    "react-responsive-carousel": "^3.2.23",
+    "@astrojs/sitemap": "^3.2.0"
   },
   "devDependencies": {
     "@astrojs/tailwind": "^6.0.2",
