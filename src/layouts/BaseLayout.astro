@@ -3,27 +3,23 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Sidebar from '../components/Sidebar.jsx';
 
-// ⬅️ Match the actual filename exactly ('Seo.astro' vs 'seo.astro')
+// Make sure the filename matches exactly (capital S)
 import Seo from '../components/Seo.astro';
 
 import '../styles/tailwind.css';
 import logo_fav from '../assets/favicon-16x16.png';
 
-/** Build a canonical URL that works on GH Pages */
-const SITE_ORIGIN =
-  (Astro.site && Astro.site.origin) ||
-  (import.meta.env.SITE?.replace(/\/$/, '')) || // remove trailing slash if present
-  'https://vasiarapti.github.io';
-
-const BASE = import.meta.env.BASE_URL || '/enalia/'; // ends with a slash
-
-// e.g. https://vasiarapti.github.io/enalia/about
+/**
+ * Canonical URL builder that respects `site` and `base` from astro.config.mjs
+ * - `Astro.site` is a URL object (from `site`)
+ * - `import.meta.env.BASE_URL` is your base (e.g. '/enalia/')
+ */
+const baseURL = new URL(import.meta.env.BASE_URL || '/', Astro.site);
 const pageUrl = new URL(
-  Astro.url.pathname.replace(/^\//, ''),
-  new URL(BASE, SITE_ORIGIN)
+  Astro.url.pathname.replace(/^\//, ''), // strip leading slash so join is clean
+  baseURL
 ).toString();
 
-/** Safe defaults so pages build even if they don't pass props */
 const {
   title = 'Ενάλια | Κέντρο Ψυχοθεραπείας στη Νέα Ιωνία',
   description = 'Ψυχοθεραπεία στη Νέα Ιωνία: Ατομική, Ζεύγους, Οικογενειακή, Online.',
