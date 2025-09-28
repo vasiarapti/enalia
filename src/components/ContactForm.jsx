@@ -1,32 +1,47 @@
 import { useState } from "react";
 import ContactDropdown from "./ContactDropdown.jsx";
 
-const phoneRegex = /^(?:\+30)?69\d{8}$/; // +3069XXXXXXXX ή 69XXXXXXXX
+const phoneRegex = /^(?:\+30)?69\d{8}$/; // +3069XXXXXXXX or 69XXXXXXXX
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 export default function ContactForm() {
   const [therapist, setTherapist] = useState("");
   const [service, setService] = useState("");
+  const [preferred, setPreferred] = useState(""); // "email" | "phone"
   const [errors, setErrors] = useState({});
 
   const validate = (fields) => {
     const newErrors = {};
 
-    // Υποχρεωτικά
+    // Required basics
     if (!fields.name?.trim()) newErrors.name = "Το ονοματεπώνυμο είναι υποχρεωτικό.";
-    if (!fields.email?.trim()) newErrors.email = "Το email είναι υποχρεωτικό.";
-    if (!fields.phone?.trim()) newErrors.phone = "Το τηλέφωνο είναι υποχρεωτικό.";
+    if (!fields.preferred) newErrors.preferred = "Παρακαλώ επιλέξτε τρόπο επικοινωνίας.";
     if (!fields.service?.trim()) newErrors.service = "Παρακαλώ επιλέξτε υπηρεσία.";
     if (!fields.therapist?.trim()) newErrors.therapist = "Παρακαλώ επιλέξτε θεραπευτή.";
+    
 
-    // Μορφή email
-    if (fields.email && !emailRegex.test(fields.email.trim())) {
-      newErrors.email = "Το email δεν είναι έγκυρο (π.χ. onoma@example.com).";
-    }
-
-    // Μορφή κινητού Ελλάδας
-    if (fields.phone && !phoneRegex.test(fields.phone.replace(/\s+/g, ""))) {
-      newErrors.phone = "Μη έγκυρο κινητό. Δεκτά: +3069XXXXXXXX ή 69XXXXXXXX.";
+    // Preferred-specific requirements
+    if (fields.preferred === "email") {
+      if (!fields.email?.trim()) {
+        newErrors.email = "Το email είναι υποχρεωτικό.";
+      } else if (!emailRegex.test(fields.email.trim())) {
+        newErrors.email = "Το email δεν είναι έγκυρο (π.χ. onoma@example.com).";
+      }
+      // Phone optional but validate if provided
+      if (fields.phone?.trim() && !phoneRegex.test(fields.phone.replace(/\s+/g, ""))) {
+        newErrors.phone = "Μη έγκυρο κινητό. Δεκτά: +3069XXXXXXXX ή 69XXXXXXXX.";
+      }
+    } else if (fields.preferred === "phone") {
+      const phoneClean = (fields.phone || "").replace(/\s+/g, "");
+      if (!phoneClean) {
+        newErrors.phone = "Το τηλέφωνο είναι υποχρεωτικό.";
+      } else if (!phoneRegex.test(phoneClean)) {
+        newErrors.phone = "Μη έγκυρο κινητό. Δεκτά: +3069XXXXXXXX ή 69XXXXXXXX.";
+      }
+      // Email optional but validate if provided
+      if (fields.email?.trim() && !emailRegex.test(fields.email.trim())) {
+        newErrors.email = "Το email δεν είναι έγκυρο (π.χ. onoma@example.com).";
+      }
     }
 
     return newErrors;
@@ -41,6 +56,7 @@ export default function ContactForm() {
       phone: fd.get("phone") || "",
       service,
       therapist,
+      preferred,
       message: fd.get("message") || "",
     };
 
@@ -48,19 +64,15 @@ export default function ContactForm() {
     setErrors(v);
 
     if (Object.keys(v).length === 0) {
-      // Αν το ContactDropdown δεν στέλνει value από μόνο του,
-      // τα hidden inputs παρακάτω θα το καλύψουν.
       e.currentTarget.submit();
     }
   };
 
   return (
     <form className="space-y-6" onSubmit={handleSubmit} noValidate>
-      {/* Ονοματεπώνυμο */}
+      {/* Name */}
       <div>
-        <label className="block mb-2 text-sm font-medium text-gray-900">
-          Ονοματεπώνυμο*
-        </label>
+        <label className="block mb-2 text-sm font-medium text-gray-900">Ονοματεπώνυμο*</label>
         <input
           type="text"
           name="name"
@@ -72,25 +84,53 @@ export default function ContactForm() {
           onBlur={(e) =>
             setErrors((prev) => ({
               ...prev,
-              name: !e.target.value.trim()
-                ? "Το ονοματεπώνυμο είναι υποχρεωτικό."
-                : undefined,
+              name: !e.target.value.trim() ? "Το ονοματεπώνυμο είναι υποχρεωτικό." : undefined,
             }))
           }
           required
         />
-        {errors.name && (
-          <p id="name-error" className="mt-1 text-sm text-red-600">
-            {errors.name}
-          </p>
-        )}
+        {errors.name && <p id="name-error" className="mt-1 text-sm text-red-600">{errors.name}</p>}
       </div>
 
-      {/* Email */}
+      {/* Preferred contact method */}
+      <fieldset className="mt-2">
+        <legend className="block mb-2 text-sm font-medium text-gray-900">
+          Προτιμώμενος τρόπος επικοινωνίας*
+        </legend>
+        <div className="flex items-center gap-6">
+          <label className="inline-flex items-center gap-2">
+            <input
+              type="radio"
+              name="preferred"
+              value="email"
+              checked={preferred === "email"}
+              onChange={() => setPreferred("email")}
+              aria-invalid={!!errors.preferred}
+              required
+            />
+            <span className="text-gray-900">Email</span>
+          </label>
+          <label className="inline-flex items-center gap-2">
+            <input
+              type="radio"
+              name="preferred"
+              value="phone"
+              checked={preferred === "phone"}
+              onChange={() => setPreferred("phone")}
+              aria-invalid={!!errors.preferred}
+              required
+            />
+            <span className="text-gray-900">Κινητό</span>
+          </label>
+        </div>
+        {errors.preferred && (
+          <p className="mt-1 text-sm text-red-600">{errors.preferred}</p>
+        )}
+      </fieldset>
+
+      {/* Email (required only if preferred === 'email') */}
       <div>
-        <label className="block mb-2 text-sm font-medium text-gray-900">
-          Email*
-        </label>
+        <label className="block mb-2 text-sm font-medium text-gray-900">Email{preferred === "email" ? "*" : " (προαιρετικό)"}</label>
         <input
           type="email"
           name="email"
@@ -105,26 +145,23 @@ export default function ContactForm() {
             const v = e.target.value.trim();
             setErrors((prev) => ({
               ...prev,
-              email: !v
-                ? "Το email είναι υποχρεωτικό."
-                : emailRegex.test(v)
-                ? undefined
-                : "Το email δεν είναι έγκυρο (π.χ. onoma@example.com).",
+              email:
+                preferred === "email"
+                  ? (!v
+                      ? "Το email είναι υποχρεωτικό."
+                      : emailRegex.test(v) ? undefined : "Το email δεν είναι έγκυρο (π.χ. onoma@example.com).")
+                  : (v && !emailRegex.test(v) ? "Το email δεν είναι έγκυρο (π.χ. onoma@example.com)." : undefined),
             }));
           }}
-          required
+          required={preferred === "email"}
         />
-        {errors.email && (
-          <p id="email-error" className="mt-1 text-sm text-red-600">
-            {errors.email}
-          </p>
-        )}
+        {errors.email && <p id="email-error" className="mt-1 text-sm text-red-600">{errors.email}</p>}
       </div>
 
-      {/* Τηλέφωνο */}
+      {/* Phone (required only if preferred === 'phone') */}
       <div>
         <label className="block mb-2 text-sm font-medium text-gray-900">
-          Τηλέφωνο Επικοινωνίας*
+          Τηλέφωνο Επικοινωνίας{preferred === "phone" ? "*" : " (προαιρετικό)"}
         </label>
         <input
           type="tel"
@@ -142,23 +179,20 @@ export default function ContactForm() {
             const v = e.target.value.replace(/\s+/g, "");
             setErrors((prev) => ({
               ...prev,
-              phone: !v
-                ? "Το τηλέφωνο είναι υποχρεωτικό."
-                : phoneRegex.test(v)
-                ? undefined
-                : "Μη έγκυρο κινητό. Δεκτά: +3069XXXXXXXX ή 69XXXXXXXX.",
+              phone:
+                preferred === "phone"
+                  ? (!v
+                      ? "Το τηλέφωνο είναι υποχρεωτικό."
+                      : phoneRegex.test(v) ? undefined : "Μη έγκυρο κινητό. Δεκτά: +3069XXXXXXXX ή 69XXXXXXXX.")
+                  : (v && !phoneRegex.test(v) ? "Μη έγκυρο κινητό. Δεκτά: +3069XXXXXXXX ή 69XXXXXXXX." : undefined),
             }));
           }}
-          required
+          required={preferred === "phone"}
         />
-        {errors.phone && (
-          <p id="phone-error" className="mt-1 text-sm text-red-600">
-            {errors.phone}
-          </p>
-        )}
+        {errors.phone && <p id="phone-error" className="mt-1 text-sm text-red-600">{errors.phone}</p>}
       </div>
 
-      {/* Υπηρεσία */}
+      {/* Service */}
       <ContactDropdown
         label="Επιλέξτε Υπηρεσία*"
         name="service"
@@ -173,30 +207,25 @@ export default function ContactForm() {
         ]}
         onChange={setService}
       />
-      {errors.service && (
-        <p className="mt-1 text-sm text-red-600">{errors.service}</p>
-      )}
+      {errors.service && <p className="mt-1 text-sm text-red-600">{errors.service}</p>}
 
-      {/* Θεραπευτής */}
+      {/* Therapist */}
       <ContactDropdown
         label="Επιλέξτε Θεραπευτή*"
         name="therapist"
         options={[{ label: "Εύη Καραβάνα" }, { label: "Χρήστος Κωστικίδης" }]}
         onChange={setTherapist}
       />
-      {errors.therapist && (
-        <p className="mt-1 text-sm text-red-600">{errors.therapist}</p>
-      )}
+      {errors.therapist && <p className="mt-1 text-sm text-red-600">{errors.therapist}</p>}
 
-      {/* Hidden inputs ώστε να υποβληθούν σίγουρα τα values */}
+      {/* Hidden inputs to ensure dropdown values are submitted */}
       <input type="hidden" name="service" value={service} />
       <input type="hidden" name="therapist" value={therapist} />
+      <input type="hidden" name="preferred" value={preferred} />
 
-      {/* Μήνυμα */}
+      {/* Message */}
       <div>
-        <label className="block mb-2 text-sm font-medium text-gray-900">
-          Μήνυμα
-        </label>
+        <label className="block mb-2 text-sm font-medium text-gray-900">Μήνυμα</label>
         <textarea
           name="message"
           rows="6"
@@ -206,7 +235,7 @@ export default function ContactForm() {
 
       <button
         type="submit"
-        className="w-full py-2.5 rounded-lg bg-white text-gray-800 hover:bg-primary hover:text-white"
+        className="w-full py-2.5 rounded-lg bg白 text-gray-800 hover:bg-primary hover:text-white"
       >
         Αποστολή
       </button>
