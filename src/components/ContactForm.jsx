@@ -95,7 +95,7 @@ export default function ContactForm() {
           type="email"
           name="email"
           inputMode="email"
-          placeholder="onoma@example.com"
+          placeholder=" "
           className={`w-full p-2.5 border rounded-lg text-gray-900 ${
             errors.email ? "border-red-500" : "border-gray-300"
           }`}
@@ -130,7 +130,7 @@ export default function ContactForm() {
           type="tel"
           name="phone"
           inputMode="tel"
-          placeholder="+3069XXXXXXXX ή 69XXXXXXXX"
+          placeholder=" "
           pattern="^(?:\+30)?69\d{8}$"
           title="Δεκτά: +3069XXXXXXXX ή 69XXXXXXXX"
           className={`w-full p-2.5 border rounded-lg text-gray-900 ${
