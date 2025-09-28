@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Sidebar from '../components/Sidebar.jsx';
+import Seo from '../components/Seo.astro';
 import '../styles/tailwind.css';
 import logo_fav from '../assets/favicon-16x16.png';
 ---
@@ -13,6 +14,47 @@ import logo_fav from '../assets/favicon-16x16.png';
     <title>Ενάλια</title>
     <link rel="icon" type="image/png" sizes="16x16" href={logo_fav.src} />
     <!-- <link rel="icon" type="image/png" sizes="32x32" href={logo32.src} /> -->
+    <Seo title={title} description={description} url={pageUrl} />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Ενάλια",
+        "image": "https://vasiarapti.github.io/enalia/og-default.jpg",
+        "url": "https://vasiarapti.github.io/enalia/",
+        "telephone": "+306972078685",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Λευκής 12",
+          "addressLocality": "Νέα Ιωνία",
+          "postalCode": "14231",
+          "addressCountry": "GR"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 38.03656,
+          "longitude": 23.74254
+        },
+        "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "09:00",
+          "closes": "21:00"
+        }
+        ],
+        "sameAs": [
+          "https://www.facebook.com/…",
+          "https://www.instagram.com/…"
+        ]
+      }
+    </script>
 
   </head>
 

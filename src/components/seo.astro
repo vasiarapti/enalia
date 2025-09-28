@@ -1,0 +1,28 @@
+---
+const {
+  title = 'Ενάλια | Κέντρο Ψυχοθεραπείας στη Νέα Ιωνία',
+  description = 'Ψυχοθεραπεία, Θεραπεία Ζεύγους, Οικογενειακή Θεραπεία στη Νέα Ιωνία. Κλείστε ραντεβού.',
+  image = '/og-default.jpg',
+  url,     
+  locale = 'el_GR',
+  noindex = false,
+} = Astro.props;
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+{noindex && <meta name="robots" content="noindex,nofollow" />}
+
+<link rel="canonical" href={url} />
+
+<meta property="og:type" content="website" />
+<meta property="og:locale" content={locale} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={url} />
+<meta property="og:image" content={image} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />

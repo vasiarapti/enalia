@@ -90,7 +90,7 @@ export default function ContactForm() {
           aria-describedby={errors.preferred ? "preferred-error" : undefined}
           required
         >
-          <option value="" disabled>--Επιλέξτε--</option>
+          <option value="" disabled>Επιλέξτε τρόπο επικοινωνίας</option>
           <option value="email">Email</option>
           <option value="phone">Τηλέφωνο</option>
         </select>
