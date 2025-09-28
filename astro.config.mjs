@@ -8,4 +8,6 @@ export default defineConfig({
   trailingSlash: 'never',
   site: 'https://vasiarapti.github.io', // ← no trailing slash
   base: '/enalia/',                      // ← with trailing slash
+  //site: 'https:/www.enalia-therapy.gr',
+  //base: '/',
 });
