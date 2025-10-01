@@ -57,7 +57,7 @@ export default function Sidebar() {
         md:translate-x-0 md:sticky md:top-0 overflow-y-auto`}>
         <div className="flex justify-center mb-2 mt-4">
           {/* In React, imported images are already URLs */}
-          <Image src={logo} alt="Logo" className="max-w-[200px] max-h-[200px] object-contain" />
+          <Image src={logo} alt="Logo" class="max-w-[200px] max-h-[200px] object-contain" />
         </div>
 
         <div className="text-center mb-6">
