@@ -4,8 +4,8 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  integrations: [tailwind(), sitemap(), react()],
+  site: 'https://enalia-therapy.gr', // <— your real domain
   trailingSlash: 'never',
-  site: 'https://enalia-therapy.gr',
-  base: '/enalia/',
+  integrations: [tailwind(), sitemap(), react()],
+  base: '/enalia/'
 });
