@@ -2,7 +2,7 @@ name: Build & Deploy to cPanel (FTPS)
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main ]   # άλλαξέ το αν έχεις άλλο default branch
 
 jobs:
   build-and-deploy:
@@ -10,20 +10,26 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: npm ci
-      - run: npm run build
+
+      - name: Install
+        run: npm ci
+
+      - name: Build (Astro -> dist/)
+        run: npm run build
 
       - name: Deploy via FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
+          server: ${{ secrets.FTP_HOST }}         # ftp.enalia-therapy.gr
+          username: ${{ secrets.FTP_USERNAME }}   # deploy@enalia-therapy.gr (ή ο κύριος cPanel user)
           password: ${{ secrets.FTP_PASSWORD }}
-          port: ${{ secrets.FTP_PORT }}
+          port: ${{ secrets.FTP_PORT }}           # 21
           protocol: ftps
           local-dir: dist/
-          server-dir: public_html/
+          server-dir: public_html/                # <-- ΣΗΜΑΝΤΙΚΟ
           timeout: 600
+          # dangerous-clean-slate: true           # άφησέ το off μέχρι να δουλέψει
