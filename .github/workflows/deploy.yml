@@ -21,14 +21,14 @@ jobs:
       - name: Build (Astro -> dist/)
         run: npm run build
 
-      - name: Deploy (FTP test)
+      - name: Deploy (SFTP password)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-            server: ${{ secrets.FTP_HOST }}          # π.χ. ftp.enalia-therapy.gr
-            username: ${{ secrets.FTP_USERNAME }}    # deploy@enalia-therapy.gr
-            password: ${{ secrets.FTP_PASSWORD }}
-            port: 21
-            protocol: ftp                            # << δοκιμή
+            server: ${{ secrets.FTP_HOST }}          # Μπορεί να είναι και enalia-therapy.gr
+            username: ${{ secrets.CPANEL_USER }}     # π.χ. en627321
+            password: ${{ secrets.CPANEL_PASS }}
+            port: 22
+            protocol: sftp
             local-dir: dist/
             server-dir: public_html/
             timeout: 600
