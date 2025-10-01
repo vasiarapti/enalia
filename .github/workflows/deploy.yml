@@ -2,7 +2,7 @@ name: Build & Deploy to cPanel (FTPS)
 
 on:
   push:
-    branches: [ main ]   # change if your default is different
+    branches: [ main ]   # adjust if needed
 
 jobs:
   build-and-deploy:
@@ -23,20 +23,16 @@ jobs:
       - name: Build (Astro -> dist/)
         run: npm run build
 
-      # Deploy dist/ to cPanel via FTPS (explicit TLS on port 21)
       - name: Deploy via FTPS
-        uses: SamKirkland/FTP-Deploy-Action@v4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_HOST }}          # ftp.enalia-therapy.gr
           username: ${{ secrets.FTP_USERNAME }}    # deploy@enalia-therapy.gr
           password: ${{ secrets.FTP_PASSWORD }}    # your password
           port: ${{ secrets.FTP_PORT }}            # 21
-          protocol: ftps
+          protocol: ftps                           # explicit TLS
           local-dir: dist/
-          server-dir: public_html/                 # adjust if addon/subfolder
+          server-dir: public_html/                 # or your exact document root
           timeout: 600
-          exclude: |
-            **/.git*
-            **/.github/**
-            **/node_modules/**
-            **/README.md
+          # uncomment if you want the action to delete remote files not in dist/
+          # dangerous-clean-slate: true
