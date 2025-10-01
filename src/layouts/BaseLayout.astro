@@ -5,18 +5,40 @@ import Sidebar from '../components/Sidebar.jsx';
 import Seo from '../components/Seo.astro';
 import '../styles/tailwind.css';
 import logo_fav from '../assets/favicon-16x16.png';
-import { Image } from 'astro:assets';
 
-const baseURL = new URL(import.meta.env.BASE_URL || '/', Astro.site);
-const pageUrl = new URL(
-  Astro.url.pathname.replace(/^\//, ''),
-  baseURL
-).toString();
+// Build canonical that respects site+base from astro.config
+const BASE = import.meta.env.BASE_URL || '/';
+const siteBase = new URL(BASE, Astro.site);
+const pageUrl = new URL(Astro.url.pathname.replace(/^\//, ''), siteBase).toString();
 
+// Use distinct names so nothing clashes
 const {
   title: layoutTitle = 'Ενάλια | Κέντρο Ψυχοθεραπείας στη Νέα Ιωνία',
   description: layoutDescription = 'Ψυχοθεραπεία στη Νέα Ιωνία: Ατομική, Ζεύγους, Οικογενειακή, Online.',
 } = Astro.props;
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Ενάλια",
+  "image": new URL('og-default.jpg', siteBase).toString(),
+  "url": siteBase.toString(),
+  "telephone": "+306972078685",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Λευκής 12",
+    "addressLocality": "Νέα Ιωνία",
+    "postalCode": "14231",
+    "addressCountry": "GR"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 38.03656, "longitude": 23.74254 },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+    "opens": "09:00",
+    "closes": "21:00"
+  }]
+};
 ---
 
 <html lang="el">
@@ -37,32 +59,11 @@ const {
 
     <!-- LocalBusiness JSON-LD -->
     <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Ενάλια",
-        "image": "https://vasiarapti.github.io/enalia/og-default.jpg",
-        "url": "https://vasiarapti.github.io/enalia/",
-        "telephone": "+306972078685",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Λευκής 12",
-          "addressLocality": "Νέα Ιωνία",
-          "postalCode": "14231",
-          "addressCountry": "GR"
-        },
-        "geo": { "@type": "GeoCoordinates", "latitude": 38.03656, "longitude": 23.74254 },
-        "openingHoursSpecification": [{
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-          "opens": "09:00", "closes": "21:00"
-        }]
-      }
+      {JSON.stringify(localBusinessSchema)}
     </script>
   </head>
 
   <body class="min-h-screen bg-secondary">
-    <!-- inline script belongs inside head or body; keeping here inside body -->
     <script is:inline>
       (() => {
         const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
