@@ -48,7 +48,12 @@ const localBusinessSchema = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <base href={import.meta.env.BASE_URL} />
-    <Seo title={layoutTitle} description={layoutDescription} url={pageUrl} image={ogImage} />
+    <Seo
+      title={layoutTitle}
+      description={layoutDescription}
+      url={pageUrl}
+      image={ogImage}
+    />
 
     <link rel="icon" type="image/png" sizes="16x16" href={logo_fav.src} />
     <slot name="head" />
