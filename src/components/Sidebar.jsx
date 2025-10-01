@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import logo from "../assets/logo.png";
-import { Image } from 'astro:assets';
 
-// Always build URLs under Astro's base (e.g. "/enalia/")
 const BASE = (import.meta.env.BASE_URL || "/").replace(/\/?$/, "/");
 const withBase = (path = "") => BASE + String(path).replace(/^\/+/, "");
 
@@ -56,8 +54,7 @@ export default function Sidebar() {
         transform transition-transform duration-300 ${isOpen ? "translate-x-0" : "-translate-x-full"}
         md:translate-x-0 md:sticky md:top-0 overflow-y-auto`}>
         <div className="flex justify-center mb-2 mt-4">
-          {/* In React, imported images are already URLs */}
-          <Image src={logo} alt="Logo" class="max-w-[200px] max-h-[200px] object-contain" />
+          <img src={logo.src} alt="Logo" className="max-w-[200px] max-h-[200px] object-contain" />
         </div>
 
         <div className="text-center mb-6">

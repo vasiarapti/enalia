@@ -10,6 +10,7 @@ import logo_fav from '../assets/favicon-16x16.png';
 const BASE = import.meta.env.BASE_URL || '/';
 const siteBase = new URL(BASE, Astro.site);
 const pageUrl = new URL(Astro.url.pathname.replace(/^\//, ''), siteBase).toString();
+const ogImage = new URL('og-default.jpg', siteBase).toString();
 
 // Use distinct names so nothing clashes
 const {
@@ -17,6 +18,7 @@ const {
   description: layoutDescription = 'Ψυχοθεραπεία στη Νέα Ιωνία: Ατομική, Ζεύγους, Οικογενειακή, Online.',
 } = Astro.props;
 
+---
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -50,7 +52,7 @@ const localBusinessSchema = {
     <base href={import.meta.env.BASE_URL} />
 
     <!-- SEO (sets <title> + meta tags) -->
-    <Seo title={layoutTitle} description={layoutDescription} url={pageUrl} />
+    <Seo title={layoutTitle} description={layoutDescription} url={pageUrl} image={ogImage} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="16x16" href={logo_fav.src} />
@@ -101,3 +103,7 @@ const localBusinessSchema = {
     </div>
   </body>
 </html>
+
+<script type="application/ld+json">
+  {JSON.stringify(localBusinessSchema)}
+</script>
