@@ -21,15 +21,14 @@ jobs:
       - name: Build (Astro -> dist/)
         run: npm run build
 
-      - name: Deploy via FTPS
+      - name: Deploy (FTP test)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_HOST }}         # ftp.enalia-therapy.gr
-          username: ${{ secrets.FTP_USERNAME }}   # deploy@enalia-therapy.gr (ή ο κύριος cPanel user)
-          password: ${{ secrets.FTP_PASSWORD }}
-          port: ${{ secrets.FTP_PORT }}           # 21
-          protocol: ftps
-          local-dir: dist/
-          server-dir: public_html/                # <-- ΣΗΜΑΝΤΙΚΟ
-          timeout: 600
-          # dangerous-clean-slate: true           # άφησέ το off μέχρι να δουλέψει
+            server: ${{ secrets.FTP_HOST }}          # π.χ. ftp.enalia-therapy.gr
+            username: ${{ secrets.FTP_USERNAME }}    # deploy@enalia-therapy.gr
+            password: ${{ secrets.FTP_PASSWORD }}
+            port: 21
+            protocol: ftp                            # << δοκιμή
+            local-dir: dist/
+            server-dir: public_html/
+            timeout: 600
