@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import logo from "../assets/logo.png";
 import { Image } from 'astro:assets';
+vasiarapti/enalia/src/assets/logo.png
+vasiarapti/enalia/src/components/Sidebar.jsx
 
 // Always build URLs under Astro's base (e.g. "/enalia/")
 const BASE = (import.meta.env.BASE_URL || "/").replace(/\/?$/, "/");

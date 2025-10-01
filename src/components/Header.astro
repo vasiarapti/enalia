@@ -4,7 +4,6 @@ import {
   Mail,
   Phone
 } from '@lucide/astro';
-import { Image } from 'astro:assets';
 import logo from "../assets/logo.png";
 import instagram from "../assets/instagram.svg"
 const BASE = import.meta.env.BASE_URL || '/';
@@ -14,7 +13,7 @@ const BASE = import.meta.env.BASE_URL || '/';
   <!-- MOBILE HEADER -->
   <div class="md:hidden flex items-center justify-between h-12 px-4">
     <div class="w-8 h-8"></div>
-    <Image src={logo} alt="Ενάλια" class="h-8 w-auto object-contain" />
+    <img src={logo.src} alt="Ενάλια" class="h-12 w-auto object-contain"/>
   </div>
 
   <!-- DESKTOP/TABLET HEADER -->
