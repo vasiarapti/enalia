@@ -1,31 +1,29 @@
-name: 🚀 Deploy website via FTP
+name: Build & Deploy (FTPS)
 
 on:
   push:
-    branches:
-      - main   # ή το branch που έχεις στο GitHub
+    branches: [ main ]
 
 jobs:
-  ftp-deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm run build
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build project
-        run: npm run build
-
-      - name: Deploy to cPanel via FTPS
+      - name: Deploy via FTPS (explicit)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_HOST }}        # ftp.enalia-therapy.gr
-          username: ${{ secrets.FTP_USERNAME }}  # en627321
+          server: 185.25.23.211            # ← χρησιμοποίησε την IP
+          username: ${{ secrets.FTP_USERNAME }}   # π.χ. en627321
           password: ${{ secrets.FTP_PASSWORD }}
           port: 21
-          protocol: ftps
+          protocol: ftps                   # αν κολλήσει, δοκίμασε ftps-legacy
           local-dir: dist/
           server-dir: public_html/
-          timeout: 600
+          timeout: 1200
+          log-level: verbose
