@@ -1,29 +1,32 @@
-name: Build & Deploy (FTPS)
+name: Build & Deploy to cPanel (FTPS)
 
 on:
   push:
     branches: [ main ]
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: npm ci
-      - run: npm run build
 
-      - name: Deploy via FTPS (explicit)
+      - run: npm ci
+      - run: npm run build   # produces dist/
+
+      - name: Deploy via FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: 185.25.23.211            # ← χρησιμοποίησε την IP
-          username: ${{ secrets.FTP_USERNAME }}   # π.χ. en627321
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          port: 21
-          protocol: ftps                   # αν κολλήσει, δοκίμασε ftps-legacy
+          port: ${{ secrets.FTP_PORT }}
+          protocol: ftps
           local-dir: dist/
-          server-dir: public_html/
-          timeout: 1200
-          log-level: verbose
+          server-dir: public_html/   # the Document Root you showed
+          timeout: 600
+          # optional: uncomment to wipe old files before each deploy
+          # dangerous-clean-slate: true
