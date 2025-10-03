@@ -21,7 +21,7 @@ export default function ContactForm() {
     if (fields.preferred === "email") {
       const v = (fields.email || "").trim();
       if (!v) newErrors.email = "Το email είναι υποχρεωτικό.";
-      else if (!emailRegex.test(v)) newErrors.email = "Το email δεν είναι έγκυρο (π.χ. onoma@example.com).";
+      else if (!emailRegex.test(v)) newErrors.email = "Το email δεν είναι έγκυρο.";
 
       const p = (fields.phone || "").replace(/\s+/g, "");
       if (p && !phoneRegex.test(p)) newErrors.phone = "Μη έγκυρο κινητό. Δεκτά: +3069XXXXXXXX ή 69XXXXXXXX.";
@@ -30,10 +30,10 @@ export default function ContactForm() {
     if (fields.preferred === "phone") {
       const p = (fields.phone || "").replace(/\s+/g, "");
       if (!p) newErrors.phone = "Το τηλέφωνο είναι υποχρεωτικό.";
-      else if (!phoneRegex.test(p)) newErrors.phone = "Μη έγκυρο κινητό. Δεκτά: +3069XXXXXXXX ή 69XXXXXXXX.";
+      else if (!phoneRegex.test(p)) newErrors.phone = "Μη έγκυρο κινητό.";
 
       const v = (fields.email || "").trim();
-      if (v && !emailRegex.test(v)) newErrors.email = "Το email δεν είναι έγκυρο (π.χ. onoma@example.com).";
+      if (v && !emailRegex.test(v)) newErrors.email = "Το email δεν είναι έγκυρο.";
     }
 
     return newErrors;
@@ -57,50 +57,54 @@ export default function ContactForm() {
   };
 
   return (
-    <form className="space-y-6" onSubmit={handleSubmit} noValidate>
+    <form
+      className="space-y-6"
+      onSubmit={handleSubmit}
+      noValidate
+      action="/contact-form-handler.php" // ✅ PHP handler στο public_html
+      method="POST"
+    >
+      {/* Honeypot anti-spam */}
+      <input type="text" name="website" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
+
       {/* Ονοματεπώνυμο */}
       <div>
         <label className="block mb-2 text-sm font-medium text-gray-900">Ονοματεπώνυμο*</label>
         <input
           type="text"
           name="name"
-          className={`w-full p-2.5 border rounded-lg text-gray-900 ${errors.name ? "border-red-500" : "border-gray-300"}`}
+          className={`w-full p-2.5 border rounded-lg text-gray-900 ${
+            errors.name ? "border-red-500" : "border-gray-300"
+          }`}
           aria-invalid={!!errors.name}
-          aria-describedby={errors.name ? "name-error" : undefined}
-          onBlur={(e) =>
-            setErrors((prev) => ({
-              ...prev,
-              name: !e.target.value.trim() ? "Το ονοματεπώνυμο είναι υποχρεωτικό." : undefined,
-            }))
-          }
           required
         />
-        {errors.name && <p id="name-error" className="mt-1 text-sm text-red-600">{errors.name}</p>}
+        {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name}</p>}
       </div>
 
-      {/* Προτιμώμενος τρόπος (dropdown) */}
+      {/* Preferred way */}
       <div>
         <label className="block mb-2 text-sm font-medium text-gray-900">Επιλέξτε τρόπο επικοινωνίας*</label>
         <select
           name="preferred"
-          className={`w-full p-2.5 border rounded-lg text-gray-900 bg-white ${errors.preferred ? "border-red-500" : "border-gray-300"}`}
+          className={`w-full p-2.5 border rounded-lg text-gray-900 bg-white ${
+            errors.preferred ? "border-red-500" : "border-gray-300"
+          }`}
           value={preferred}
           onChange={(e) => setPreferred(e.target.value)}
-          aria-invalid={!!errors.preferred}
-          aria-describedby={errors.preferred ? "preferred-error" : undefined}
           required
         >
           <option value="" disabled>Επιλέξτε τρόπο επικοινωνίας</option>
           <option value="email">Email</option>
           <option value="phone">Τηλέφωνο</option>
         </select>
-        {errors.preferred && <p id="preferred-error" className="mt-1 text-sm text-red-600">{errors.preferred}</p>}
+        {errors.preferred && <p className="mt-1 text-sm text-red-600">{errors.preferred}</p>}
       </div>
 
-      {/* Τα πεδία επικοινωνίας εμφανίζονται ΜΟΝΟ μετά την επιλογή */}
+      {/* Εμφανίζονται μετά την επιλογή */}
       {preferred && (
         <>
-          {/* Email (υποχρεωτικό αν preferred === email) */}
+          {/* Email */}
           <div>
             <label className="block mb-2 text-sm font-medium text-gray-900">
               Email{preferred === "email" ? "*" : " (προαιρετικό)"}
@@ -108,27 +112,15 @@ export default function ContactForm() {
             <input
               type="email"
               name="email"
-              inputMode="email"
-              placeholder=" "
-              className={`w-full p-2.5 border rounded-lg text-gray-900 ${errors.email ? "border-red-500" : "border-gray-300"}`}
-              aria-invalid={!!errors.email}
-              aria-describedby={errors.email ? "email-error" : undefined}
-              onBlur={(e) => {
-                const v = e.target.value.trim();
-                setErrors((prev) => ({
-                  ...prev,
-                  email:
-                    preferred === "email"
-                      ? (!v ? "Το email είναι υποχρεωτικό." : emailRegex.test(v) ? undefined : "Το email δεν είναι έγκυρο (π.χ. onoma@example.com).")
-                      : (v && !emailRegex.test(v) ? "Το email δεν είναι έγκυρο (π.χ. onoma@example.com)." : undefined),
-                }));
-              }}
+              className={`w-full p-2.5 border rounded-lg text-gray-900 ${
+                errors.email ? "border-red-500" : "border-gray-300"
+              }`}
               required={preferred === "email"}
             />
-            {errors.email && <p id="email-error" className="mt-1 text-sm text-red-600">{errors.email}</p>}
+            {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
           </div>
 
-          {/* Τηλέφωνο (υποχρεωτικό αν preferred === phone) */}
+          {/* Phone */}
           <div>
             <label className="block mb-2 text-sm font-medium text-gray-900">
               Τηλέφωνο Επικοινωνίας{preferred === "phone" ? "*" : " (προαιρετικό)"}
@@ -136,26 +128,13 @@ export default function ContactForm() {
             <input
               type="tel"
               name="phone"
-              inputMode="tel"
-              placeholder=""
               pattern="^(?:\+30)?69\d{8}$"
-              title="Δεκτά: +3069XXXXXXXX ή 69XXXXXXXX"
-              className={`w-full p-2.5 border rounded-lg text-gray-900 ${errors.phone ? "border-red-500" : "border-gray-300"}`}
-              aria-invalid={!!errors.phone}
-              aria-describedby={errors.phone ? "phone-error" : undefined}
-              onBlur={(e) => {
-                const v = e.target.value.replace(/\s+/g, "");
-                setErrors((prev) => ({
-                  ...prev,
-                  phone:
-                    preferred === "phone"
-                      ? (!v ? "Το τηλέφωνο είναι υποχρεωτικό." : phoneRegex.test(v) ? undefined : "Μη έγκυρο κινητό. Δεκτά: +3069XXXXXXXX ή 69XXXXXXXX.")
-                      : (v && !phoneRegex.test(v) ? "Μη έγκυρο κινητό. Δεκτά: +3069XXXXXXXX ή 69XXXXXXXX." : undefined),
-                }));
-              }}
+              className={`w-full p-2.5 border rounded-lg text-gray-900 ${
+                errors.phone ? "border-red-500" : "border-gray-300"
+              }`}
               required={preferred === "phone"}
             />
-            {errors.phone && <p id="phone-error" className="mt-1 text-sm text-red-600">{errors.phone}</p>}
+            {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone}</p>}
           </div>
         </>
       )}
@@ -179,7 +158,7 @@ export default function ContactForm() {
 
       {/* Θεραπευτής */}
       <ContactDropdown
-        label="Επιλέξτε Θεραπευτή" //optional
+        label="Επιλέξτε Θεραπευτή"
         name="therapist"
         options={[{ label: "Εύη Καραβάνα" }, { label: "Χρήστος Κωστικίδης" }]}
         onChange={setTherapist}
