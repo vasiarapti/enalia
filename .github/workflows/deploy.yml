@@ -1,32 +1,47 @@
-name: Build & Deploy to cPanel (FTPS)
+name: Build & Deploy to cPanel
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main ]   # change if your default branch is different
+  workflow_dispatch:     # allows manual runs from the Actions tab
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+    steps:
+      - name: 🧾 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: 'npm'
 
-      - run: npm ci
-      - run: npm run build   # produces dist/
+      - name: 📦 Install deps
+        run: npm ci
 
-      - name: Deploy via FTPS
+      - name: 🏗️ Build (Astro -> dist/)
+        run: npm run build
+
+      # Quick connectivity preflight (optional, but useful for debugging)
+      - name: 🔍 DNS + Port preflight
+        run: |
+          echo "Testing ${{ secrets.FTP_HOST }}:${{ secrets.FTP_PORT }}"
+          nslookup ${{ secrets.FTP_HOST }} || true
+          curl -v --connect-timeout 10 ftp://${{ secrets.FTP_HOST }}:${{ secrets.FTP_PORT }} || true
+
+      - name: 📂 Deploy to FTP (Pointer cPanel)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          port: ${{ secrets.FTP_PORT }}
-          protocol: ftps
-          local-dir: dist/
-          server-dir: public_html/   # the Document Root you showed
-          timeout: 600
-          # optional: uncomment to wipe old files before each deploy
+          server: ${{ secrets.FTP_HOST }}         # e.g. linuxs6.name-servers.gr (or the IP 185.25.23.211)
+          username: ${{ secrets.FTP_USERNAME }}   # deploy@enalia-therapy.gr
+          password: ${{ secrets.FTP_PASSWORD }}   # your FTP user password
+          port: ${{ secrets.FTP_PORT }}           # 21
+          protocol: ftp                           # start with ftp; switch to ftps after it works
+          local-dir: dist/                        # upload the built site
+          server-dir: public_html/                # your Document Root
+          timeout: 1200
+          # If you want to wipe remote files that aren't in dist/, uncomment:
           # dangerous-clean-slate: true
