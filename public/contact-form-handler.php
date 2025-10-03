@@ -40,7 +40,7 @@ try {
     $mail->Host       = "mail.enalia-therapy.gr"; // ✅ το hostname του mail server σου
     $mail->SMTPAuth   = true;
     $mail->Username   = "no-reply@enalia-therapy.gr"; // user
-    $mail->Password   = "Ο_ΚΩΔΙΚΟΣ_ΠΟΥ_ΘΑ_ΒΑΛΕΙΣ";    // pass
+    $mail->Password   = "Enalia2025!";    // pass
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port       = 587;
 
