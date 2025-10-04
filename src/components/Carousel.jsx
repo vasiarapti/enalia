@@ -2,9 +2,11 @@
 import React from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import place1 from "../assets/our-place/image1.JPG";
-import place2 from '../assets/our-place/image2.JPG';
-import place3 from '../assets/our-place/image3.jpg';
+import place1 from "../assets/our-place/place1.png";
+import place2 from '../assets/our-place/place2.png';
+import place3 from '../assets/our-place/place3.png';
+import place4 from '../assets/our-place/place4.png';
+import place5 from '../assets/our-place/place5.png';
 
 export default function ImageCarousel() {
   return (
@@ -38,6 +40,20 @@ export default function ImageCarousel() {
           {/* <img src="/images/our-place/image3.jpg" alt="Therapy room 3" /> */}
           <img
             src={place3.src}
+            alt="Χώρος"
+          />
+        </div>
+        <div>
+          {/* <img src="/images/our-place/image3.jpg" alt="Therapy room 3" /> */}
+          <img
+            src={place4.src}
+            alt="Χώρος"
+          />
+        </div>
+        <div>
+          {/* <img src="/images/our-place/image3.jpg" alt="Therapy room 3" /> */}
+          <img
+            src={place5.src}
             alt="Χώρος"
           />
         </div>
