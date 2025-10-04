@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
-import image1 from "../assets/our-place/place1.jpg";
-import image2 from "../assets/our-place/place2.jpg";
-import image3 from "../assets/our-place/place3.jpg";
+import place1 from "../assets/our-place/place1.png";
+import place2 from "../assets/our-place/place2.png";
+import place3 from "../assets/our-place/place3.png";
+import place4 from "../assets/our-place/place4.png";
+import place5 from "../assets/our-place/place5.png";
 
 /**
  * SpaceSlider – main image + thumbnails (equal width) + fullscreen modal
@@ -9,9 +11,11 @@ import image3 from "../assets/our-place/place3.jpg";
 export default function SpaceSlider() {
   const images = useMemo(
     () => [
-      { src: image1.src, alt: "Χώρος θεραπείας 1" },
-      { src: image2.src, alt: "Χώρος θεραπείας 2" },
-      { src: image3.src, alt: "Χώρος θεραπείας 3" },
+      { src: place1.src, alt: "Χώρος θεραπείας 1" },
+      { src: place2.src, alt: "Χώρος θεραπείας 2" },
+      { src: place3.src, alt: "Χώρος θεραπείας 3" },
+      { src: place4.src, alt: "Χώρος θεραπείας 4" },
+      { src: place5.src, alt: "Χώρος θεραπείας 5" },
     ],
     []
   );
@@ -152,3 +156,4 @@ export default function SpaceSlider() {
     </div>
   );
 }
+
