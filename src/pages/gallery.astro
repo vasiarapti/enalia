@@ -12,7 +12,16 @@ const description = 'Ψυχοθεραπευτικό κέντρο στη Νέα �
 
 
 <BaseLayout {title} {description}>
-    <div class="min-h-screen flex flex-col">
+ <div class="max-w-7xl px-4 py-10 sm:px-6 lg:px-8 mx-auto">
+    <div class="text-center mb-10">
+      <h2 class="text-4xl sm:text-5xl font-semibold tracking-tight text-gray-900">
+        Ο Χώρος
+      </h2>
+    </div>
+
+    <Gallery client:load />
+  </div>
+    <!--<div class="min-h-screen flex flex-col">
         <div class="max-w-screen-xl mx-auto px-4 lg:px-6 flex-1 py-10">
         <h2 class="text-4xl font-bold tracking-tight text-primary-800 text-center mb-10">
             Ο Χώρος
@@ -35,7 +44,8 @@ const description = 'Ψυχοθεραπευτικό κέντρο στη Νέα �
             <Image src={place5} alt="Χώρος θεραπείας" class="h-auto max-w-full rounded-lg" />
         </div>
     </div>
-</div>
+</div>-->
 
 </BaseLayout>
+
 
