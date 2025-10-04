@@ -58,7 +58,7 @@ import { useState, useRef, useEffect } from 'react';
 
 
   return (
-    <div className="space-y-4 max-w-6xl mx-auto p-4">
+    <div className="space-y-4 max-w-6xl mx-auto">
       {items.map((item, index) => {
         const isOpen = openIndex === index;
 
@@ -99,3 +99,4 @@ import { useState, useRef, useEffect } from 'react';
     </div>
   );
 }
+
