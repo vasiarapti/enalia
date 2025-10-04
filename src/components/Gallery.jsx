@@ -6,15 +6,18 @@ import place4 from "../assets/our-place/place4.png";
 import place5 from "../assets/our-place/place5.png";
 
 /**
- * SpaceSlider – main image + thumbnails + fullscreen modal
  * Props:
- * - mainMaxW: Tailwind max-width for main image wrapper (default keeps current)
- * - mainAspect: Tailwind aspect-ratio classes for main image (default keeps current)
- * - thumbsMaxW: Tailwind max-width for thumbnails row (default keeps current)
+ * - mainMaxW: max width του main (default: 60rem)
+ * - mainHeight: ύψος main σε Tailwind classes (π.χ. "h-[60vh] md:h-[70vh]")
+ * - mainObjectPosition: default object-position (π.χ. "center 35%")
+ * - positions: optional array για per-image object-position (override ανά index)
+ * - thumbsMaxW: max width των thumbnails (default: 60rem)
  */
 export default function SpaceSlider({
   mainMaxW = "max-w-[60rem]",
-  mainAspect = "aspect-video md:aspect-[2/1] lg:aspect-[21/9]",
+  mainHeight = "h-[52vh] md:h-[60vh] lg:h-[68vh]",
+  mainObjectPosition = "center",
+  positions, // π.χ. ["center 30%", "center 40%", ...]
   thumbsMaxW = "max-w-[60rem]",
 }) {
   const images = useMemo(
@@ -49,20 +52,25 @@ export default function SpaceSlider({
     return () => (document.body.style.overflow = "");
   }, [isOpen]);
 
+  const objectPos = positions?.[index] || mainObjectPosition;
+
   return (
     <div role="region" aria-label="Ο Χώρος – προβολέας εικόνων" className="w-full mx-auto">
-      {/* MAIN: width + aspect controlled by props */}
+      {/* MAIN: full width + fixed height + crop μέσω object-position */}
       <div className={`mx-auto w-full ${mainMaxW}`}>
-        <div className={`relative w-full ${mainAspect} overflow-hidden rounded-xl border-4 border-white shadow-lg bg-gray-200`}>
+        <div className={`relative w-full ${mainHeight} overflow-hidden rounded-xl border-4 border-white shadow-lg bg-gray-200`}>
           <img
             src={images[index].src}
             alt={images[index].alt}
             className="absolute inset-0 h-full w-full object-cover"
+            style={{ objectPosition: objectPos }}
             loading="eager"
           />
 
+          {/* click-to-zoom */}
           <button onClick={() => setIsOpen(true)} aria-label="Πλήρης οθόνη" className="absolute inset-0 z-10 cursor-zoom-in" />
 
+          {/* Prev */}
           <button
             type="button"
             onClick={prev}
@@ -72,6 +80,7 @@ export default function SpaceSlider({
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5 md:h-6 md:w-6"><path d="m15 18-6-6 6-6"/></svg>
           </button>
 
+          {/* Next */}
           <button
             type="button"
             onClick={next}
@@ -83,7 +92,7 @@ export default function SpaceSlider({
         </div>
       </div>
 
-      {/* THUMBS: keep current size by default */}
+      {/* THUMBS (ίδια όπως πριν) */}
       <div
         className={`mt-4 mx-auto w-full ${thumbsMaxW} grid gap-4`}
         style={{ gridTemplateColumns: `repeat(${images.length}, minmax(0, 1fr))` }}
@@ -108,7 +117,7 @@ export default function SpaceSlider({
         ))}
       </div>
 
-      {/* Fullscreen modal (όπως ήταν) */}
+      {/* Modal (ίδιο) */}
       {isOpen && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
@@ -120,7 +129,7 @@ export default function SpaceSlider({
           <img
             src={images[index].src}
             alt={images[index].alt}
-            className="max-w-full max-h-full rounded-xl shadow-xl"
+            className="max-w-full max-h-full rounded-xl shadow-xl object-contain"
             onClick={(e) => e.stopPropagation()}
           />
           <button
