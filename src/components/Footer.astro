@@ -49,14 +49,24 @@ import instagram from "../assets/instagram.svg"
       <h4 class="text-xs font-semibold text-gray-900 uppercase"><a href="gallery">Ο Χώρος</a></h4>
       <h4 class="text-xs font-semibold text-gray-900 uppercase"><a href="contact">Επικοινωνία</a></h4>
     </div>
-    <div class="md:hidden">
-      <ul class="flex items-center h-full gap-8 px-6 text-md font-semibold tracking-wide text-secondary">
-      <li class="flex items-center h-full"><span class="flex items-center gap-1 h-full"><a href="https://www.facebook.com/share/177oPonYrR/" target="_blank"><Facebook class="w-4 h-4" /></a></span></li>
-      <li class="flex items-center h-full"><span class="flex items-center gap-1 h-full"><a href="mailto:enalia@enalia-therapy.gr"><Mail class="w-4 h-4" /></a></span></li>
-      <li class="flex items-center h-full"><span class="flex items-center gap-1 h-full">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram-icon lucide-instagram w-4 h-4"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
-      </span></li>
-      </ul>
+    <!-- MOBILE ONLY: Social icons -->
+    <div class="md:hidden mt-3 flex justify-center gap-6">
+      <a href="https://www.facebook.com/share/177oPonYrR/" target="_blank" aria-label="Facebook">
+        <Facebook class="w-5 h-5 text-secondary hover:text-gray-800" />
+      </a>
+      <a href="mailto:enalia@enalia-therapy.gr" aria-label="Email">
+        <Mail class="w-5 h-5 text-secondary hover:text-gray-800" />
+      </a>
+      <a href="https://www.instagram.com/enalia.therapy" target="_blank" aria-label="Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg"
+          width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="w-5 h-5 text-secondary hover:text-gray-800">
+          <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+        </svg>
+      </a>
     </div>
   </div>
 
