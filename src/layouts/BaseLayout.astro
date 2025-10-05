@@ -6,9 +6,10 @@ import Seo from '../components/Seo.astro';
 import '../styles/tailwind.css';
 import logo_fav from '../assets/favicon-16x16.png';
 
+// Site/base helpers (Astro.site -> από astro.config.mjs)
 const BASE = import.meta.env.BASE_URL || '/';
-const siteBase = new URL(BASE, Astro.site);
-const pageUrl = new URL(Astro.url.pathname.replace(/^\//, ''), siteBase).toString();
+const siteBase = new URL(BASE, Astro.site);                    // https://enalia-therapy.gr/
+const canonical = new URL(Astro.url.pathname.replace(/^\//,''), siteBase).toString();
 const ogImage = new URL('og-default.jpg', siteBase).toString();
 
 const {
@@ -16,12 +17,12 @@ const {
   description: layoutDescription = 'Ψυχοθεραπεία στη Νέα Ιωνία: Ατομική, Ζεύγους, Οικογενειακή, Online.',
 } = Astro.props;
 
-
+// JSON-LD: LocalBusiness
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "Ενάλια",
-  "image": new URL('og-default.jpg', siteBase).toString(),
+  "image": ogImage,
   "url": siteBase.toString(),
   "telephone": "+306972078685",
   "address": {
@@ -39,31 +40,56 @@ const localBusinessSchema = {
     "closes": "21:00"
   }]
 };
+
+// JSON-LD: WebSite (βοηθά sitelinks & on-site search)
+const webSiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Ενάλια",
+  "url": siteBase.toString(),
+  "inLanguage": "el-GR",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": `${siteBase.toString()}search?q={search_term_string}`,
+    "query-input": "required name=search_term_string"
+  },
+  "sameAs": [
+    "https://www.facebook.com/share/177oPonYrR/",
+    "https://www.instagram.com/enalia.therapy"
+  ]
+};
 ---
 
 <html lang="el">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <base href={import.meta.env.BASE_URL} />
-    <Seo
-      title={layoutTitle}
-      description={layoutDescription}
-      url={pageUrl}
-      image={ogImage}
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Κάνει τα relative links να δουλεύουν σωστά σε / -->
+    <base href={siteBase.toString()} />
+
+    <!-- SEO (τίτλος/περιγραφή/OG/Twitter + canonical) -->
+    <Seo title={layoutTitle} description={layoutDescription} url={canonical} image={ogImage} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Icons -->
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="16x16" href={logo_fav.src} />
+
+    <!-- Extra hints -->
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#769d88" />
+
     <slot name="head" />
-    
-    <script type="application/ld+json">
-      {JSON.stringify(localBusinessSchema)}
-    </script>
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">{JSON.stringify(localBusinessSchema)}</script>
+    <script type="application/ld+json">{JSON.stringify(webSiteSchema)}</script>
   </head>
 
   <body class="min-h-screen bg-secondary">
+    <!-- μικρό progressive-reveal script -->
     <script is:inline>
       (() => {
         const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -71,13 +97,12 @@ const localBusinessSchema = {
         if (reduce) { els.forEach(el => el.setAttribute('data-reveal','in')); return; }
         const io = new IntersectionObserver((entries, obs) => {
           entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const el = entry.target;
-              const delay = el.dataset.revealDelay || 0;
-              el.style.transitionDelay = delay ? `${delay}ms` : '';
-              requestAnimationFrame(() => el.setAttribute('data-reveal','in'));
-              obs.unobserve(el);
-            }
+            if (!entry.isIntersecting) return;
+            const el = entry.target;
+            const delay = el.dataset.revealDelay || 0;
+            el.style.transitionDelay = delay ? `${delay}ms` : '';
+            requestAnimationFrame(() => el.setAttribute('data-reveal','in'));
+            obs.unobserve(el);
           });
         }, { threshold: 0.15, rootMargin: '0px 0px -5% 0px' });
         els.forEach(el => io.observe(el));
