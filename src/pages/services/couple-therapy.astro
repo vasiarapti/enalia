@@ -2,9 +2,12 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import zeugous from '../../assets/zeugous_imresizer.jpg';
 import { Image } from 'astro:assets';
+const title = 'Θεραπεία Ζεύγους | Ενάλια';
+const description = 'Συνεδρίες θεραεπείας ζεύγους από την Ενάλια στη Νέα Ιωνία.';
+const keywords = 'Θεραπεία, Ζεύγος, Θεραπεία ζεύγους, θεραπεία ζευγαριού, couple therapy, therapy, couple, enalia, εναλια, Νέα Ιωνία, Αθήνα, Athens, Nea Ionia';
 ---
 
-<BaseLayout>
+<BaseLayout {title} {description} {keywords}>
   <div class="min-h-screen flex flex-col">
     <div class="max-w-screen-xl mx-auto px-4 lg:px-6 flex-1 py-10">
       <h2 class="text-4xl font-bold tracking-tight text-primary-800 text-center mb-10">
@@ -27,3 +30,4 @@ import { Image } from 'astro:assets';
     </div>
   </div>
 </BaseLayout>
+
