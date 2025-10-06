@@ -2,9 +2,12 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import family from '../../assets/oikogeneiakh.jpg';
 import { Image } from 'astro:assets';
+const title = 'Οικογενειακή Θεραπεία | Ενάλια';
+const description = 'Συνεδρίες οικογενειακής θεραεπείας από την Ενάλια στη Νέα Ιωνία.';
+const keywords = 'Θεραπεία, Οικογένεια, οικογενειακή Θεραπεία, θεραπεία οικογένεια, family therapy, therapy, family, enalia, εναλια, Νέα Ιωνία, Αθήνα, Athens, Nea Ionia';
 ---
 
-<BaseLayout>
+<BaseLayout {title} {description} {keywords}>
   <div class="min-h-screen flex flex-col">
     <div class="max-w-screen-xl mx-auto px-4 lg:px-6 flex-1 py-10">
       <h2 class="text-4xl font-bold tracking-tight text-primary-800 text-center mb-10">
@@ -27,3 +30,4 @@ import { Image } from 'astro:assets';
     </div>
   </div>
 </BaseLayout>
+
