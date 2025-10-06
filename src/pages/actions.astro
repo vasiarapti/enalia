@@ -3,10 +3,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import viomatikes from '../assets/viomatikes_in.png';
 const title = 'Βιωματικές Δράσεις | Ενάλια';
-const description = 'Ψυχοθεραπευτικό κέντρο στη Νέα Ιωνία. Ατομική θεραπεία, ζεύγους, οικογενειακή.';
+const description = 'Βιωματικές δράσεις στο Ψυχοθεραπευτικό κέντρο - Ενάλια - στη Νέα Ιωνία.';
+const keywords = 'viomatikes draseis, draseis, actions, Enalia, therapy, psychotherapy, Nea Ionia, Athina, Athens, psychology, Βιωματικές, δράσεις, βιωματικές δράσεις, Ενάλια, ψυχοθεραπευτικό κέντρο, Αθήνα, Νέα Ιωνία';
 ---
 
-<BaseLayout {title} {description}>
+<BaseLayout {title} {description} {keywords}>
   <div class="min-h-screen flex flex-col">
     <div class="max-w-screen-xl mx-auto px-4 lg:px-6 flex-1 py-10">
       <h2 class="text-4xl font-bold tracking-tight text-primary-800 text-center mb-10">
@@ -34,3 +35,4 @@ const description = 'Ψυχοθεραπευτικό κέντρο στη Νέα �
     </div>
   </div>
 </BaseLayout>
+
