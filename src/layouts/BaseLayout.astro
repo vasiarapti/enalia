@@ -10,19 +10,22 @@ import logo_fav from '../assets/favicon-16x16.png';
 const BASE = import.meta.env.BASE_URL || '/';
 const siteBase = new URL(BASE, Astro.site);
 const canonical = new URL(Astro.url.pathname.replace(/^\//,''), siteBase).toString();
-const ogImage = new URL('og-default.jpg', siteBase).toString();
+const ogImage = new URL('assets/favicon-16x16.png', siteBase).toString();
 
 const {
   title: layoutTitle = 'Ενάλια | Κέντρο Ψυχοθεραπείας στη Νέα Ιωνία',
-  description: layoutDescription = 'Ψυχοθεραπεία στη Νέα Ιωνία: Ατομική, Ζεύγους, Οικογενειακή, Ομαδική Online.',
+  description: layoutDescription = 'Ψυχοθεραπεία στη Νέα Ιωνία: Ατομική, Ζεύγους, Οικογενειακή, Ομαδική, Online.',
   keywords: layoutKeywords = 'Συστημική Προσέγγιση, Ομαδική, Ατομική, Οικογενειακή, Ψυχοθεραπεία, Ενάλια, Ενάλια κέντρο, Εύη Καραβάνα, Χρήστος Κωστικίδης, Ψυχολόγος, Ψυχοθεραπευτής, Νέα Ιωνία, Αθήνα, Λευκης Ψυχολόγοι, Κοινωνικός Λειτουργός, enalia, enalia therapy, enalia psychotherapy, psychology, Athens, leukis 12, Evi Karavana, Xrhstos Kostikidis, Christos Kostikidis, Nea Ionia',
 } = Astro.props;
+
+const logoUrl = new URL('og/logo-enalia-bg.png', siteBase).toString();
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "Ενάλια | Κέντρο Ψυχοθεραπείας",
-  "image": ogImage,
+  "logo": logoUrl,
+  "image": logoUrl,
   "url": siteBase.toString(),
   "telephone": "+306972078685",
   "address": {
@@ -43,8 +46,9 @@ const localBusinessSchema = {
 const webSiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "Ενάλια – Κέντρο Ψυχοθεραπείας",
+  "name": "Ενάλια | Κέντρο Ψυχοθεραπείας",
   "url": siteBase.toString(),
+  "logo": logoUrl, 
   "inLanguage": "el-GR",
   "potentialAction": {
     "@type": "SearchAction",
