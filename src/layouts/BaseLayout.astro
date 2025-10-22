@@ -8,27 +8,26 @@ import logo_fav from '../assets/favicon-16x16.png';
 
 // Site/base helpers (Astro.site -> από astro.config.mjs)
 const BASE = import.meta.env.BASE_URL || '/';
-const siteBase = new URL(BASE, Astro.site);                    // https://enalia-therapy.gr/
+const siteBase = new URL(BASE, Astro.site);
 const canonical = new URL(Astro.url.pathname.replace(/^\//,''), siteBase).toString();
 const ogImage = new URL('og-default.jpg', siteBase).toString();
 
 const {
   title: layoutTitle = 'Ενάλια | Κέντρο Ψυχοθεραπείας στη Νέα Ιωνία',
-  description: layoutDescription = 'Ψυχοθεραπεία στη Νέα Ιωνία: Ατομική, Ζεύγους, Οικογενειακή, Online.',
-  keywords: layoutKeywords = 'Συστημική Προσέγγιση, Ψυχοθεραπεία, Ενάλια, Ενάλια κέντρο, Εύη Καραβάνα, Χρήστος Κωστικίδης, Ψυχολόγος, Ψυχοθεραπευτής, Νέα Ιωνία, Αθήνα, Ψυχολόγοι, Κοινωνικός Λειτουργός, enalia, enalia therapy, enalia psychotherapy, psychology, Athens, Evi Karavana, Xrhstos Kostikidis, Christos Kostikidis, Nea Ionia',
+  description: layoutDescription = 'Ψυχοθεραπεία στη Νέα Ιωνία: Ατομική, Ζεύγους, Οικογενειακή, Ομαδική Online.',
+  keywords: layoutKeywords = 'Συστημική Προσέγγιση, Ομαδική, Ατομική, Οικογενειακή, Ψυχοθεραπεία, Ενάλια, Ενάλια κέντρο, Εύη Καραβάνα, Χρήστος Κωστικίδης, Ψυχολόγος, Ψυχοθεραπευτής, Νέα Ιωνία, Αθήνα, Λευκης Ψυχολόγοι, Κοινωνικός Λειτουργός, enalia, enalia therapy, enalia psychotherapy, psychology, Athens, leukis 12, Evi Karavana, Xrhstos Kostikidis, Christos Kostikidis, Nea Ionia',
 } = Astro.props;
 
-// JSON-LD: LocalBusiness
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "name": "Ενάλια",
+  "name": "Ενάλια | Κέντρο Ψυχοθεραπείας",
   "image": ogImage,
   "url": siteBase.toString(),
   "telephone": "+306972078685",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Λευκής 12",
+    "streetAddress": "Λεύκης 12",
     "addressLocality": "Νέα Ιωνία",
     "postalCode": "14231",
     "addressCountry": "GR"
@@ -41,12 +40,10 @@ const localBusinessSchema = {
     "closes": "21:00"
   }]
 };
-
-// JSON-LD: WebSite (βοηθά sitelinks & on-site search)
 const webSiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "Ενάλια",
+  "name": "Ενάλια – Κέντρο Ψυχοθεραπείας",
   "url": siteBase.toString(),
   "inLanguage": "el-GR",
   "potentialAction": {
@@ -65,32 +62,31 @@ const webSiteSchema = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Κάνει τα relative links να δουλεύουν σωστά σε / -->
     <base href={siteBase.toString()} />
+    <Seo
+      title={layoutTitle}
+      description={layoutDescription}
+      keywords={layoutKeywords}
+      url={canonical}
+      image={ogImage}
+    />
+    <meta property="og:site_name" content="Ενάλια – Κέντρο Ψυχοθεραπείας" />
 
-    <!-- SEO (τίτλος/περιγραφή/OG/Twitter + canonical) -->
-    <Seo title={layoutTitle} description={layoutDescription} keywords={layoutKeywords} url={canonical} image={ogImage} />
-    <link rel="canonical" href={canonical} />
-
-    <!-- Icons -->
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="16x16" href={logo_fav.src} />
 
-    <!-- Extra hints -->
     <meta name="robots" content="index,follow" />
     <meta name="theme-color" content="#769d88" />
 
     <slot name="head" />
 
-    <!-- JSON-LD -->
-    <script type="application/ld+json">{JSON.stringify(localBusinessSchema)}</script>
-    <script type="application/ld+json">{JSON.stringify(webSiteSchema)}</script>
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)}></script>
+    <script type="application/ld+json" set:html={JSON.stringify(webSiteSchema)}></script>
   </head>
 
   <body class="min-h-screen bg-secondary">
-    <!-- μικρό progressive-reveal script -->
     <script is:inline>
       (() => {
         const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
