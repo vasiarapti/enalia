@@ -88,6 +88,17 @@ const webSiteSchema = {
 
     <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)}></script>
     <script type="application/ld+json" set:html={JSON.stringify(webSiteSchema)}></script>
+    <script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Ενάλια – Κέντρο Ψυχοθεραπείας",
+  "url": siteBase.toString(),
+  "logo": new URL('og/logo-enalia-bg.png', siteBase).toString(),
+  "sameAs": [
+    "https://www.facebook.com/share/177oPonYrR/",
+    "https://www.instagram.com/enalia.therapy"
+  ]
+})}></script>
   </head>
 
   <body class="min-h-screen bg-secondary">
