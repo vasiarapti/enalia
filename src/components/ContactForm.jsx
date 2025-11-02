@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ContactDropdown from "./ContactDropdown.jsx";
 
-const phoneRegex = /^(?:\+30)?69\d{8}$/; // +3069XXXXXXXX or 69XXXXXXXX
+const phoneRegex = /^(?:\+30)?69\d{8}$/; // +3069XXXXXXXX ή 69XXXXXXXX
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 export default function ContactForm() {
@@ -12,19 +12,15 @@ export default function ContactForm() {
 
   const validate = (fields) => {
     const newErrors = {};
-
-    // Required
     if (!fields.name?.trim()) newErrors.name = "Το ονοματεπώνυμο είναι υποχρεωτικό.";
     if (!fields.service?.trim()) newErrors.service = "Παρακαλώ επιλέξτε υπηρεσία.";
     if (!fields.therapist?.trim()) newErrors.therapist = "Παρακαλώ επιλέξτε θεραπευτή.";
     if (!fields.preferred) newErrors.preferred = "Παρακαλώ επιλέξτε τρόπο επικοινωνίας.";
 
-    // Phone is ALWAYS required
     const p = (fields.phone || "").replace(/\s+/g, "");
     if (!p) newErrors.phone = "Το τηλέφωνο είναι υποχρεωτικό.";
     else if (!phoneRegex.test(p)) newErrors.phone = "Μη έγκυρο κινητό. Δεκτά: +3069XXXXXXXX ή 69XXXXXXXX.";
 
-    // Email required only when preferred === "email"
     const v = (fields.email || "").trim();
     if (fields.preferred === "email") {
       if (!v) newErrors.email = "Το email είναι υποχρεωτικό.";
@@ -32,13 +28,13 @@ export default function ContactForm() {
     } else if (v && !emailRegex.test(v)) {
       newErrors.email = "Το email δεν είναι έγκυρο (π.χ. onoma@example.com).";
     }
-
     return newErrors;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const fd = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const fd = new FormData(form);
     const fields = {
       name: fd.get("name") || "",
       email: fd.get("email") || "",
@@ -48,21 +44,31 @@ export default function ContactForm() {
       preferred,
       message: fd.get("message") || "",
     };
+
     const v = validate(fields);
     setErrors(v);
-    if (Object.keys(v).length === 0) {
-      // make sure hidden inputs are in sync
-      fd.set("service", service);
-      fd.set("therapist", therapist);
-      fd.set("preferred", preferred);
+    if (Object.keys(v).length > 0) return;
 
-      // submit the form to your existing handler (already working)
-      e.currentTarget.submit();
-    }
+    // συγχρόνισε τα hidden πριν το φυσικό submit
+    form.elements.service.value = service;
+    form.elements.therapist.value = therapist;
+    form.elements.preferred.value = preferred;
+
+    form.submit(); // φυσικό submit -> /contact-form-handler.php
   };
 
   return (
-    <form className="space-y-6" onSubmit={handleSubmit} noValidate>
+    <form
+      id="contact"
+      action="/contact-form-handler.php"
+      method="POST"
+      noValidate
+      className="space-y-6"
+      onSubmit={handleSubmit}
+    >
+      {/* honeypot για bots */}
+      <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" />
+
       {/* Name */}
       <div>
         <label className="block mb-2 text-sm font-medium text-gray-900">Ονοματεπώνυμο*</label>
@@ -80,7 +86,7 @@ export default function ContactForm() {
       <div>
         <label className="block mb-2 text-sm font-medium text-gray-900">Επιλέξτε τρόπο επικοινωνίας*</label>
         <select
-          name="preferred"
+          name="preferred-select"
           className={`w-full p-2.5 border rounded-lg text-gray-900 bg-white ${errors.preferred ? "border-red-500" : "border-gray-300"}`}
           value={preferred}
           onChange={(e) => setPreferred(e.target.value)}
@@ -94,7 +100,7 @@ export default function ContactForm() {
         {errors.preferred && <p className="mt-1 text-sm text-red-600">{errors.preferred}</p>}
       </div>
 
-      {/* Email (required only if preferred === email) */}
+      {/* Email (conditional required) */}
       <div>
         <label className="block mb-2 text-sm font-medium text-gray-900">
           Email{preferred === "email" ? "*" : " (προαιρετικό)"}
@@ -110,7 +116,7 @@ export default function ContactForm() {
         {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
       </div>
 
-      {/* Phone (ALWAYS required) */}
+      {/* Phone (always required) */}
       <div>
         <label className="block mb-2 text-sm font-medium text-gray-900">Τηλέφωνο Επικοινωνίας*</label>
         <input
@@ -126,10 +132,9 @@ export default function ContactForm() {
         {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone}</p>}
       </div>
 
-      {/* Service */}
+      {/* Service (dropdown που ΔΕΝ αποδίδει hidden) */}
       <ContactDropdown
         label="Επιλέξτε Υπηρεσία*"
-        name="service"
         options={[
           { label: "Ατομική Θεραπεία" },
           { label: "Θεραπεία Ζεύγους" },
@@ -139,6 +144,7 @@ export default function ContactForm() {
           { label: "Βιωματικές Δράσεις" },
           { label: "Άλλο" },
         ]}
+        value={service}
         onChange={setService}
       />
       {errors.service && <p className="mt-1 text-sm text-red-600">{errors.service}</p>}
@@ -146,13 +152,13 @@ export default function ContactForm() {
       {/* Therapist */}
       <ContactDropdown
         label="Επιλέξτε Θεραπευτή*"
-        name="therapist"
         options={[{ label: "Εύη Καραβάνα" }, { label: "Χρήστος Κωστικίδης" }]}
+        value={therapist}
         onChange={setTherapist}
       />
       {errors.therapist && <p className="mt-1 text-sm text-red-600">{errors.therapist}</p>}
 
-      {/* Hidden mirrors (kept for server) */}
+      {/* Hidden που θα σταλούν στον server (ένα από το καθένα) */}
       <input type="hidden" name="service" value={service} />
       <input type="hidden" name="therapist" value={therapist} />
       <input type="hidden" name="preferred" value={preferred} />
