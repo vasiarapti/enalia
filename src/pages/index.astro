@@ -15,7 +15,6 @@ import viomatikes from '../assets/viomatikes_in.png';
 const BASE = import.meta.env.BASE_URL;
 const title = 'Ενάλια | Κέντρο Ψυχοθεραπείας';
 const description = 'Ψυχοθεραπευτικό κέντρο στη Νέα Ιωνία. Ατομική θεραπεία, θεραπεία ζεύγους, οικογενειακή θεραπεία, ομαδική θεραπεία.';
-
 ---
 
 <BaseLayout {title} {description}>
@@ -57,21 +56,23 @@ const description = 'Ψυχοθεραπευτικό κέντρο στη Νέα �
         />
       </svg>
 
-
       <!-- Text inside Banner -->
       <div class="absolute inset-0 flex items-center justify-center mt-10">
-        <h2 class="italic text-secondary text-3xl md:text-4xl font-semibold">Καλωσήρθατε στην "Ενάλια"</h2>
+        <h2 class="italic text-secondary text-3xl md:text-4xl font-semibold">
+          Καλωσήρθατε στην "Ενάλια"
+        </h2>
       </div>
     </div>
   </Fragment>
 
-  <!-- About us -->
-   <section class="grid gap-10 md:grid-col-1">
+  <!-- About Us -->
+  <section class="grid gap-10 md:grid-cols-1">
     <div class="mx-auto max-w-2xl lg:max-w-4xl">
-      <p class="italic text-center mt-2 text-base/7 text-gray-600">Το όνομα Ενάλια προέρχεται από τη λέξη «ενάλιος» και παραπέμπει στη θάλασσα – σύμβολο ροής, προσαρμογής και βαθιάς εσωτερικής μεταμόρφωσης. Όπως το νερό διαμορφώνει το τοπίο, έτσι και οι εμπειρίες, οι σχέσεις και οι προκλήσεις της ζωής διαμορφώνουν την εσωτερική μας πορεία. Κάθε κύμα, όπως και κάθε αλληλεπίδραση, φέρει τη δύναμη να μας επηρεάσει και να μας αλλάξει. Στο Κέντρο Ψυχοθεραπείας Ενάλια, αφουγκραζόμενοι αυτή τη δυναμική, προσφέρουμε έναν χώρο ασφάλειας και ενσυναίσθησης, όπου η θεραπεία γίνεται ένα ταξίδι σύνδεσης με τον εαυτό και τους άλλους – μια διαδικασία συνεχούς ροής και προσωπικής εξέλιξης.</p>
+      <p class="italic text-center mt-2 text-base/7 text-gray-600">
+        Το όνομα Ενάλια προέρχεται από τη λέξη «ενάλιος» και παραπέμπει στη θάλασσα – σύμβολο ροής, προσαρμογής και βαθιάς εσωτερικής μεταμόρφωσης. Όπως το νερό διαμορφώνει το τοπίο, έτσι και οι εμπειρίες, οι σχέσεις και οι προκλήσεις της ζωής διαμορφώνουν την εσωτερική μας πορεία. Κάθε κύμα, όπως και κάθε αλληλεπίδραση, φέρει τη δύναμη να μας επηρεάσει και να μας αλλάξει. Στο Κέντρο Ψυχοθεραπείας Ενάλια, αφουγκραζόμενοι αυτή τη δυναμική, προσφέρουμε έναν χώρο ασφάλειας και ενσυναίσθησης, όπου η θεραπεία γίνεται ένα ταξίδι σύνδεσης με τον εαυτό και τους άλλους – μια διαδικασία συνεχούς ροής και προσωπικής εξέλιξης.
+      </p>
     </div>
   </section>
-
 
   <!-- Team Section -->
   <section class="mt-16 grid gap-10 md:grid-cols-1">
@@ -81,23 +82,22 @@ const description = 'Ψυχοθεραπευτικό κέντρο στη Νέα �
       </div>
 
       <div class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
-
-        <!-- Team Member 2 -->
+        <!-- Team Member 1 -->
         <div class="text-center">
           <a href={`${BASE}team/karavana`}>
             <Image src={evi} alt="Εύη Καραβάνα" class="rounded-full w-32 h-32 sm:w-44 sm:h-44 lg:w-60 lg:h-60 object-cover mx-auto" />
           </a>
           <div class="mt-2 sm:mt-4">
-            <h3 class="ttext-base/7 font-semibold text-gray-900">Εύη Καραβάνα</h3>
+            <h3 class="text-base/7 font-semibold text-gray-900">Εύη Καραβάνα</h3>
             <p class="text-xs sm:text-sm lg:text-base">Ψυχολόγος, MSc</p>
             <p class="text-xs sm:text-sm lg:text-base">Συστημική Ψυχοθεραπεύτρια</p>
           </div>
         </div>
 
-        <!-- Team Member 1 -->
+        <!-- Team Member 2 -->
         <div class="text-center">
           <a href={`${BASE}team/kostikidis`}>
-            <Image src={chris} alt="Χρήστος Κωστικίδης" class="rounded-full w-32 h-32 sm:w-44 sm:h-44 lg:w-60 lg:h-60 object-cover mx-auto"/>
+            <Image src={chris} alt="Χρήστος Κωστικίδης" class="rounded-full w-32 h-32 sm:w-44 sm:h-44 lg:w-60 lg:h-60 object-cover mx-auto" />
           </a>
           <div class="mt-2 sm:mt-4">
             <h3 class="text-base/7 font-semibold text-gray-900">Χρήστος Κωστικίδης</h3>
@@ -116,179 +116,174 @@ const description = 'Ψυχοθεραπευτικό κέντρο στη Νέα �
         <p class="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl lg:text-balance">Οι Υπηρεσίες</p>
       </div>
 
-    <div class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-1 lg:gap-y-16">
-      
-            <div class="space-y-8 md:space-y-0 text-center md:text-left md:space-x-10 md:justify-center md:flex md:items-center">
-                <!-- INDIVIDUAL THERAPY  -->
-              <div class="mx-auto w-1/2 md:w-1/3">
-                  <a href={`${BASE}services/individual-therapy`}>
-                    <Image src={atomiki} alt="Ατομική Θεραπεία" class="rounded-full w-full md:w-80 sm:w-22 sm:h-22 object-cover mx-auto" />
-                  </a>
-              </div>
-              <div class="md:w-1/2 w-full space-y-4">
-                    <h3 class="font-medium text-2xl">Ατομική Θεραπεία</h3>
-                    <p class="text-justify">
-                      Η ατομική ψυχοθεραπεία προσφέρει έναν ασφαλή και υποστηρικτικό χώρο, όπου το άτομο έχει τη δυνατότητα να επεξεργαστεί τα συναισθήματα, τις σκέψεις και τις προκλήσεις που αντιμετωπίζει. 
-                    </p>
-                    <a class="group mt-2 flex flex-col justify-center hover:bg-gray focus:outline-hidden rounded-xl p-1 md:p-1" href={`${BASE}services/individual-therapy`}>
-                      <span class="inline-flex items-center text-sm text-primary-600 decoration-2 group-focus:underline font-medium">
-                        Μάθε Περισσότερα
-                        <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/>
-                        </svg>
-                      </span>
-                    </a>
-                  </div>
-                </div>
-                <!-- END OF INDIVIDUAL THERAPY -->
-
-                <!-- COUPLE THERAPY -->
-                <div class="py-8 space-y-8 md:space-y-0 text-center md:text-left md:space-x-10 md:justify-center md:flex md:items-center md:flex-row-reverse">
-                  <div class="mx-auto w-1/2 md:w-1/3">
-                    <a href={`${BASE}services/couple-therapy`}>
-                      <Image src={zeugous} alt="Θεραπεία Zεύγους" class="rounded-full w-full md:w-80 sm:w-22 sm:h-22 object-cover mx-auto" />
-                    </a>
-                  </div>
-                  <div class="mx-auto md:w-1/2 w-full space-y-4">
-                    <h3 class="font-medium text-2xl">Θεραπεία Zεύγους</h3>
-                    <p class="text-justify">
-                      Δημιουργώντας έναν ασφαλή και υποστηρικτικό χώρο, το ζευγάρι έχει την ευκαιρία να καλλιεργήσει ανοιχτό και ειλικρινή διάλογο, όπου κάθε σύντροφος προσπαθεί να μπει στη θέση του άλλου και να κατανοήσει βαθύτερα τις σκέψεις και τα συναισθήματά του.
-                    </p>
-                    <a class="group mt-2 flex flex-col justify-center hover:bg-gray focus:outline-hidden rounded-xl p-1 md:p-1" href={`${BASE}services/couple-therapy`}>
-                      <span class="inline-flex items-center text-sm text-primary-600 decoration-2 group-focus:underline font-medium">
-                        Μάθε Περισσότερα
-                        <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/>
-                        </svg>
-                      </span>
-                    </a>
-                </div>
-              </div>
-              <!-- END OF COUPLE THERAPY -->
-
-              <!-- FAMILY THERAPY -->
-               <div class="py-2 space-y-8 md:space-y-0 text-center md:text-left md:space-x-10 md:justify-center md:flex md:items-center"> 
-                <div class="mx-auto w-1/2 md:w-1/3"> 
-                  <a href={`${BASE}services/family-therapy`}>
-                    <Image src={oikogeneiakh} alt="Οικογενειακή Θεραπεία" class="rounded-full w-full md:w-80 sm:w-22 sm:h-22 object-cover mx-auto" />
-                  </a>
-                </div> 
-                <div class="md:w-1/2 w-full space-y-4">
-                  <h3 class="font-medium text-2xl">Οικογενειακή Θεραπεία</h3> 
-                  <p class="text-justify">
-                    Η οικογενειακή ψυχοθεραπεία αποτελεί θεμέλιο λίθο στην προσέγγισή μας, καθώς η οικογένεια, σε όλες τις μορφές της, είναι το πρώτο και πιο σημαντικό κοινωνικό σύστημα στο οποίο κάθε μέλος εξασφαλίζει την επιβίωση και την ανάπτυξη του.
-                  </p>
-                  <a class="group mt-2 flex flex-col justify-center hover:bg-gray focus:outline-hidden rounded-xl p-1 md:p-1" href={`${BASE}services/family-therapy`}>
-                    <span class="inline-flex items-center text-sm text-primary-600 decoration-2 group-focus:underline font-medium">Μάθε Περισσότερα
-                      <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path> 
-                      </svg> 
-                    </span> 
-                  </a> 
-                </div>
-              </div>
-            <!-- END OF FAMILY THERAPY -->
-
-            <!-- GROUP THERAPY -->
-            <div class="py-8 space-y-8 md:space-y-0 text-center md:text-left md:space-x-10 md:justify-center md:flex md:items-center md:flex-row-reverse">
-              <div class="mx-auto w-1/2 md:w-1/3">
-                  <a href={`${BASE}services/group-therapy`}>
-                    <Image src={omadiki} alt="Ομαδικη Θεραπεία" class="rounded-full w-full md:w-80 sm:w-22 sm:h-22 object-cover mx-auto" />
-                  </a>
-                </div>
-                <div class="mx-auto md:w-1/2 w-full space-y-4">
-                  <h3 class="font-medium text-2xl">Ομαδικη Θεραπεία</h3>
-                  <p class="text-justify">
-                      Η ομαδική ψυχοθεραπεία προσφέρει ένα περιβάλλον ασφάλειας, εμπιστοσύνης και αμοιβαιότητας, όπου τα μέλη της ομάδας έχουν τη δυνατότητα να αλληλεπιδρούν με αυθεντικότητα και ενσυναίσθηση.
-                  </p>
-                  <a class="group mt-2 flex flex-col justify-center hover:bg-gray focus:outline-hidden rounded-xl p-1 md:p-1" href={`${BASE}services/group-therapy`}>
-                    <span class="inline-flex items-center text-sm text-primary-600 decoration-2 group-focus:underline font-medium">
-                        Μάθε Περισσότερα
-                      <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/>
-                      </svg>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            <!-- END OF GROUP THERAPY -->
-
-            <!-- PARENTS -->
-              <div class="py-2 space-y-8 md:space-y-0 text-center md:text-left md:space-x-10 md:justify-center md:flex md:items-center"> 
-                <div class="mx-auto w-1/2 md:w-1/3"> 
-                  <a href={`${BASE}services/parent-counselling`}>
-                    <Image src={goneis} alt="Συμβουλευτική Γονέων" class="rounded-full w-full md:w-80 sm:w-22 sm:h-22 object-cover mx-auto" />
-                  </a>
-                </div> 
-                <div class="md:w-1/2 w-full space-y-4">
-                  <h3 class="font-medium text-2xl">Συμβουλευτική Γονέων</h3> 
-                  <p class="text-justify">
-                    Η συμβουλευτική γονέων προσφέρει έναν χώρο διαλόγου και αναστοχασμού, όπου οι γονείς έχουν την ευκαιρία να βιώσουν μια ουσιαστική συνάντηση με τον γονεϊκό τους ρόλο και να ενισχύσουν τη σχέση τους με τα παιδιά τους.
-                  </p>
-                  <a class="group mt-2 flex flex-col justify-center hover:bg-gray focus:outline-hidden rounded-xl p-1 md:p-1" href={`${BASE}services/parent-counselling`}>
-                    <span class="inline-flex items-center text-sm text-primary-600 decoration-2 group-focus:underline font-medium">Μάθε Περισσότερα
-                      <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path> 
-                      </svg> 
-                    </span> 
-                  </a> 
-                </div>
-            </div>
-            <!-- END OF PARENTS -->
-             <!-- ONLINE THERAPY -->
-            <div class="py-8 space-y-8 md:space-y-0 text-center md:text-left md:space-x-10 md:justify-center md:flex md:items-center md:flex-row-reverse">
-              <div class="mx-auto w-1/2 md:w-1/3">
-                  <a href={`${BASE}online`}>
-                    <Image src={online} alt="Ομαδικη Θεραπεία" class="rounded-full w-full md:w-80 sm:w-22 sm:h-22 object-cover mx-auto" />
-                  </a>
-                </div>
-                <div class="mx-auto md:w-1/2 w-full space-y-4">
-                  <h3 class="font-medium text-2xl">Οnline Θεραπεία</h3>
-                  <p class="text-justify">
-                      Η online ψυχοθεραπεία είναι μια σύγχρονη μορφή υποστήριξης που προσφέρει ευελιξία και προσβασιμότητα, χωρίς να στερείται τη σύνδεση και το βάθος της διαπροσωπικής επαφής.
-                  </p>
-                  <a class="group mt-2 flex flex-col justify-center hover:bg-gray focus:outline-hidden rounded-xl p-1 md:p-1" href={`${BASE}online`}>
-                    <span class="inline-flex items-center text-sm text-primary-600 decoration-2 group-focus:underline font-medium">
-                        Μάθε Περισσότερα
-                      <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/>
-                      </svg>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            <!-- END OF ONLINE THERAPY -->
-
-            <!-- VIOMATIKES -->
-              <div class="py-2 space-y-8 md:space-y-0 text-center md:text-left md:space-x-10 md:justify-center md:flex md:items-center"> 
-                <div class="mx-auto w-1/2 md:w-1/3">
-                  <a href={`${BASE}actions`}>
-                    <Image src={viomatikes} alt="Βιωματικές Δράσεις" class="rounded-full w-full md:w-80 sm:w-22 sm:h-22 object-cover mx-auto" />
-                  </a>
-                </div> 
-                <div class="md:w-1/2 w-full space-y-4">
-                  <h3 class="font-medium text-2xl">Βιωματικές Δράσεις</h3> 
-                  <p class="text-justify">
-                    Στην Ενάλια, πέρα από την ψυχοθεραπεία, δίνουμε ιδιαίτερη έμφαση στις βιωματικές δράσεις, οι οποίες αναπτύσσονται τόσο εντός του κέντρου μας όσο και στην ευρύτερη κοινότητα.
-                  </p>
-                  <a class="group mt-2 flex flex-col justify-center hover:bg-gray focus:outline-hidden rounded-xl p-1 md:p-1" href={`${BASE}actions`}>
-                    <span class="inline-flex items-center text-sm text-primary-600 decoration-2 group-focus:underline font-medium">Μάθε Περισσότερα
-                      <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path> 
-                      </svg> 
-                    </span> 
-                  </a> 
-                </div>
-            </div>
-            <!-- END OF VIOMATIKES -->
+      <div class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-1 lg:gap-y-16">
+        <!-- Individual Therapy -->
+        <div class="space-y-8 md:space-y-0 text-center md:text-left md:space-x-10 md:justify-center md:flex md:items-center">
+          <div class="mx-auto w-1/2 md:w-1/3">
+            <a href={`${BASE}services/individual-therapy`}>
+              <Image src={atomiki} alt="Ατομική Θεραπεία" class="rounded-full w-full md:w-80 sm:w-22 sm:h-22 object-cover mx-auto" />
+            </a>
+          </div>
+          <div class="md:w-1/2 w-full space-y-4">
+            <h3 class="font-medium text-2xl">Ατομική Θεραπεία</h3>
+            <p class="text-justify">
+              Η ατομική ψυχοθεραπεία προσφέρει έναν ασφαλή και υποστηρικτικό χώρο, όπου το άτομο έχει τη δυνατότητα να επεξεργαστεί τα συναισθήματα, τις σκέψεις και τις προκλήσεις που αντιμετωπίζει. 
+            </p>
+            <a class="group mt-2 flex flex-col justify-center hover:bg-gray-100 focus:outline-none rounded-xl p-1 md:p-1" href={`${BASE}services/individual-therapy`}>
+              <span class="inline-flex items-center text-sm text-primary-600 decoration-2 group-focus:underline font-medium">
+                Μάθε Περισσότερα
+                <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m9 18 6-6-6-6"/>
+                </svg>
+              </span>
+            </a>
+          </div>
+        </div>
+        <!-- Couple Therapy -->
+        <div class="py-8 space-y-8 md:space-y-0 text-center md:text-left md:space-x-10 md:justify-center md:flex md:items-center md:flex-row-reverse">
+          <div class="mx-auto w-1/2 md:w-1/3">
+            <a href={`${BASE}services/couple-therapy`}>
+              <Image src={zeugous} alt="Θεραπεία Ζεύγους" class="rounded-full w-full md:w-80 sm:w-22 sm:h-22 object-cover mx-auto" />
+            </a>
+          </div>
+          <div class="mx-auto md:w-1/2 w-full space-y-4">
+            <h3 class="font-medium text-2xl">Θεραπεία Ζεύγους</h3>
+            <p class="text-justify">
+              Δημιουργώντας έναν ασφαλή και υποστηρικτικό χώρο, το ζευγάρι έχει την ευκαιρία να καλλιεργήσει ανοιχτό και ειλικρινή διάλογο, όπου κάθε σύντροφος προσπαθεί να μπει στη θέση του άλλου και να κατανοήσει βαθύτερα τις σκέψεις και τα συναισθήματά του.
+            </p>
+            <a class="group mt-2 flex flex-col justify-center hover:bg-gray-100 focus:outline-none rounded-xl p-1 md:p-1" href={`${BASE}services/couple-therapy`}>
+              <span class="inline-flex items-center text-sm text-primary-600 decoration-2 group-focus:underline font-medium">
+                Μάθε Περισσότερα
+                <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m9 18 6-6-6-6"/>
+                </svg>
+              </span>
+            </a>
+          </div>
+        </div>
+        <!-- Family Therapy -->
+        <div class="py-2 space-y-8 md:space-y-0 text-center md:text-left md:space-x-10 md:justify-center md:flex md:items-center">
+          <div class="mx-auto w-1/2 md:w-1/3">
+            <a href={`${BASE}services/family-therapy`}>
+              <Image src={oikogeneiakh} alt="Οικογενειακή Θεραπεία" class="rounded-full w-full md:w-80 sm:w-22 sm:h-22 object-cover mx-auto" />
+            </a>
+          </div>
+          <div class="md:w-1/2 w-full space-y-4">
+            <h3 class="font-medium text-2xl">Οικογενειακή Θεραπεία</h3>
+            <p class="text-justify">
+              Η οικογενειακή ψυχοθεραπεία αποτελεί θεμέλιο λίθο στην προσέγγισή μας, καθώς η οικογένεια, σε όλες τις μορφές της, είναι το πρώτο και πιο σημαντικό κοινωνικό σύστημα στο οποίο κάθε μέλος εξασφαλίζει την επιβίωση και την ανάπτυξη του.
+            </p>
+            <a class="group mt-2 flex flex-col justify-center hover:bg-gray-100 focus:outline-none rounded-xl p-1 md:p-1" href={`${BASE}services/family-therapy`}>
+              <span class="inline-flex items-center text-sm text-primary-600 decoration-2 group-focus:underline font-medium">
+                Μάθε Περισσότερα
+                <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m9 18 6-6-6-6"/>
+                </svg>
+              </span>
+            </a>
+          </div>
+        </div>
+        <!-- Group Therapy -->
+        <div class="py-8 space-y-8 md:space-y-0 text-center md:text-left md:space-x-10 md:justify-center md:flex md:items-center md:flex-row-reverse">
+          <div class="mx-auto w-1/2 md:w-1/3">
+            <a href={`${BASE}services/group-therapy`}>
+              <Image src={omadiki} alt="Ομαδική Θεραπεία" class="rounded-full w-full md:w-80 sm:w-22 sm:h-22 object-cover mx-auto" />
+            </a>
+          </div>
+          <div class="mx-auto md:w-1/2 w-full space-y-4">
+            <h3 class="font-medium text-2xl">Ομαδική Θεραπεία</h3>
+            <p class="text-justify">
+              Η ομαδική ψυχοθεραπεία προσφέρει ένα περιβάλλον ασφάλειας, εμπιστοσύνης και αμοιβαιότητας, όπου τα μέλη της ομάδας έχουν τη δυνατότητα να αλληλεπιδρούν με αυθεντικότητα και ενσυναίσθηση.
+            </p>
+            <a class="group mt-2 flex flex-col justify-center hover:bg-gray-100 focus:outline-none rounded-xl p-1 md:p-1" href={`${BASE}services/group-therapy`}>
+              <span class="inline-flex items-center text-sm text-primary-600 decoration-2 group-focus:underline font-medium">
+                Μάθε Περισσότερα
+                <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m9 18 6-6-6-6"/>
+                </svg>
+              </span>
+            </a>
+          </div>
+        </div>
+        <!-- Parent Counselling -->
+        <div class="py-2 space-y-8 md:space-y-0 text-center md:text-left md:space-x-10 md:justify-center md:flex md:items-center">
+          <div class="mx-auto w-1/2 md:w-1/3">
+            <a href={`${BASE}services/parent-counselling`}>
+              <Image src={goneis} alt="Συμβουλευτική Γονέων" class="rounded-full w-full md:w-80 sm:w-22 sm:h-22 object-cover mx-auto" />
+            </a>
+          </div>
+          <div class="md:w-1/2 w-full space-y-4">
+            <h3 class="font-medium text-2xl">Συμβουλευτική Γονέων</h3>
+            <p class="text-justify">
+              Η συμβουλευτική γονέων προσφέρει έναν χώρο διαλόγου και αναστοχασμού, όπου οι γονείς έχουν την ευκαιρία να βιώσουν μια ουσιαστική συνάντηση με τον γονεϊκό τους ρόλο και να ενισχύσουν τη σχέση τους με τα παιδιά τους.
+            </p>
+            <a class="group mt-2 flex flex-col justify-center hover:bg-gray-100 focus:outline-none rounded-xl p-1 md:p-1" href={`${BASE}services/parent-counselling`}>
+              <span class="inline-flex items-center text-sm text-primary-600 decoration-2 group-focus:underline font-medium">
+                Μάθε Περισσότερα
+                <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m9 18 6-6-6-6"/>
+                </svg>
+              </span>
+            </a>
+          </div>
+        </div>
+        <!-- Online Therapy -->
+        <div class="py-8 space-y-8 md:space-y-0 text-center md:text-left md:space-x-10 md:justify-center md:flex md:items-center md:flex-row-reverse">
+          <div class="mx-auto w-1/2 md:w-1/3">
+            <a href={`${BASE}online`}>
+              <Image src={online} alt="Online Θεραπεία" class="rounded-full w-full md:w-80 sm:w-22 sm:h-22 object-cover mx-auto" />
+            </a>
+          </div>
+          <div class="mx-auto md:w-1/2 w-full space-y-4">
+            <h3 class="font-medium text-2xl">Online Θεραπεία</h3>
+            <p class="text-justify">
+              Η online ψυχοθεραπεία είναι μια σύγχρονη μορφή υποστήριξης που προσφέρει ευελιξία και προσβασιμότητα, χωρίς να στερείται τη σύνδεση και το βάθος της διαπροσωπικής επαφής.
+            </p>
+            <a class="group mt-2 flex flex-col justify-center hover:bg-gray-100 focus:outline-none rounded-xl p-1 md:p-1" href={`${BASE}online`}>
+              <span class="inline-flex items-center text-sm text-primary-600 decoration-2 group-focus:underline font-medium">
+                Μάθε Περισσότερα
+                <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m9 18 6-6-6-6"/>
+                </svg>
+              </span>
+            </a>
+          </div>
+        </div>
+        <!-- Experiential Actions (Βιωματικές Δράσεις) -->
+        <div class="py-2 space-y-8 md:space-y-0 text-center md:text-left md:space-x-10 md:justify-center md:flex md:items-center">
+          <div class="mx-auto w-1/2 md:w-1/3">
+            <a href={`${BASE}actions`}>
+              <Image src={viomatikes} alt="Βιωματικές Δράσεις" class="rounded-full w-full md:w-80 sm:w-22 sm:h-22 object-cover mx-auto" />
+            </a>
+          </div>
+          <div class="md:w-1/2 w-full space-y-4">
+            <h3 class="font-medium text-2xl">Βιωματικές Δράσεις</h3>
+            <p class="text-justify">
+              Στην Ενάλια, πέρα από την ψυχοθεραπεία, δίνουμε ιδιαίτερη έμφαση στις βιωματικές δράσεις, οι οποίες αναπτύσσονται τόσο εντός του κέντρου μας όσο και στην ευρύτερη κοινότητα.
+            </p>
+            <a class="group mt-2 flex flex-col justify-center hover:bg-gray-100 focus:outline-none rounded-xl p-1 md:p-1" href={`${BASE}actions`}>
+              <span class="inline-flex items-center text-sm text-primary-600 decoration-2 group-focus:underline font-medium">
+                Μάθε Περισσότερα
+                <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m9 18 6-6-6-6"/>
+                </svg>
+              </span>
+            </a>
           </div>
         </div>
       </div>
+    </div>
   </section>
 
   <!-- Space Section -->
   <section class="mt-16">
-  <div class="max-w-7xl px-4 py-10 sm:px-6 lg:px-8 mx-auto">
-    <div class="text-center mb-10">
-      <h2 class="text-4xl sm:text-5xl font-semibold tracking-tight text-gray-900">
-        Ο Χώρος
-      </h2>
+    <div class="max-w-7xl px-4 py-10 sm:px-6 lg:px-8 mx-auto">
+      <div class="text-center mb-10">
+        <h2 class="text-4xl sm:text-5xl font-semibold tracking-tight text-gray-900">
+          Ο Χώρος
+        </h2>
+      </div>
+      <Gallery client:load />
     </div>
-
-    <Gallery client:load />
-  </div>
-</section>
+  </section>
 </BaseLayout>
