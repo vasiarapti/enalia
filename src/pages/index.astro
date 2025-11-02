@@ -19,51 +19,42 @@ const description = 'Ψυχοθεραπευτικό κέντρο στη Νέα �
 
 <BaseLayout {title} {description}>
   <Fragment slot="banner">
-    <div class="relative w-full h-[320px] overflow-hidden bg-secondary">
-      <svg class="absolute inset-0 w-full h-full" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 1440 690" xmlns="http://www.w3.org/2000/svg">
-        <style>
-          .path-0 {
-            animation: pathAnim-0 4s linear infinite;
-          }
-          @keyframes pathAnim-0 {
-            0% {
-              d: path("M 0,700 L 0,262 C 138.92,328.46 277.85,394.92 405,381 C 532.14,367.07 647.5,272.75 760,260 C 872.5,247.24 982.14,316.07 1095,330 C 1207.85,343.92 1323.92,302.96 1440,262 L 1440,700 L 0,700 Z");
-            }
-            25% {
-              d: path("M 0,700 L 0,262 C 93,315.42 186,368.85 314,354 C 442,339.14 605,256 739,234 C 872.99,211.99 978,251.14 1090,266 C 1202,280.85 1321,271.42 1440,262 L 1440,700 L 0,700 Z");
-            }
-            50% {
-              d: path("M 0,700 L 0,262 C 155.53,219.28 311.07,176.57 426,169 C 540.92,161.42 615.25,189 731,218 C 846.74,247 1003.92,277.42 1129,285 C 1254.07,292.57 1347.03,277.28 1440,262 L 1440,700 L 0,700 Z");
-            }
-            75% {
-              d: path("M 0,700 L 0,262 C 128.25,316.10 256.5,370.21 385,370 C 513.5,369.78 642.25,315.25 758,313 C 873.75,310.75 976.5,360.78 1088,361 C 1199.5,361.21 1319.75,311.6 1440,262 L 1440,700 L 0,700 Z");
-            }
-            100% {
-              d: path("M 0,700 L 0,262 C 138.92,328.46 277.85,394.92 405,381 C 532.14,367.07 647.5,272.75 760,260 C 872.5,247.24 982.14,316.07 1095,330 C 1207.85,343.92 1323.92,302.96 1440,262 L 1440,700 L 0,700 Z");
-            }
-          }
-        </style>
-        <defs>
-          <linearGradient id="gradient" x1="72%" y1="95%" x2="28%" y2="5%">
-            <stop offset="5%" stop-color="#769d88"></stop>
-            <stop offset="95%" stop-color="#F7EADF"></stop> <!-- ← updated here -->
-          </linearGradient>
-        </defs>
-        <path
-          d="M 0,700 L 0,262 C 138.92,328.46 277.85,394.92 405,381 C 532.14,367.07 647.5,272.75 760,260 C 872.5,247.24 982.14,316.07 1095,330 C 1207.85,343.92 1323.92,302.96 1440,262 L 1440,700 L 0,700 Z"
-          fill="url(#gradient)"
-          class="path-0"
-        />
-      </svg>
+  <!-- shorter banner on phones, taller on md+ -->
+  <div class="relative w-full h-[240px] md:h-[320px] overflow-hidden bg-secondary">
+    <svg class="absolute inset-0 w-full h-full" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 1440 690" xmlns="http://www.w3.org/2000/svg">
+      <style>
+        .path-0 { animation: pathAnim-0 4s linear infinite; }
+        @keyframes pathAnim-0 {
+          0%   { d: path("M 0,700 L 0,262 C 138.92,328.46 277.85,394.92 405,381 C 532.14,367.07 647.5,272.75 760,260 C 872.5,247.24 982.14,316.07 1095,330 C 1207.85,343.92 1323.92,302.96 1440,262 L 1440,700 L 0,700 Z"); }
+          25%  { d: path("M 0,700 L 0,262 C 93,315.42 186,368.85 314,354 C 442,339.14 605,256 739,234 C 872.99,211.99 978,251.14 1090,266 C 1202,280.85 1321,271.42 1440,262 L 1440,700 L 0,700 Z"); }
+          50%  { d: path("M 0,700 L 0,262 C 155.53,219.28 311.07,176.57 426,169 C 540.92,161.42 615.25,189 731,218 C 846.74,247 1003.92,277.42 1129,285 C 1254.07,292.57 1347.03,277.28 1440,262 L 1440,700 L 0,700 Z"); }
+          75%  { d: path("M 0,700 L 0,262 C 128.25,316.10 256.5,370.21 385,370 C 513.5,369.78 642.25,315.25 758,313 C 873.75,310.75 976.5,360.78 1088,361 C 1199.5,361.21 1319.75,311.6 1440,262 L 1440,700 L 0,700 Z"); }
+          100% { d: path("M 0,700 L 0,262 C 138.92,328.46 277.85,394.92 405,381 C 532.14,367.07 647.5,272.75 760,260 C 872.5,247.24 982.14,316.07 1095,330 C 1207.85,343.92 1323.92,302.96 1440,262 L 1440,700 L 0,700 Z"); }
+        }
+      </style>
+      <defs>
+        <linearGradient id="gradient" x1="72%" y1="95%" x2="28%" y2="5%">
+          <stop offset="5%" stop-color="#769d88" />
+          <stop offset="95%" stop-color="#F7EADF" />
+        </linearGradient>
+      </defs>
+      <path
+        d="M 0,700 L 0,262 C 138.92,328.46 277.85,394.92 405,381 C 532.14,367.07 647.5,272.75 760,260 C 872.5,247.24 982.14,316.07 1095,330 C 1207.85,343.92 1323.92,302.96 1440,262 L 1440,700 L 0,700 Z"
+        fill="url(#gradient)"
+        class="path-0"
+      />
+    </svg>
 
-      <!-- Text inside Banner -->
-      <div class="absolute inset-0 flex items-center justify-center mt-10">
-        <h2 class="italic text-secondary text-3xl md:text-4xl font-semibold">
-          Καλωσήρθατε στην "Ενάλια"
-        </h2>
-      </div>
+    <!-- Title: placed a bit lower; fluid font-size; subtle shadow for contrast -->
+    <div class="absolute left-1/2 top-[64%] md:top-[66%] -translate-x-1/2 -translate-y-1/2 w-full px-4">
+      <h2
+        class="italic font-semibold text-center text-secondary leading-tight drop-shadow
+               text-[clamp(18px,6vw,28px)] md:text-[clamp(22px,3.2vw,40px)]">
+        Καλωσήρθατε στην "Ενάλια"
+      </h2>
     </div>
-  </Fragment>
+  </div>
+</Fragment>
 
   <!-- About Us -->
   <section class="grid gap-10 md:grid-cols-1">
