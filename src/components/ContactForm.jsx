@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ContactDropdown from "./ContactDropdown.jsx";
 
 const phoneRegex = /^(?:\+30)?69\d{8}$/; // +3069XXXXXXXX ή 69XXXXXXXX
@@ -9,6 +9,11 @@ export default function ContactForm() {
   const [service, setService] = useState("");
   const [preferred, setPreferred] = useState(""); // "email" | "phone"
   const [errors, setErrors] = useState({});
+  const [ts, setTs] = useState("");
+
+  useEffect(() => {
+    setTs(String(Math.floor(Date.now() / 1000)));
+  }, []);
 
   const validate = (fields) => {
     const newErrors = {};
@@ -67,7 +72,7 @@ export default function ContactForm() {
       onSubmit={handleSubmit}
     >
       {/* honeypot για bots */}
-      <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" />
+      <input type="hidden" name="ts" value={ts} />
 
       {/* Name */}
       <div>
@@ -175,3 +180,4 @@ export default function ContactForm() {
     </form>
   );
 }
+
